@@ -1,17 +1,45 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\LinkPager;
+use yii\grid\GridView;
 
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\EventsSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Events';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="events-index">
 
-<h1>События</h1>
-<ul>
-<?php foreach ($events as $event): ?>
-    <li>
-        <?=Html::encode("{$event->name} ({$event->description})") ?>:   
-    </li>
-<?php endforeach; ?>    
-</ul>
+    <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-<?= LinkPager::widget(['pagination' => $pagination]) ?>
+    <p>
+        <?= Html::a('Create Events', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'name',
+            'description:ntext',
+            'location_id',
+            'contractor_id',
+            // 'user_id',
+            // 'date_begin',
+            // 'date_end',
+            // 'images',
+            // 'alias',
+            // 'created_at',
+            // 'updated_at',
+
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
+
+</div>

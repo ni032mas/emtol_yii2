@@ -185,4 +185,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+    
+    public function getEvents() {
+        return $this->hasMany(backend\models\Events::className(), ['user_id' => 'id']);
+    }
 }
