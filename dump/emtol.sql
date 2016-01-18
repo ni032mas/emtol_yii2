@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 17 2016 г., 21:10
+-- Время создания: Янв 18 2016 г., 15:07
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -40,7 +40,26 @@ CREATE TABLE `contractors` (
 
 INSERT INTO `contractors` (`id`, `name`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 'Тестовый контрагент 1', 2, 1, 1),
-(2, 'Тестовый контрагент 1', 2, 1, 1);
+(2, 'Тестовый контрагент 2', 2, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`) VALUES
+(1, 'Контрагент 1'),
+(2, 'Контрагент 2');
 
 -- --------------------------------------------------------
 
@@ -125,6 +144,17 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `orde`
+--
+
+CREATE TABLE `orde` (
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `orders`
 --
 
@@ -177,6 +207,16 @@ ALTER TABLE `contractors`
   ADD KEY `id_2` (`id`);
 
 --
+-- Индексы таблицы `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `id_3` (`id`),
+  ADD KEY `id_4` (`id`);
+
+--
 -- Индексы таблицы `events`
 --
 ALTER TABLE `events`
@@ -205,6 +245,17 @@ ALTER TABLE `migration`
   ADD PRIMARY KEY (`version`);
 
 --
+-- Индексы таблицы `orde`
+--
+ALTER TABLE `orde`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `id_3` (`id`),
+  ADD KEY `id_4` (`id`),
+  ADD KEY `id_5` (`id`);
+
+--
 -- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
@@ -229,6 +280,11 @@ ALTER TABLE `user`
 ALTER TABLE `contractors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT для таблицы `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT для таблицы `events`
 --
 ALTER TABLE `events`
@@ -243,6 +299,11 @@ ALTER TABLE `images`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT для таблицы `orde`
+--
+ALTER TABLE `orde`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
