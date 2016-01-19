@@ -7,14 +7,17 @@ use Yii;
 /**
  * This is the model class for table "orders".
  *
- * @property integer $id
- * @property integer $event_id
- * @property integer $user_id
- * @property integer $reserved_amount
+ * @property string $id
+ * @property string $obj_reservation_id
+ * @property string $consumer_id
+ * @property string $reserved_amount
  * @property integer $is_paid
  * @property string $comment
- * @property integer $created_at
- * @property integer $updated_at
+ * @property string $created_at
+ * @property string $updated_at
+ *
+ * @property Objreservation $objReservation
+ * @property Consumers $consumer
  */
 class Orders extends \yii\db\ActiveRecord
 {
@@ -32,8 +35,8 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['event_id', 'user_id', 'reserved_amount', 'is_paid', 'created_at', 'updated_at'], 'required'],
-            [['event_id', 'user_id', 'reserved_amount', 'is_paid', 'created_at', 'updated_at'], 'integer'],
+            [['obj_reservation_id', 'consumer_id', 'reserved_amount', 'is_paid', 'created_at', 'updated_at'], 'required'],
+            [['obj_reservation_id', 'consumer_id', 'reserved_amount', 'is_paid', 'created_at', 'updated_at'], 'integer'],
             [['comment'], 'string']
         ];
     }
@@ -45,13 +48,29 @@ class Orders extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'event_id' => 'Event ID',
-            'user_id' => 'User ID',
+            'obj_reservation_id' => 'Obj Reservation ID',
+            'consumer_id' => 'Consumer ID',
             'reserved_amount' => 'Reserved Amount',
             'is_paid' => 'Is Paid',
             'comment' => 'Comment',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getObjReservation()
+    {
+        return $this->hasOne(Objreservation::className(), ['id' => 'obj_reservation_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getConsumer()
+    {
+        return $this->hasOne(Consumers::className(), ['id' => 'consumer_id']);
     }
 }

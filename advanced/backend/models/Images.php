@@ -5,23 +5,24 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "locations".
+ * This is the model class for table "images".
  *
  * @property string $id
+ * @property string $obj_reservation_id
  * @property string $name
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Objreservation[] $objreservations
+ * @property Objreservation $objReservation
  */
-class Locations extends \yii\db\ActiveRecord
+class Images extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'locations';
+        return 'images';
     }
 
     /**
@@ -30,9 +31,9 @@ class Locations extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
-            [['name'], 'string', 'max' => 500]
+            [['obj_reservation_id', 'name', 'created_at', 'updated_at'], 'required'],
+            [['obj_reservation_id', 'created_at', 'updated_at'], 'integer'],
+            [['name'], 'string', 'max' => 255]
         ];
     }
 
@@ -43,6 +44,7 @@ class Locations extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'obj_reservation_id' => 'Obj Reservation ID',
             'name' => 'Name',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -52,8 +54,8 @@ class Locations extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getObjreservations()
+    public function getObjReservation()
     {
-        return $this->hasMany(Objreservation::className(), ['location_id' => 'id']);
+        return $this->hasOne(Objreservation::className(), ['id' => 'obj_reservation_id']);
     }
 }

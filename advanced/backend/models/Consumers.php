@@ -5,25 +5,24 @@ namespace backend\models;
 use Yii;
 
 /**
- * This is the model class for table "customers".
+ * This is the model class for table "consumers".
  *
  * @property string $id
  * @property string $user_id
- * @property string $name
  * @property string $created_at
  * @property string $updated_at
  *
  * @property User $user
- * @property Objreservation[] $objreservations
+ * @property Orders[] $orders
  */
-class Customers extends \yii\db\ActiveRecord
+class Consumers extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'customers';
+        return 'consumers';
     }
 
     /**
@@ -32,9 +31,8 @@ class Customers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'name', 'created_at', 'updated_at'], 'required'],
-            [['user_id', 'created_at', 'updated_at'], 'integer'],
-            [['name'], 'string', 'max' => 500]
+            [['user_id', 'created_at', 'updated_at'], 'required'],
+            [['user_id', 'created_at', 'updated_at'], 'integer']
         ];
     }
 
@@ -46,7 +44,6 @@ class Customers extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'name' => 'Name',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
@@ -63,8 +60,8 @@ class Customers extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getObjreservations()
+    public function getOrders()
     {
-        return $this->hasMany(Objreservation::className(), ['customer_id' => 'id']);
+        return $this->hasMany(Orders::className(), ['consumer_id' => 'id']);
     }
 }

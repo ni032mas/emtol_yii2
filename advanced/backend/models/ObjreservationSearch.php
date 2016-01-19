@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Events;
+use backend\models\Objreservation;
 
 /**
- * EventsSearch represents the model behind the search form about `backend\models\Events`.
+ * ObjreservationSearch represents the model behind the search form about `backend\models\Objreservation`.
  */
-class EventsSearch extends Events
+class ObjreservationSearch extends Objreservation
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class EventsSearch extends Events
     public function rules()
     {
         return [
-            [['id', 'location_id', 'contractor_id', 'user_id', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'description', 'date_begin', 'date_end', 'images', 'alias'], 'safe'],
+            [['id', 'location_id', 'customer_id', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'description', 'alias'], 'safe'],
         ];
     }
 
@@ -41,11 +41,8 @@ class EventsSearch extends Events
      */
     public function search($params)
     {
-//        $users = \common\models\User::find();
-//        $query = $users;
-        
-//        $contractors = Contractors::find()->events;
-        $query = Events::find();
+        $query = Objreservation::find();
+        $query1 = Objreservation::findOne(1)->location;
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -62,17 +59,13 @@ class EventsSearch extends Events
         $query->andFilterWhere([
             'id' => $this->id,
             'location_id' => $this->location_id,
-            'contractor_id' => $this->contractor_id,
-            'user_id' => $this->user_id,
-            'date_begin' => $this->date_begin,
-            'date_end' => $this->date_end,
+            'customer_id' => $this->customer_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'images', $this->images])
             ->andFilterWhere(['like', 'alias', $this->alias]);
 
         return $dataProvider;

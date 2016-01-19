@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Events */
+/* @var $model backend\models\Objreservation */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="events-form">
+<div class="objreservation-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -16,23 +16,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'location_id')->textInput() ?>
+    <?= $form->field($model, 'location_id')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'contractor_id')->textInput() ?>
-
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
-    <?= $form->field($model, 'date_begin')->textInput() ?>
-
-    <?= $form->field($model, 'date_end')->textInput() ?>
-
-    <?= $form->field($model, 'images')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'customer_id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created_at')->textInput() ?>
+    <?= $form->field($model, 'created_at')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'updated_at')->textInput() ?>
+    <?= $form->field($model, 'updated_at')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
