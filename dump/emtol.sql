@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 19 2016 г., 16:40
+-- Время создания: Янв 19 2016 г., 16:45
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Структура таблицы `consumers`
 --
 
+DROP TABLE IF EXISTS `consumers`;
 CREATE TABLE `consumers` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
@@ -33,12 +34,18 @@ CREATE TABLE `consumers` (
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `consumers`
+--
+
+TRUNCATE TABLE `consumers`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `customers`
 --
 
+DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
@@ -47,6 +54,11 @@ CREATE TABLE `customers` (
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `customers`
+--
+
+TRUNCATE TABLE `customers`;
 --
 -- Дамп данных таблицы `customers`
 --
@@ -61,6 +73,7 @@ INSERT INTO `customers` (`id`, `user_id`, `name`, `created_at`, `updated_at`) VA
 -- Структура таблицы `images`
 --
 
+DROP TABLE IF EXISTS `images`;
 CREATE TABLE `images` (
   `id` int(10) UNSIGNED NOT NULL,
   `obj_reservation_id` int(10) UNSIGNED NOT NULL,
@@ -69,12 +82,18 @@ CREATE TABLE `images` (
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `images`
+--
+
+TRUNCATE TABLE `images`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `locations`
 --
 
+DROP TABLE IF EXISTS `locations`;
 CREATE TABLE `locations` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(500) NOT NULL,
@@ -82,6 +101,11 @@ CREATE TABLE `locations` (
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `locations`
+--
+
+TRUNCATE TABLE `locations`;
 --
 -- Дамп данных таблицы `locations`
 --
@@ -95,11 +119,17 @@ INSERT INTO `locations` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- Структура таблицы `migration`
 --
 
+DROP TABLE IF EXISTS `migration`;
 CREATE TABLE `migration` (
   `version` varchar(180) NOT NULL,
   `apply_time` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `migration`
+--
+
+TRUNCATE TABLE `migration`;
 --
 -- Дамп данных таблицы `migration`
 --
@@ -116,6 +146,7 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 -- Структура таблицы `objreservation`
 --
 
+DROP TABLE IF EXISTS `objreservation`;
 CREATE TABLE `objreservation` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(500) NOT NULL,
@@ -127,6 +158,11 @@ CREATE TABLE `objreservation` (
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `objreservation`
+--
+
+TRUNCATE TABLE `objreservation`;
 --
 -- Дамп данных таблицы `objreservation`
 --
@@ -140,6 +176,7 @@ INSERT INTO `objreservation` (`id`, `name`, `description`, `location_id`, `custo
 -- Структура таблицы `orders`
 --
 
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(10) UNSIGNED NOT NULL,
   `obj_reservation_id` int(10) UNSIGNED NOT NULL,
@@ -151,12 +188,18 @@ CREATE TABLE `orders` (
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `orders`
+--
+
+TRUNCATE TABLE `orders`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `reservationinfo`
 --
 
+DROP TABLE IF EXISTS `reservationinfo`;
 CREATE TABLE `reservationinfo` (
   `id` int(10) UNSIGNED NOT NULL,
   `obj_reservation_id` int(10) UNSIGNED NOT NULL,
@@ -166,12 +209,18 @@ CREATE TABLE `reservationinfo` (
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Очистить таблицу перед добавлением данных `reservationinfo`
+--
+
+TRUNCATE TABLE `reservationinfo`;
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `user`
 --
 
+DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -184,6 +233,11 @@ CREATE TABLE `user` (
   `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Очистить таблицу перед добавлением данных `user`
+--
+
+TRUNCATE TABLE `user`;
 --
 -- Дамп данных таблицы `user`
 --
