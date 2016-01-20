@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 19 2016 г., 16:45
+-- Время создания: Янв 20 2016 г., 20:54
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `emtol`
 --
+CREATE DATABASE IF NOT EXISTS `emtol` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `emtol`;
 
 -- --------------------------------------------------------
 
@@ -39,6 +41,13 @@ CREATE TABLE `consumers` (
 --
 
 TRUNCATE TABLE `consumers`;
+--
+-- Дамп данных таблицы `consumers`
+--
+
+INSERT DELAYED IGNORE INTO `consumers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 4, 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -63,7 +72,7 @@ TRUNCATE TABLE `customers`;
 -- Дамп данных таблицы `customers`
 --
 
-INSERT INTO `customers` (`id`, `user_id`, `name`, `created_at`, `updated_at`) VALUES
+INSERT DELAYED IGNORE INTO `customers` (`id`, `user_id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 2, 'Главный контрагент', 1, 1),
 (2, 3, 'Тестовый контрагент ni032mas', 1, 1);
 
@@ -110,8 +119,11 @@ TRUNCATE TABLE `locations`;
 -- Дамп данных таблицы `locations`
 --
 
-INSERT INTO `locations` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Сочи', 0, 0);
+INSERT DELAYED IGNORE INTO `locations` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Сочи', 0, 0),
+(2, 'Адлер', 1, 1),
+(3, 'Красная поляна', 1, 1),
+(4, 'Азов', 11, 1);
 
 -- --------------------------------------------------------
 
@@ -134,7 +146,7 @@ TRUNCATE TABLE `migration`;
 -- Дамп данных таблицы `migration`
 --
 
-INSERT INTO `migration` (`version`, `apply_time`) VALUES
+INSERT DELAYED IGNORE INTO `migration` (`version`, `apply_time`) VALUES
 ('m000000_000000_base', 1452955689),
 ('m130524_201442_init', 1452955696),
 ('m160117_183649_new_table', 1453061058),
@@ -167,8 +179,9 @@ TRUNCATE TABLE `objreservation`;
 -- Дамп данных таблицы `objreservation`
 --
 
-INSERT INTO `objreservation` (`id`, `name`, `description`, `location_id`, `customer_id`, `alias`, `created_at`, `updated_at`) VALUES
-(1, 'Экскурсия на Ахун', 'Очень хорошая экскурсия. Просто супер. Вы увидите Ахун.', 1, 1, 'картинка', 1, 1);
+INSERT DELAYED IGNORE INTO `objreservation` (`id`, `name`, `description`, `location_id`, `customer_id`, `alias`, `created_at`, `updated_at`) VALUES
+(1, 'Экскурсия на Ахун', 'Очень хорошая экскурсия. Просто супер. Вы увидите Ахун.', 1, 1, 'картинка', 1, 1453279325),
+(2, 'Экскурсия в Красную поляну', 'Вы увидите высокие горы', 1, 2, 'ууу', 22, 22);
 
 -- --------------------------------------------------------
 
@@ -179,7 +192,7 @@ INSERT INTO `objreservation` (`id`, `name`, `description`, `location_id`, `custo
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `id` int(10) UNSIGNED NOT NULL,
-  `obj_reservation_id` int(10) UNSIGNED NOT NULL,
+  `objreservation_id` int(10) UNSIGNED NOT NULL,
   `consumer_id` int(10) UNSIGNED NOT NULL,
   `reserved_amount` int(10) UNSIGNED NOT NULL,
   `is_paid` tinyint(1) NOT NULL,
@@ -193,6 +206,13 @@ CREATE TABLE `orders` (
 --
 
 TRUNCATE TABLE `orders`;
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT DELAYED IGNORE INTO `orders` (`id`, `objreservation_id`, `consumer_id`, `reserved_amount`, `is_paid`, `comment`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 2, 0, 'Примите наш заказ, он оплачен', 3, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -202,9 +222,10 @@ TRUNCATE TABLE `orders`;
 DROP TABLE IF EXISTS `reservationinfo`;
 CREATE TABLE `reservationinfo` (
   `id` int(10) UNSIGNED NOT NULL,
-  `obj_reservation_id` int(10) UNSIGNED NOT NULL,
+  `objreservation_id` int(10) UNSIGNED NOT NULL,
   `date_begin` int(10) UNSIGNED NOT NULL,
   `date_end` int(10) UNSIGNED NOT NULL,
+  `amount` int(10) UNSIGNED NOT NULL,
   `created_at` int(10) UNSIGNED NOT NULL,
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -242,7 +263,7 @@ TRUNCATE TABLE `user`;
 -- Дамп данных таблицы `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
+INSERT DELAYED IGNORE INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
 (2, 'admin', 'n7cespQyGWhaiEKvXM5Z_9MwnN2JLFb9', '$2y$13$ZuZiyrUfgLfTd5pZrwp2O.0Cowif.BmrN0hBI8Tlmj1i/VHUJ8KLm', NULL, 'ni032mas@mail.ru', 10, 1453049060, 1453049060),
 (3, 'ni032mas', 'wfLNmyMfE-NGWIXH6awpATwXGZj_oqie', '$2y$13$tkVSCeU3j1vC5XkHi5szD.hE8zecnWLufm6ErLtC4pGLUqqAalnyC', NULL, 'marmyshevas@gmail.com', 10, 1453193216, 1453193216),
 (4, 'yandex', 'pyrTEu8yDpt18iuhTCq-fAV7XQ-cv0jP', '$2y$13$98uIdCi6gqEhMZW5nZLhAuGe0pYNjpkCAs9v8XseyXuie16JH8XiK', NULL, 'ni032mas@yandex.ru', 10, 1453193489, 1453193489);
@@ -305,7 +326,7 @@ ALTER TABLE `objreservation`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `obj_reservation_id` (`obj_reservation_id`),
+  ADD KEY `obj_reservation_id` (`objreservation_id`),
   ADD KEY `consumer_id` (`consumer_id`);
 
 --
@@ -314,7 +335,7 @@ ALTER TABLE `orders`
 ALTER TABLE `reservationinfo`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `obj_reservation_id` (`obj_reservation_id`);
+  ADD KEY `obj_reservation_id` (`objreservation_id`);
 
 --
 -- Индексы таблицы `user`
@@ -333,7 +354,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `consumers`
 --
 ALTER TABLE `consumers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `customers`
 --
@@ -348,22 +369,22 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT для таблицы `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT для таблицы `objreservation`
 --
 ALTER TABLE `objreservation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `reservationinfo`
 --
 ALTER TABLE `reservationinfo`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
@@ -377,39 +398,39 @@ ALTER TABLE `user`
 -- Ограничения внешнего ключа таблицы `consumers`
 --
 ALTER TABLE `consumers`
-  ADD CONSTRAINT `consumers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `consumers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `customers`
 --
 ALTER TABLE `customers`
-  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `images`
 --
 ALTER TABLE `images`
-  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`obj_reservation_id`) REFERENCES `objreservation` (`id`);
+  ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`obj_reservation_id`) REFERENCES `objreservation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `objreservation`
 --
 ALTER TABLE `objreservation`
-  ADD CONSTRAINT `objreservation_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`),
-  ADD CONSTRAINT `objreservation_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`);
+  ADD CONSTRAINT `objreservation_ibfk_1` FOREIGN KEY (`location_id`) REFERENCES `locations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `objreservation_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`obj_reservation_id`) REFERENCES `objreservation` (`id`),
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`consumer_id`) REFERENCES `consumers` (`id`);
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`objreservation_id`) REFERENCES `objreservation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`consumer_id`) REFERENCES `consumers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `reservationinfo`
 --
 ALTER TABLE `reservationinfo`
-  ADD CONSTRAINT `reservationinfo_ibfk_1` FOREIGN KEY (`obj_reservation_id`) REFERENCES `objreservation` (`id`);
+  ADD CONSTRAINT `reservationinfo_ibfk_1` FOREIGN KEY (`objreservation_id`) REFERENCES `objreservation` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
