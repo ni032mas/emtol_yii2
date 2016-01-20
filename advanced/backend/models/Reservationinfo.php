@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "reservationinfo".
@@ -32,8 +33,8 @@ class Reservationinfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['obj_reservation_id', 'date_begin', 'date_end', 'created_at', 'updated_at'], 'required'],
-            [['obj_reservation_id', 'date_begin', 'date_end', 'created_at', 'updated_at'], 'integer']
+            [['objreservation_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'required'],
+            [['objreservation_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'integer']
         ];
     }
 
@@ -45,18 +46,25 @@ class Reservationinfo extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'obj_reservation_id' => 'Obj Reservation ID',
-            'date_begin' => 'Date Begin',
-            'date_end' => 'Date End',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'date_begin' => 'Дата начала',
+            'date_end' => 'Дата окончания',
+            'amount' => 'Количество',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
+        ];
+    }
+    
+    public function behaviors() {
+        return [
+            TimestampBehavior::className(),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getObjReservation()
+    public function getObjreservation()
     {
-        return $this->hasOne(Objreservation::className(), ['id' => 'obj_reservation_id']);
+        return $this->hasOne(Objreservation::className(), ['id' => 'objreservation_id']);
     }
 }

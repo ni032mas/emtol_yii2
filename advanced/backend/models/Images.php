@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "images".
@@ -45,9 +46,14 @@ class Images extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'obj_reservation_id' => 'Obj Reservation ID',
-            'name' => 'Name',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Название',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
+        ];
+    }
+    public function behaviors() {
+        return [
+            TimestampBehavior::className(),
         ];
     }
 

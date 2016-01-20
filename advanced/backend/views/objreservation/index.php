@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\ObjreservationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Objreservations';
+$this->title = 'Объекты бронирования';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="objreservation-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Objreservation', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать объект бронирования', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,10 +26,32 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
-            'description:ntext',
-            'location_id',
-            'customer_id',
+            [
+            'attribute' => 'name',
+            'label' => 'Наименование',
+            'format' => 'text', // Возможные варианты: raw, html
+            ],
+            [
+            'attribute' => 'description',
+            'label' => 'Описание',
+            'format' => 'text', // Возможные варианты: raw, html
+            ],
+            [
+            'attribute' => 'location_id',
+            'label' => 'Место проведения',
+            'format' => 'text', // Возможные варианты: raw, html
+            'content' => function($data) {
+                return $data->getLocationName();
+            }
+            ],
+            [
+            'attribute' => 'customer_id',
+            'label' => 'Исполнитель',
+            'format' => 'text', // Возможные варианты: raw, html
+            'content' => function($data) {
+                return $data->getCustomerName();
+            }
+            ],
             // 'alias',
             // 'created_at',
             // 'updated_at',

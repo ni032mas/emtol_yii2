@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "orders".
@@ -49,12 +50,18 @@ class Orders extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'obj_reservation_id' => 'Obj Reservation ID',
-            'consumer_id' => 'Consumer ID',
-            'reserved_amount' => 'Reserved Amount',
-            'is_paid' => 'Is Paid',
-            'comment' => 'Comment',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'consumer_id' => 'Клиент',
+            'reserved_amount' => 'Количество',
+            'is_paid' => 'Оплачено',
+            'comment' => 'Комментарий',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
+        ];
+    }
+    
+    public function behaviors() {
+        return [
+            TimestampBehavior::className(),
         ];
     }
 

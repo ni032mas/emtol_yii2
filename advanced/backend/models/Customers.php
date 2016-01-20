@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "customers".
@@ -46,9 +47,15 @@ class Customers extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'name' => 'Name',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'name' => 'Название',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
+        ];
+    }
+    
+    public function behaviors() {
+        return [
+            TimestampBehavior::className(),
         ];
     }
 

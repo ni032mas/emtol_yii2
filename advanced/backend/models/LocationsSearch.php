@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Objreservation;
+use backend\models\Locations;
 
 /**
- * ObjreservationSearch represents the model behind the search form about `backend\models\Objreservation`.
+ * LocationsSearch represents the model behind the search form about `backend\models\Locations`.
  */
-class ObjreservationSearch extends Objreservation
+class LocationsSearch extends Locations
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ObjreservationSearch extends Objreservation
     public function rules()
     {
         return [
-            [['id', 'location_id', 'customer_id', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'description', 'alias'], 'safe'],
+            [['id', 'created_at', 'updated_at'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -41,10 +41,8 @@ class ObjreservationSearch extends Objreservation
      */
     public function search($params)
     {
-//        $query = Objreservation::find();        
-        $query = Objreservation::find();
-       
-             
+        $query = Locations::find();
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -56,21 +54,14 @@ class ObjreservationSearch extends Objreservation
             // $query->where('0=1');
             return $dataProvider;
         }
-        
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'location_id' => $this->location_id,
-            'customer_id' => $this->customer_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'customer_id' => $this->customerName,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'alias', $this->alias])
-            ->andFilterWhere(['like', 'customer_id', $this->customerName]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

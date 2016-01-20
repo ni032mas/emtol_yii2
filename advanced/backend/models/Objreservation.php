@@ -3,6 +3,8 @@
 namespace backend\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "objreservation".
@@ -53,13 +55,19 @@ class Objreservation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'location_id' => 'Location ID',
-            'customer_id' => 'Customer ID',
+            'name' => 'Название',
+            'description' => 'Описание',
+            'location_id' => 'Место',
+            'customer_id' => 'Исполнитель',
             'alias' => 'Alias',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => 'Создано',
+            'updated_at' => 'Изменено',
+        ];
+    }
+    
+    public function behaviors() {
+        return [
+            TimestampBehavior::className(),
         ];
     }
 
@@ -78,6 +86,18 @@ class Objreservation extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Locations::className(), ['id' => 'location_id']);
     }
+    
+    public function getLocationName() {
+        $location = $this->location;
+        return $location ? $location->name : '';
+    }
+    
+    public function getLocationList() {
+        $location = Locations::find()
+                ->all();
+
+        return ArrayHelper::map($location, 'id', 'name');
+    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -86,13 +106,19 @@ class Objreservation extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Customers::className(), ['id' => 'customer_id']);
     }
+    
+    public function getCustomerName() {
+        $customer = $this->customer;
+        return $customer ? $customer->name : '';
+    }
+    
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getOrders()
     {
-        return $this->hasMany(Orders::className(), ['obj_reservation_id' => 'id']);
+        return $this->hasMany(Orders::className(), ['objreservation_id' => 'id']);
     }
 
     /**
