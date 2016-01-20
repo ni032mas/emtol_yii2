@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Typeahead;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Objreservation */
@@ -17,6 +19,41 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(['rows' => 6])->hint('Введите описание экскурсии')->label('Описание') ?>
 
     <?= $form->field($model, 'location_id')->textInput(['maxlength' => true])->dropDownList(\backend\models\Objreservation::getLocationList()) ?>
+    
+    <?php   $dataset = ['Сочи', 'Адлер', 'Азов'];
+            echo Typeahead::widget([
+       
+                'name' => 'country_1',
+                'options' => ['placeholder' => 'Filter as you type ...'],
+                'scrollable' => true,
+                'pluginOptions' => ['highlight' => true],
+                'dataset' => [
+                    [
+                        'datumTokenizer' => "Bloodhound.tokenizers.obj.whitespace('value')",
+                        'display' => 'value',
+                        'prefetch' => Url::to(['locations/locationlist']),
+                        'remote' => [
+                                'url' => Url::to(['locations/locationlist']) . '?q=%QUERY',
+                                'wildcard' => '%QUERY'
+                            ]
+                        ]
+                ]
+            ]);
+
+        echo Typeahead::widget([
+            'name' => 'location1',
+            'options' => ['placeholder' => 'Filter as you type ...'],
+            'scrollable' => true,
+            'pluginOptions' => ['highlight' => true],
+            'dataset' => [
+                [
+                    'local' => $dataset,
+                ]
+            ]
+        ])
+    
+    
+    ?>
 
     <?= $form->field($model, 'customer_id')->textInput(['maxlength' => true]) ?>
 

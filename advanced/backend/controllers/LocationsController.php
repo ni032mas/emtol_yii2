@@ -8,6 +8,8 @@ use backend\models\LocationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\db\Query;
+use yii\helpers\Json;
 
 /**
  * LocationsController implements the CRUD actions for Locations model.
@@ -117,5 +119,20 @@ class LocationsController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+    
+    public function actionLocationlist($q = null) {
+        
+        $query = new Query;
+        $query->select('name')
+                ->from('locations')
+                ->orderBy('name');
+        $command = $query->createCommand();
+        $data = $command->queryAll();
+        $out = [];
+        foreach ($data as $d) {
+            $out[] = ['value' => $d['name']];
+        }
+        echo Json::encode($out);
     }
 }
