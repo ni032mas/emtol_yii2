@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 20 2016 г., 20:54
+-- Время создания: Янв 21 2016 г., 08:07
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -45,7 +45,7 @@ TRUNCATE TABLE `consumers`;
 -- Дамп данных таблицы `consumers`
 --
 
-INSERT DELAYED IGNORE INTO `consumers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `consumers` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, 4, 2, 2);
 
 -- --------------------------------------------------------
@@ -72,7 +72,7 @@ TRUNCATE TABLE `customers`;
 -- Дамп данных таблицы `customers`
 --
 
-INSERT DELAYED IGNORE INTO `customers` (`id`, `user_id`, `name`, `created_at`, `updated_at`) VALUES
+INSERT INTO `customers` (`id`, `user_id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 2, 'Главный контрагент', 1, 1),
 (2, 3, 'Тестовый контрагент ni032mas', 1, 1);
 
@@ -119,7 +119,7 @@ TRUNCATE TABLE `locations`;
 -- Дамп данных таблицы `locations`
 --
 
-INSERT DELAYED IGNORE INTO `locations` (`id`, `name`, `created_at`, `updated_at`) VALUES
+INSERT INTO `locations` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'Сочи', 0, 0),
 (2, 'Адлер', 1, 1),
 (3, 'Красная поляна', 1, 1),
@@ -146,7 +146,7 @@ TRUNCATE TABLE `migration`;
 -- Дамп данных таблицы `migration`
 --
 
-INSERT DELAYED IGNORE INTO `migration` (`version`, `apply_time`) VALUES
+INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m000000_000000_base', 1452955689),
 ('m130524_201442_init', 1452955696),
 ('m160117_183649_new_table', 1453061058),
@@ -179,7 +179,7 @@ TRUNCATE TABLE `objreservation`;
 -- Дамп данных таблицы `objreservation`
 --
 
-INSERT DELAYED IGNORE INTO `objreservation` (`id`, `name`, `description`, `location_id`, `customer_id`, `alias`, `created_at`, `updated_at`) VALUES
+INSERT INTO `objreservation` (`id`, `name`, `description`, `location_id`, `customer_id`, `alias`, `created_at`, `updated_at`) VALUES
 (1, 'Экскурсия на Ахун', 'Очень хорошая экскурсия. Просто супер. Вы увидите Ахун.', 1, 1, 'картинка', 1, 1453279325),
 (2, 'Экскурсия в Красную поляну', 'Вы увидите высокие горы', 1, 2, 'ууу', 22, 22);
 
@@ -210,7 +210,7 @@ TRUNCATE TABLE `orders`;
 -- Дамп данных таблицы `orders`
 --
 
-INSERT DELAYED IGNORE INTO `orders` (`id`, `objreservation_id`, `consumer_id`, `reserved_amount`, `is_paid`, `comment`, `created_at`, `updated_at`) VALUES
+INSERT INTO `orders` (`id`, `objreservation_id`, `consumer_id`, `reserved_amount`, `is_paid`, `comment`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 2, 0, 'Примите наш заказ, он оплачен', 3, 3);
 
 -- --------------------------------------------------------
@@ -263,7 +263,7 @@ TRUNCATE TABLE `user`;
 -- Дамп данных таблицы `user`
 --
 
-INSERT DELAYED IGNORE INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
+INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
 (2, 'admin', 'n7cespQyGWhaiEKvXM5Z_9MwnN2JLFb9', '$2y$13$ZuZiyrUfgLfTd5pZrwp2O.0Cowif.BmrN0hBI8Tlmj1i/VHUJ8KLm', NULL, 'ni032mas@mail.ru', 10, 1453049060, 1453049060),
 (3, 'ni032mas', 'wfLNmyMfE-NGWIXH6awpATwXGZj_oqie', '$2y$13$tkVSCeU3j1vC5XkHi5szD.hE8zecnWLufm6ErLtC4pGLUqqAalnyC', NULL, 'marmyshevas@gmail.com', 10, 1453193216, 1453193216),
 (4, 'yandex', 'pyrTEu8yDpt18iuhTCq-fAV7XQ-cv0jP', '$2y$13$98uIdCi6gqEhMZW5nZLhAuGe0pYNjpkCAs9v8XseyXuie16JH8XiK', NULL, 'ni032mas@yandex.ru', 10, 1453193489, 1453193489);
