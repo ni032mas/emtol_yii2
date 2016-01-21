@@ -124,14 +124,14 @@ class LocationsController extends Controller
     public function actionLocationlist($q = null) {
         
         $query = new Query;
-        $query->select('name')
+        $query->select(['id', 'name'])
                 ->from('locations')
                 ->orderBy('name');
         $command = $query->createCommand();
         $data = $command->queryAll();
         $out = [];
         foreach ($data as $d) {
-            $out[] = ['value' => $d['name']];
+            $out[] = ['value' => $d['name'], 'id' => $d['id']];
         }
         echo Json::encode($out);
     }
