@@ -19,7 +19,7 @@ class ObjreservationSearch extends Objreservation
     {
         return [
             [['id', 'location_id', 'customer_id', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'description', 'alias'], 'safe'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -69,7 +69,6 @@ class ObjreservationSearch extends Objreservation
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'alias', $this->alias])
             ->andFilterWhere(['like', 'customer_id', $this->customerName]);
 
         return $dataProvider;

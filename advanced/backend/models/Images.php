@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use backend\models\FileStorage;
 
 /**
  * This is the model class for table "images".
@@ -11,6 +12,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $id
  * @property string $obj_reservation_id
  * @property string $name
+ * @property string $thumbnail
  * @property string $created_at
  * @property string $updated_at
  *
@@ -32,7 +34,7 @@ class Images extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['obj_reservation_id', 'name', 'created_at', 'updated_at'], 'required'],
+            [['obj_reservation_id', 'name', 'thumbnail', 'created_at', 'updated_at'], 'required'],
             [['obj_reservation_id', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 255]
         ];
@@ -47,6 +49,7 @@ class Images extends \yii\db\ActiveRecord
             'id' => 'ID',
             'obj_reservation_id' => 'Obj Reservation ID',
             'name' => 'Название',
+            'name' => 'Миниатюра',
             'created_at' => 'Создано',
             'updated_at' => 'Изменено',
         ];
@@ -57,6 +60,8 @@ class Images extends \yii\db\ActiveRecord
         ];
     }
 
+    
+    
     /**
      * @return \yii\db\ActiveQuery
      */

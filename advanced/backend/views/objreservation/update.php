@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Objreservation */
 
 $this->title = 'Редактировать объект бронирования: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Objreservations', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Объекты бронирования', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>

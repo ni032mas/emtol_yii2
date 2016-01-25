@@ -8,6 +8,7 @@ use backend\models\ObjreservationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use zxbodya\yii2\galleryManager\GalleryManagerAction;
 
 /**
  * ObjreservationController implements the CRUD actions for Objreservation model.
@@ -24,6 +25,23 @@ class ObjreservationController extends Controller
                 ],
             ],
         ];
+    }
+
+    
+    public function actions() {
+        return [
+            'galleryApi' => [
+                'class' => GalleryManagerAction::className(),
+                // mappings between type names and model classes (should be the same as in behaviour)
+                'types' => [
+                    'objreservation' => Objreservation::className()
+                ]
+            ],
+        ];
+    }
+    
+    public function actiongalleryApi() {
+        echo "OK";
     }
 
     /**
@@ -60,15 +78,30 @@ class ObjreservationController extends Controller
      */
     public function actionCreate()
     {
+//        $model = new Objreservation();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            $model->created_at = time();
+//            $model->updated_at = time();
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        } else {
+//            return $this->render('create', [
+//                'model' => $model,
+//            ]);
+//        }
+        
         $model = new Objreservation();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->created_at = time();
+            $model->updated_at = time();
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
+        return $this->render('create', [
+                    'model' => $model,
+        ]);
     }
 
     /**
@@ -79,8 +112,14 @@ class ObjreservationController extends Controller
      */
     public function actionUpdate($id)
     {
+        $request = Yii::$app->request;
+        $keywords = $request->post('keywords', ['key']);
+        $word = '';
+        foreach ($keywords as $key) {
+            $word += $key;
+        }
         $model = $this->findModel($id);
-
+        $model->keywords = $word;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -88,6 +127,7 @@ class ObjreservationController extends Controller
                 'model' => $model,
             ]);
         }
+        
     }
 
     /**

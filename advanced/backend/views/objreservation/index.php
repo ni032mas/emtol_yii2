@@ -52,9 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 return $data->getCustomerName();
             }
             ],
-            // 'alias',
-            // 'created_at',
-            // 'updated_at',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
