@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 21 2016 г., 08:07
+-- Время создания: Янв 25 2016 г., 05:31
 -- Версия сервера: 10.1.9-MariaDB
 -- Версия PHP: 5.6.15
 
@@ -87,6 +87,7 @@ CREATE TABLE `images` (
   `id` int(10) UNSIGNED NOT NULL,
   `obj_reservation_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
+  `thumbnail` varchar(255) NOT NULL,
   `created_at` int(10) UNSIGNED NOT NULL,
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -150,7 +151,8 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m000000_000000_base', 1452955689),
 ('m130524_201442_init', 1452955696),
 ('m160117_183649_new_table', 1453061058),
-('m160117_200323_table_update', 1453061058);
+('m160117_200323_table_update', 1453061058),
+('m160122_200948_fffffddddd', 1453493500);
 
 -- --------------------------------------------------------
 
@@ -163,9 +165,10 @@ CREATE TABLE `objreservation` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(500) NOT NULL,
   `description` text NOT NULL,
+  `keywords` text NOT NULL,
+  `coordinate` varchar(255) DEFAULT NULL,
   `location_id` int(10) UNSIGNED NOT NULL,
   `customer_id` int(10) UNSIGNED NOT NULL,
-  `alias` varchar(255) NOT NULL,
   `created_at` int(10) UNSIGNED NOT NULL,
   `updated_at` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -179,9 +182,13 @@ TRUNCATE TABLE `objreservation`;
 -- Дамп данных таблицы `objreservation`
 --
 
-INSERT INTO `objreservation` (`id`, `name`, `description`, `location_id`, `customer_id`, `alias`, `created_at`, `updated_at`) VALUES
-(1, 'Экскурсия на Ахун', 'Очень хорошая экскурсия. Просто супер. Вы увидите Ахун.', 1, 1, 'картинка', 1, 1453279325),
-(2, 'Экскурсия в Красную поляну', 'Вы увидите высокие горы', 1, 2, 'ууу', 22, 22);
+INSERT INTO `objreservation` (`id`, `name`, `description`, `keywords`, `coordinate`, `location_id`, `customer_id`, `created_at`, `updated_at`) VALUES
+(1, 'Экскурсия на Ахун', 'Очень хорошая экскурсия. Просто супер. Вы увидите Ахун.', 'Ахун', '43.60004682587051,39.88499589889136', 1, 1, 1, 1453617213),
+(2, 'Экскурсия в Красную поляну', 'Вы увидите высокие горы', '0456', '43.68341270971855,40.259817306118975', 1, 1, 22, 1453652001),
+(3, 'Экскурсия в Азов', 'цукцукц', '', NULL, 4, 1, 1453398873, 1453398873),
+(4, 'Экскурсия в Лазаревку', 'ЖДЛЫЖдлфыжвлф', '', NULL, 3, 1, 1453399390, 1453399390),
+(5, 'sds', 'asdasd', '', NULL, 3, 1, 1453564793, 1453568071),
+(6, 'Афонский монастырь', 'Поездка в Абхазию, посещение Афонского монастыря.', '', NULL, 2, 1, 1453568427, 1453568498);
 
 -- --------------------------------------------------------
 
@@ -374,7 +381,7 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT для таблицы `objreservation`
 --
 ALTER TABLE `objreservation`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
@@ -384,7 +391,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT для таблицы `reservationinfo`
 --
 ALTER TABLE `reservationinfo`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
