@@ -18,7 +18,8 @@ class OrdersSearch extends Orders
     public function rules()
     {
         return [
-            [['id', 'objreservation_id', 'consumer_id', 'reserved_amount', 'is_paid', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'objreservation_id', 'consumer_id', 'reserved_amount', 'order_status_id', 'created_at', 'updated_at'], 'integer'],
+            [['paid'], 'number'],
             [['comment'], 'safe'],
         ];
     }
@@ -60,7 +61,8 @@ class OrdersSearch extends Orders
             'objreservation_id' => $this->objreservation_id,
             'consumer_id' => $this->consumer_id,
             'reserved_amount' => $this->reserved_amount,
-            'is_paid' => $this->is_paid,
+            'paid' => $this->paid,
+            'order_status_id' => $this->order_status_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

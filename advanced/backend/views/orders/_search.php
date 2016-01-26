@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'reserved_amount') ?>
 
-    <?= $form->field($model, 'is_paid') ?>
+    <?= $form->field($model, 'paid') ?>
 
     <?php // echo $form->field($model, 'comment') ?>
 

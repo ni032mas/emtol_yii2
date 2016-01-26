@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'objreservation_id',
             'consumer_id',
             'reserved_amount',
-            'is_paid',
+            'paid',
             'comment:ntext',
             'created_at',
             'updated_at',

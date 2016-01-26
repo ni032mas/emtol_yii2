@@ -19,23 +19,62 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Orders', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'objreservation_id',
-            'consumer_id',
-            'reserved_amount',
-            'is_paid',
+            [
+                'attribute' => 'objreservation_id',
+                'label' => 'Экскурсия',
+                'format' => 'text', // Возможные варианты: raw, html
+                'content' => function($data) {
+                    return $data->getObjreservationName();
+                }
+            ],
+            [
+                'attribute' => 'consumer_id',
+                'label' => 'Заказчик',
+                'format' => 'text', // Возможные варианты: raw, html
+                'content' => function($data) {
+                    return $data->getConsumerName();
+                }
+            ],
+            [
+                'attribute' => 'reserved_amount',
+                'label' => 'Количество мест',
+                'format' => 'text', // Возможные варианты: raw, html
+            ],
+            [
+                'attribute' => 'comment',
+                'label' => 'Комментарий к заказу',
+                'format' => 'text', // Возможные варианты: raw, html
+            ],
+            [
+                'attribute' => 'paid',
+                'label' => 'Оплачено',
+                'format' => 'text', // Возможные варианты: raw, html
+            ],
+            [
+                'attribute' => 'order_status_id',
+                'label' => 'Статус',
+                'format' => 'text', // Возможные варианты: raw, html
+                'content' => function($data) {
+                    return $data->getOrderStatusName();
+                },
+                'value' => function ($model, $key, $index, $column) {
+                    return Html::activeDropDownList($model, 'order_status_id', ArrayHelper::map(backend\models\OrdersStatus::find()->all(), 'id', 'name'));
+                },
+                'filter' => backend\models\Orders::getOrderStatusList()
+            ],
             // 'comment:ntext',
             // 'created_at',
             // 'updated_at',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
-    ]); ?>
+    ]);
+    ?>
 
 </div>

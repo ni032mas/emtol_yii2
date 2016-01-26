@@ -7,6 +7,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
 use zxbodya\yii2\galleryManager\GalleryBehavior;
 use Imagine\Image\Box;
+use dosamigos\taggable\Taggable;
 
 /**
  * This is the model class for table "objreservation".
@@ -38,6 +39,7 @@ class Objreservation extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
+            [['tagNames'], 'safe'],
             [['name', 'description', 'keywords', 'location_id', 'customer_id', 'created_at', 'updated_at'], 'required'],
             [['description', 'keywords', 'coordinate'], 'string'],
             [['location_id', 'customer_id', 'created_at', 'updated_at'], 'integer'],
@@ -54,6 +56,7 @@ class Objreservation extends \yii\db\ActiveRecord {
             'name' => 'Название',
             'description' => 'Описание',
             'keywords' => 'Ключевые слова',
+            'tagNames' => 'Теги',
             'coordinate' => 'Координаты',
             'location_id' => 'Место',
             'customer_id' => 'Исполнитель',
@@ -65,6 +68,10 @@ class Objreservation extends \yii\db\ActiveRecord {
     public function behaviors() {
 //        ini_set('memory_limit', '64M');
         return [
+            [
+                'class' => Taggable::className(),
+            ],
+            Taggable::className(),
             TimestampBehavior::className(),
             'galleryBehavior' => [
                 'class' => GalleryBehavior::className(),
@@ -94,38 +101,6 @@ class Objreservation extends \yii\db\ActiveRecord {
             ]
         ];
     }
-
-//    public function behaviors() {
-//        return [
-//            TimestampBehavior::className(),
-//            'galleryBehavior' => [
-//                'class' => GalleryBehavior::className(),
-//                'type' => 'product',
-//                'extension' => 'jpg',
-//                'directory' => Yii::getAlias('@webroot') . '/images/product/gallery',
-//                'url' => Yii::getAlias('@web') . '/images/product/gallery',
-//                'versions' => [
-//                    'small' => function ($img) {
-//                        /** @var ImageInterface $img */
-//                        return $img
-//                                        ->copy()
-//                                        ->thumbnail(new Box(200, 200));
-//                    },
-//                    'medium' => function ($img) {
-//                        /** @var ImageInterface $img */
-//                        $dstSize = $img->getSize();
-//                        $maxWidth = 800;
-//                        if ($dstSize->getWidth() > $maxWidth) {
-//                            $dstSize = $dstSize->widen($maxWidth);
-//                        }
-//                        return $img
-//                                        ->copy()
-//                                        ->resize($dstSize);
-//                    },
-//                ]
-//            ]
-//        ];
-//    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -190,6 +165,10 @@ class Objreservation extends \yii\db\ActiveRecord {
 
     public function getGallery() {
         return $this->hasOne(GalleryImage::className(), ['id' => 'gallery_id']);
+    }
+
+    public function getTags() {
+        return $this->hasMany(Tag::className(), ['id' => 'tag_id'])->viaTable('tbl_tour_tag_assn', ['tour_id' => 'id']);
     }
 
 }
