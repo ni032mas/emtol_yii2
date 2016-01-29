@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\Reservationinfo */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Reservationinfos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Информация о доступных датах и времени', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reservationinfo-view">
@@ -16,26 +16,44 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?=
+        Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
-        ]) ?>
+        ])
+        ?>
     </p>
 
-    <?= DetailView::widget([
+    <?=
+    DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
-            'objreservation_id',
+            [
+                'attribute' => 'objreservation_id',
+                'label' => 'Экскурсия',
+                'value' => $model->getObjreservationName(),
+            ],
             'date_begin',
             'date_end',
             'amount',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'created_at',
+                'label' => 'Создано',
+                'format' => ['date', 'dd-MM-Y HH:mm:ss'], // Доступные модификаторы - date:datetime:time
+                'headerOptions' => ['width' => '200'],
+            ],
+            // Вариант с явным указанием формата вывода даты/времени
+            [
+                'attribute' => 'updated_at',
+                'format' => ['date', 'dd-MM-Y HH:mm:ss'],
+                'options' => ['width' => '200']
+            ],
         ],
-    ]) ?>
+    ])
+    ?>
 
 </div>

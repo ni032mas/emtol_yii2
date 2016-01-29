@@ -2,7 +2,35 @@
 
 namespace backend\controllers;
 
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+
 class TagController extends \yii\web\Controller {
+    
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
+            ],
+        ];
+    }
 
     public function actionIndex() {
         return $this->render('index');

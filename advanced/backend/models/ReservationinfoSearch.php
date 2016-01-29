@@ -10,23 +10,22 @@ use backend\models\Reservationinfo;
 /**
  * ReservationinfoSearch represents the model behind the search form about `backend\models\Reservationinfo`.
  */
-class ReservationinfoSearch extends Reservationinfo
-{
+class ReservationinfoSearch extends Reservationinfo {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'objreservation_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'objreservation_id', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['date_begin', 'date_end'], 'safe'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -38,22 +37,22 @@ class ReservationinfoSearch extends Reservationinfo
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Reservationinfo::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+            
         $this->load($params);
-
+        Yii::info($params);
+        Yii::info($this->objreservation_id);
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        
         $query->andFilterWhere([
             'id' => $this->id,
             'objreservation_id' => $this->objreservation_id,
@@ -66,4 +65,5 @@ class ReservationinfoSearch extends Reservationinfo
 
         return $dataProvider;
     }
+
 }

@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use zxbodya\yii2\galleryManager\GalleryManagerAction;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ObjreservationController implements the CRUD actions for Objreservation model.
@@ -18,6 +20,20 @@ class ObjreservationController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

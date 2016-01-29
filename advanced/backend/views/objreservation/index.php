@@ -52,9 +52,23 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->getCustomerName();
                 }
             ],
+            [
+                'label' => 'Доступные даты',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::a('Перейти', $data->getUrlReservationInfo(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
+                }
+                    ],
+            [
+                'label' => 'Заказы',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return Html::a('Перейти', $data->getUrlOrders(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]);
-    ?>
+            ],
+            ]);
+            ?>
 
 </div>

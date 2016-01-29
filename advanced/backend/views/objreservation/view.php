@@ -41,20 +41,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->getLocationName(),
             ],
             [
-
                 'attribute' => 'customer_id',
                 'value' => $model->getCustomerName(),
             ],
             [
                 'attribute' => 'created_at',
                 'label' => 'Создано',
-                'format' => ['date', 'dd.MM.YYYY HH:mm:ss'], // Доступные модификаторы - date:datetime:time
+                'format' => ['date', 'dd-MM-Y HH:mm:ss'], // Доступные модификаторы - date:datetime:time
                 'headerOptions' => ['width' => '200'],
             ],
             // Вариант с явным указанием формата вывода даты/времени
             [
                 'attribute' => 'updated_at',
-                'format' => ['date', 'dd.MM.YYYY HH:mm:ss'],
+                'format' => ['date', 'dd-MM-Y HH:mm:ss'],
                 'options' => ['width' => '200']
             ],
         ],

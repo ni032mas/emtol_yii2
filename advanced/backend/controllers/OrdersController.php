@@ -8,6 +8,7 @@ use backend\models\OrdersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * OrdersController implements the CRUD actions for Orders model.
@@ -16,6 +17,20 @@ class OrdersController extends Controller {
 
     public function behaviors() {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -114,5 +129,14 @@ class OrdersController extends Controller {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    public function actionOrdersid($objreservation_id) {
+        $searchModel = new OrdersSearch();
+        $dataProvider = $searchModel->search([$searchModel->formName() => ['objreservation_id' => $objreservation_id]]);
 
+        return $this->render('index', [
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
+        ]);
+    }
 }

@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "reservationinfo".
@@ -34,7 +35,8 @@ class Reservationinfo extends \yii\db\ActiveRecord
     {
         return [
             [['objreservation_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'required'],
-            [['objreservation_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'integer']
+            [['objreservation_id', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['date_begin', 'date_end'], 'safe']
         ];
     }
 
@@ -45,7 +47,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'obj_reservation_id' => 'Obj Reservation ID',
+            'objreservation_id' => 'Экскурсия',
             'date_begin' => 'Дата начала',
             'date_end' => 'Дата окончания',
             'amount' => 'Количество',
@@ -67,4 +69,17 @@ class Reservationinfo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Objreservation::className(), ['id' => 'objreservation_id']);
     }
+    
+    public function getObjreservationList() {
+        $objreservation = Objreservation::find()
+                ->all();
+
+        return ArrayHelper::map($objreservation, 'id', 'name');
+    }
+    
+    public function getObjreservationName() {
+        $objreservation = $this->objreservation;
+        return $objreservation ? $objreservation->name : '';
+    }
+
 }

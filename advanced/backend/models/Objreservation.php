@@ -171,4 +171,14 @@ class Objreservation extends \yii\db\ActiveRecord {
         return $this->hasMany(Tag::className(), ['id' => 'tag_id'])->viaTable('tbl_tour_tag_assn', ['tour_id' => 'id']);
     }
 
+    public function getUrlReservationInfo() {
+        $objreservation_id = $this->id;
+        return \Yii::$app->urlManager->createUrl(['reservationinfo/objreservationid', 'objreservation_id' => $objreservation_id]);
+    }
+
+    public function getUrlOrders() {
+        $objreservation_id = $this->id;
+        return \Yii::$app->urlManager->createUrl(['orders/ordersid', 'objreservation_id' => $objreservation_id]);
+    }
+
 }
