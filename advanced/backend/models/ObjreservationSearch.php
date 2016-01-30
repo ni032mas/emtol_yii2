@@ -39,9 +39,12 @@ class ObjreservationSearch extends Objreservation
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
-//        $query = Objreservation::find();        
+    public function search($params) {
+        
+        
+        $customer = Customers::find()
+                ->where($params);
+                
         $query = Objreservation::find();
        
              

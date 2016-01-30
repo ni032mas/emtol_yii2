@@ -11,7 +11,7 @@ use dosamigos\taggable\Taggable;
 
 /**
  * This is the model class for table "objreservation".
- *
+ * 
  * @property string $id
  * @property string $name
  * @property string $description
