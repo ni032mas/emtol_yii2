@@ -7,7 +7,6 @@ use backend\models\Objreservation;
 use backend\models\ObjreservationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use zxbodya\yii2\galleryManager\GalleryManagerAction;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
@@ -28,7 +27,7 @@ class ObjreservationController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

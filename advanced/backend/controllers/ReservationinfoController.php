@@ -8,6 +8,7 @@ use backend\models\ReservationinfoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ReservationinfoController implements the CRUD actions for Reservationinfo model.
@@ -25,7 +26,7 @@ class ReservationinfoController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['objreservationid', 'index', 'view', 'create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
