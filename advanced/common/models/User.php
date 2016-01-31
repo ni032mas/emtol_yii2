@@ -186,7 +186,8 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
     
-    public function getEvents() {
-        return $this->hasMany(backend\models\Events::className(), ['user_id' => 'id']);
+    public function getObjreservation() {
+        return $this->hasMany(\backend\models\Objreservation::className(), ['customer_id' => 'id'])
+            ->viaTable('customers', ['user_id' => 'id']);
     }
 }

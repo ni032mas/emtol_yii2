@@ -42,10 +42,9 @@ class ObjreservationSearch extends Objreservation
     public function search($params) {
         
         
-        $customer = Customers::find()
-                ->where($params);
-                
-        $query = Objreservation::find();
+        $user = \common\models\User::findOne(Yii::$app->user->id);
+        $query = $user->getObjreservation();
+//        $query = Objreservation::find();
        
              
         $dataProvider = new ActiveDataProvider([
