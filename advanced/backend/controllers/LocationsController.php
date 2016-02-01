@@ -28,7 +28,7 @@ class LocationsController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'locationlist'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

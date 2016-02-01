@@ -21,7 +21,7 @@ class UploadformController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['upload'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

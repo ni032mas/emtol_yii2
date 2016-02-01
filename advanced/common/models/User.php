@@ -190,4 +190,8 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(\backend\models\Objreservation::className(), ['customer_id' => 'id'])
             ->viaTable('customers', ['user_id' => 'id']);
     }
+    
+    public function getCustomer() {
+        return $this->hasMany(\backend\models\Customers::className(), ['user_id' => 'id']);
+    }
 }

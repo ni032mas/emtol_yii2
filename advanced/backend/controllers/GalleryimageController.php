@@ -21,7 +21,7 @@ class GalleryimageController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['gallery', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

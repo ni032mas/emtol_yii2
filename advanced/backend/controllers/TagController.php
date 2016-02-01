@@ -17,7 +17,7 @@ class TagController extends \yii\web\Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['list', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
