@@ -103,9 +103,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'clientOptions' => [
                 'slidesToShow' => 1,
                 'slidesToScroll' => 1,
-                'arrows' => 'false',
+                'centerMode' => true,
+                'arrows' => true,
                 'fade' => true,
                 'asNavFor' => '.slider-nav',
+                'centerPadding' => '500px',
                 // note, that for params passing function you should use JsExpression object
                 //'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
             ],
@@ -128,7 +130,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // settings for js plugin
             // @see http://kenwheeler.github.io/slick/#settings
             'clientOptions' => [
-                'slidesToShow' => 3,
+                'slidesToShow' => 7,
                 'slidesToScroll' => 1,
                 'asNavFor' => '.slider-for',
                 //'autoplay' => true,

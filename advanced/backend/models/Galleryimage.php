@@ -54,40 +54,4 @@ class Galleryimage extends ActiveRecord
             'description' => 'Description',
         ];
     }
-
-    public function behaviors()
-    {
-        return [
-            'galleryBehavior' => [
-                'class' => GalleryBehavior::className(),
-                'type' => 'product',
-                'extension' => 'jpg',
-//                'directory' => Yii::getAlias('@webroot') . '/images/product/gallery',
-                'directory' => Yii::getAlias('@backend/web/uploads/'),
-//                'url' => Yii::getAlias('@web') . '/images/product/gallery',
-                'url' => Yii::getAlias('@backend/web/uploads/'),
-                'versions' => [
-                    'small' => function ($img) {
-                        /** @var \Imagine\Image\ImageInterface $img */
-                        return $img
-                            ->copy()
-                            ->thumbnail(new \Imagine\Image\Box(800, 800));
-                    },
-                    'medium' => function ($img) {
-                        /** @var Imagine\Image\ImageInterface $img */
-                        $dstSize = $img->getSize();
-                        Yii::info($dstSize, 'MyLog');
-                        $maxWidth = 200;
-                        if ($dstSize->getWidth() > $maxWidth) {
-                            $dstSize = $dstSize->widen($maxWidth);
-                        }
-                        return $img
-                            ->copy()
-                            ->resize($dstSize);
-                    },
-                ]
-            ]
-        ];
-    }
-
 }

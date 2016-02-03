@@ -19,10 +19,13 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'slick/slick.css',
+        'slick/slick-theme.css',
     ];
     public $js = [
         'https://api-maps.yandex.ru/2.1/?lang=ru_RU',
         'js/map.js',
+        'slick/slick.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

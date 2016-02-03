@@ -11,7 +11,7 @@ use dosamigos\taggable\Taggable;
 
 /**
  * This is the model class for table "objreservation".
- * 
+ *
  * @property string $id
  * @property string $name
  * @property string $description
@@ -25,19 +25,22 @@ use dosamigos\taggable\Taggable;
  * @property Orders[] $orders
  * @property Reservationinfo[] $reservationinfos
  */
-class Objreservation extends \yii\db\ActiveRecord {
+class Objreservation extends \yii\db\ActiveRecord
+{
 
     /**
      * @inheritdoc
      */
-    public static function tableName() {
+    public static function tableName()
+    {
         return 'objreservation';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             [['tagNames'], 'safe'],
             [['name', 'description', 'location_id', 'customer_id', 'created_at', 'updated_at'], 'required'],
@@ -50,7 +53,8 @@ class Objreservation extends \yii\db\ActiveRecord {
     /**
      * @inheritdoc
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
             'id' => 'ID',
             'name' => 'Название',
@@ -65,7 +69,8 @@ class Objreservation extends \yii\db\ActiveRecord {
         ];
     }
 
-    public function behaviors() {
+    public function behaviors()
+    {
 //        ini_set('memory_limit', '64M');
         return [
             [
@@ -83,56 +88,61 @@ class Objreservation extends \yii\db\ActiveRecord {
                     'small' => function ($img) {
                         /** @var ImageInterface $img */
                         return $img
-                                        ->copy()
-                                        ->thumbnail(new Box(200, 200));
+                            ->copy()
+                            ->thumbnail(new Box(100, 100));
                     },
                     'medium' => function ($img) {
                         /** @var ImageInterface $img */
                         $dstSize = $img->getSize();
-                        $maxWidth = 800;
+                        $maxWidth = 480;
                         if ($dstSize->getWidth() > $maxWidth) {
                             $dstSize = $dstSize->widen($maxWidth);
                         }
                         return $img
-                                        ->copy()
-                                        ->resize($dstSize);
+                            ->copy()
+                            ->resize($dstSize);
                     },
                 ]
-            ]
+            ],
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getImages() {
+    public function getImages()
+    {
         return $this->hasMany(Images::className(), ['obj_reservation_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getLocation() {
+    public function getLocation()
+    {
         return $this->hasOne(Locations::className(), ['id' => 'location_id']);
     }
 
-    public function getLocationName() {
+    public function getLocationName()
+    {
         $location = $this->location;
         return $location ? $location->name : '';
     }
 
-    public function getLocationList() {
+    public function getLocationList()
+    {
         $location = Locations::find()
-                ->all();
+            ->all();
 
         return ArrayHelper::map($location, 'id', 'name');
     }
 
-    public function getCustomerList() {
+    public function getCustomerList()
+    {
 
         $customers = Customers::find()
-                ->where(['user_id' => Yii::$app->user->id])
-                ->all();
+            ->where(['user_id' => Yii::$app->user->id])
+            ->all();
 
         return ArrayHelper::map($customers, 'id', 'name');
     }
@@ -140,11 +150,13 @@ class Objreservation extends \yii\db\ActiveRecord {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCustomer() {
+    public function getCustomer()
+    {
         return $this->hasOne(Customers::className(), ['id' => 'customer_id']);
     }
 
-    public function getCustomerName() {
+    public function getCustomerName()
+    {
         $customer = $this->customer;
         return $customer ? $customer->name : '';
     }
@@ -152,31 +164,37 @@ class Objreservation extends \yii\db\ActiveRecord {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getOrders() {
+    public function getOrders()
+    {
         return $this->hasMany(Orders::className(), ['objreservation_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getReservationinfos() {
+    public function getReservationinfos()
+    {
         return $this->hasMany(Reservationinfo::className(), ['obj_reservation_id' => 'id']);
     }
 
-    public function getGallery() {
+    public function getGallery()
+    {
         return $this->hasOne(GalleryImage::className(), ['id' => 'gallery_id']);
     }
 
-    public function getTags() {
+    public function getTags()
+    {
         return $this->hasMany(Tag::className(), ['id' => 'tag_id'])->viaTable('tbl_tour_tag_assn', ['tour_id' => 'id']);
     }
 
-    public function getUrlReservationInfo() {
+    public function getUrlReservationInfo()
+    {
         $objreservation_id = $this->id;
         return \Yii::$app->urlManager->createUrl(['reservationinfo/objreservationid', 'objreservation_id' => $objreservation_id]);
     }
 
-    public function getUrlOrders() {
+    public function getUrlOrders()
+    {
         $objreservation_id = $this->id;
         return \Yii::$app->urlManager->createUrl(['orders/ordersid', 'objreservation_id' => $objreservation_id]);
     }
