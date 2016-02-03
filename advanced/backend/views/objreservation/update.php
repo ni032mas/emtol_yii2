@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Objreservation */
 
-$this->title = 'Редактировать объект бронирования: ' . ' ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Объекты бронирования', 'url' => ['index']];
+$this->title = 'Редактировать экскурсию: ' . ' ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Экскурсия', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="objreservation-update">
 

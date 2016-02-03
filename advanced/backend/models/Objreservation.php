@@ -40,7 +40,7 @@ class Objreservation extends \yii\db\ActiveRecord {
     public function rules() {
         return [
             [['tagNames'], 'safe'],
-            [['name', 'description', 'keywords', 'location_id', 'customer_id', 'created_at', 'updated_at'], 'required'],
+            [['name', 'description', 'location_id', 'customer_id', 'created_at', 'updated_at'], 'required'],
             [['description', 'keywords', 'coordinate'], 'string'],
             [['location_id', 'customer_id', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 500]
@@ -180,5 +180,4 @@ class Objreservation extends \yii\db\ActiveRecord {
         $objreservation_id = $this->id;
         return \Yii::$app->urlManager->createUrl(['orders/ordersid', 'objreservation_id' => $objreservation_id]);
     }
-
 }

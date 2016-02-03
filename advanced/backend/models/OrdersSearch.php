@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use common\models\User;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -18,7 +19,7 @@ class OrdersSearch extends Orders
     public function rules()
     {
         return [
-            [['id', 'objreservation_id', 'consumer_id', 'reserved_amount', 'order_status_id', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'objreservation_id', 'reservationinfo_id', 'consumer_id', 'reserved_amount', 'order_status_id', 'created_at', 'updated_at'], 'integer'],
             [['paid'], 'number'],
             [['comment'], 'safe'],
         ];
@@ -42,7 +43,11 @@ class OrdersSearch extends Orders
      */
     public function search($params)
     {
-        $query = Orders::find();
+        $query = Orders::find()->select('orders.*')
+            ->leftJoin('objreservation', 'objreservation.id = orders.objreservation_id')
+            ->leftJoin('customers', 'objreservation.customer_id = customers.id')
+            ->leftJoin('user', 'customers.user_id = user.id')
+            ->where(['user.id' => Yii::$app->user->id]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -59,6 +64,7 @@ class OrdersSearch extends Orders
         $query->andFilterWhere([
             'id' => $this->id,
             'objreservation_id' => $this->objreservation_id,
+            'reservationinfo_id' => $this->reservationinfo_id,
             'consumer_id' => $this->consumer_id,
             'reserved_amount' => $this->reserved_amount,
             'paid' => $this->paid,

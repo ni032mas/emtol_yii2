@@ -25,7 +25,7 @@ class OrdersController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'locationlist'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'locationlist', 'ordersid'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

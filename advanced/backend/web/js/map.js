@@ -47,6 +47,9 @@
 //    });
 //}
 
+
+$("#objreservation-coordinate").on()
+
 //Yandex map
 ymaps.ready(init);
 

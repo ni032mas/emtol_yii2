@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Objreservation */
 
-$this->title = 'Создать объект бронирования';
-$this->params['breadcrumbs'][] = ['label' => 'Объекты бронирования', 'url' => ['index']];
+$this->title = 'Создать экскурсию';
+$this->params['breadcrumbs'][] = ['label' => 'Экскурсии', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="objreservation-create">

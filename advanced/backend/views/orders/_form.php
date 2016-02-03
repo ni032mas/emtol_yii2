@@ -24,6 +24,10 @@ use yii\widgets\DetailView;
                 'value' => $model->getObjreservationName(),
             ],
             [
+                'attribute' => 'reservationinfo_id',
+                'value' => $model->getReservationinfoDate(),
+            ],
+            [
                 'attribute' => 'consumer_id',
                 'value' => $model->getConsumerName(),
             ],
@@ -47,7 +51,7 @@ use yii\widgets\DetailView;
     <?= $form->field($model, 'order_status_id')->dropDownList($model->getOrderStatusList()) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

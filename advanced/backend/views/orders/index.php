@@ -15,10 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Orders', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?=
     GridView::widget([
         'dataProvider' => $dataProvider,
@@ -30,15 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'objreservation_id',
                 'label' => 'Экскурсия',
                 'format' => 'text', // Возможные варианты: raw, html
-                'content' => function($data) {
+                'content' => function ($data) {
                     return $data->getObjreservationName();
+                }
+            ],
+            [
+                'attribute' => 'reservationinfo_id',
+                'label' => 'Дата начала',
+                'format' => 'text', // Возможные варианты: raw, html
+                'content' => function ($data) {
+                    return $data->getReservationinfoDate();
                 }
             ],
             [
                 'attribute' => 'consumer_id',
                 'label' => 'Заказчик',
                 'format' => 'text', // Возможные варианты: raw, html
-                'content' => function($data) {
+                'content' => function ($data) {
                     return $data->getConsumerName();
                 }
             ],
@@ -58,10 +62,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'text', // Возможные варианты: raw, html
             ],
             [
+                'label' => 'Информация о дате',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::a('Перейти', $data->getUrlReservationInfo(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
+                }
+            ],
+            [
+                'label' => 'Ссылка на экскурсию',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::a('Перейти', $data->getUrlObjreservation(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
+                }
+            ],
+            [
                 'attribute' => 'order_status_id',
                 'label' => 'Статус',
                 'format' => 'text', // Возможные варианты: raw, html
-                'content' => function($data) {
+                'content' => function ($data) {
                     return $data->getOrderStatusName();
                 },
                 'value' => function ($model, $key, $index, $column) {
@@ -72,7 +90,10 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'comment:ntext',
             // 'created_at',
             // 'updated_at',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update}'
+            ],
         ],
     ]);
     ?>

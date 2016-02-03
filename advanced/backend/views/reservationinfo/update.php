@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Reservationinfo */
 
-$this->title = 'Update Reservationinfo: ' . ' ' . $model->id;
+$this->title = 'Изменить доступные даты и время: ' . ' ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Информация о доступных датах и времени', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменить';
 ?>
 <div class="reservationinfo-update">
 

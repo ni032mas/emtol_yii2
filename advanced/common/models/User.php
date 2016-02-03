@@ -194,4 +194,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function getCustomer() {
         return $this->hasMany(\backend\models\Customers::className(), ['user_id' => 'id']);
     }
+
+    public function getOrders() {
+        return $this->hasMany(\backend\models\Orders::className(), ['objreservation_id' => 'id'])
+            ->viaTable('objreservation', ['customer_id' => 'id'])->viaTable('customers', ['user_id' => 'id']);
+    }
+
+
+//SELECT Orders.id, Orders.objreservation_id, Orders.имя
+//FROM (([User] LEFT JOIN Customers ON User.id = Customers.user_id) LEFT JOIN Objreservation ON Customers.id = Objreservation.customer_id) LEFT JOIN Orders ON Objreservation.id = Orders.objreservation_id
+//WHERE (((User.id)=1));
 }

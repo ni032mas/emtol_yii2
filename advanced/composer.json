@@ -29,7 +29,8 @@
         "2amigos/yii2-date-time-picker-widget": "*",
         "vakorovin/yii2-datetimepicker": "dev-master",
         "johnitvn/yii2-rbac-plus": "*",
-        "kartik-v/yii2-grid": "@dev"
+        "kartik-v/yii2-grid": "@dev",
+        "kartik-v/yii2-dropdown-x": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

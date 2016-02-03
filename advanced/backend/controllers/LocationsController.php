@@ -10,7 +10,6 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\db\Query;
 use yii\helpers\Json;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**

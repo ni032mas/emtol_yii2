@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\ObjreservationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Объекты бронирования';
+$this->title = 'Экскурсии';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="objreservation-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Создать объект бронирования', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать экскурсию', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?=
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'location_id',
                 'label' => 'Место проведения',
                 'format' => 'text', // Возможные варианты: raw, html
-                'content' => function($data) {
+                'content' => function ($data) {
                     return $data->getLocationName();
                 }
             ],
@@ -48,27 +48,27 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'customer_id',
                 'label' => 'Исполнитель',
                 'format' => 'text', // Возможные варианты: raw, html
-                'content' => function($data) {
+                'content' => function ($data) {
                     return $data->getCustomerName();
                 }
             ],
             [
                 'label' => 'Доступные даты',
                 'format' => 'raw',
-                'value' => function($data) {
+                'value' => function ($data) {
                     return Html::a('Перейти', $data->getUrlReservationInfo(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
                 }
-                    ],
+            ],
             [
                 'label' => 'Заказы',
                 'format' => 'raw',
-                'value' => function($data) {
+                'value' => function ($data) {
                     return Html::a('Перейти', $data->getUrlOrders(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
                 }
             ],
             ['class' => 'yii\grid\ActionColumn'],
-            ],
-            ]);
-            ?>
+        ],
+    ]);
+    ?>
 
 </div>
