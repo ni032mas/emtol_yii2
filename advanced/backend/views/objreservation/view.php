@@ -64,48 +64,85 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
     <?php
+    $itemSmall = null;
     foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
 //        echo Html::img($image->getUrl('medium'));
 
 //        $item[] = '<img src="' . Url::to($image->getUrl('medium') . '"/>', true);
-        $item[] = Html::img($image->getUrl('medium'));
+        $itemSmall[] = Html::img($image->getUrl('small'));
         Yii::info($image->getUrl('medium'));
+    }
+
+    $itemMedium = null;
+    foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
+//        echo Html::img($image->getUrl('medium'));
+
+//        $item[] = '<img src="' . Url::to($image->getUrl('medium') . '"/>', true);
+        $itemMedium[] = Html::img($image->getUrl('medium'));
+        Yii::info($image->getUrl('medium'));
+    }
+
+
+    if ($itemSmall != null && $itemMedium != null) {
+        echo Slick::widget([
+
+            // HTML tag for container. Div is default.
+            'itemContainer' => 'div',
+
+            // HTML attributes for widget container
+            'containerOptions' => ['class' => 'slider-for'],
+
+            // Items for carousel. Empty array not allowed, exception will be throw, if empty
+            'items' => $itemMedium,
+
+            // HTML attribute for every carousel item
+            'itemOptions' => ['class' => 'cat-image'],
+
+            // settings for js plugin
+            // @see http://kenwheeler.github.io/slick/#settings
+            'clientOptions' => [
+                'slidesToShow' => 1,
+                'slidesToScroll' => 1,
+                'arrows' => 'false',
+                'fade' => true,
+                'asNavFor' => '.slider-nav',
+                // note, that for params passing function you should use JsExpression object
+                //'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
+            ],
+
+        ]);
+        echo Slick::widget([
+
+            // HTML tag for container. Div is default.
+            'itemContainer' => 'div',
+
+            // HTML attributes for widget container
+            'containerOptions' => ['class' => 'slider-nav'],
+
+            // Items for carousel. Empty array not allowed, exception will be throw, if empty
+            'items' => $itemSmall,
+
+            // HTML attribute for every carousel item
+            'itemOptions' => ['class' => 'cat-image'],
+
+            // settings for js plugin
+            // @see http://kenwheeler.github.io/slick/#settings
+            'clientOptions' => [
+                'slidesToShow' => 3,
+                'slidesToScroll' => 1,
+                'asNavFor' => '.slider-for',
+                //'autoplay' => true,
+                'dots' => true,
+                'centerMode' => true,
+                'focusOnSelect' => true,
+                // note, that for params passing function you should use JsExpression object
+                //'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
+            ],
+
+        ]);
     }
     ?>
 
-    <?=Slick::widget([
-
-        // HTML tag for container. Div is default.
-        'itemContainer' => 'div',
-
-        // HTML attributes for widget container
-        'containerOptions' => ['class' => 'container'],
-
-        // Items for carousel. Empty array not allowed, exception will be throw, if empty
-        'items' => $item,
-
-        // HTML attribute for every carousel item
-        'itemOptions' => ['class' => 'cat-image'],
-
-        // settings for js plugin
-        // @see http://kenwheeler.github.io/slick/#settings
-        'clientOptions' => [
-            'autoplay' => true,
-            'dots'     => true,
-            // note, that for params passing function you should use JsExpression object
-            'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
-        ],
-
-    ]); ?>
-
-    <div class="slider single-item slider-nav">
-        <div><h3>1</h3></div>
-        <div><h3>2</h3></div>
-        <div><h3>3</h3></div>
-        <div><h3>4</h3></div>
-        <div><h3>5</h3></div>
-        <div><h3>6</h3></div>
-    </div>
 
     <?php
     //    echo Carousel::widget([

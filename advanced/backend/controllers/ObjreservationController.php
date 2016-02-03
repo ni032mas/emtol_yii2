@@ -27,7 +27,7 @@ class ObjreservationController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'galleryApi'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

@@ -54,8 +54,9 @@ class Galleryimage extends ActiveRecord
             'description' => 'Description',
         ];
     }
-    
-    public function behaviors() {
+
+    public function behaviors()
+    {
         return [
             'galleryBehavior' => [
                 'class' => GalleryBehavior::className(),
@@ -69,19 +70,20 @@ class Galleryimage extends ActiveRecord
                     'small' => function ($img) {
                         /** @var \Imagine\Image\ImageInterface $img */
                         return $img
-                                        ->copy()
-                                        ->thumbnail(new \Imagine\Image\Box(200, 200));
+                            ->copy()
+                            ->thumbnail(new \Imagine\Image\Box(800, 800));
                     },
                     'medium' => function ($img) {
                         /** @var Imagine\Image\ImageInterface $img */
                         $dstSize = $img->getSize();
-                        $maxWidth = 800;
+                        Yii::info($dstSize, 'MyLog');
+                        $maxWidth = 200;
                         if ($dstSize->getWidth() > $maxWidth) {
                             $dstSize = $dstSize->widen($maxWidth);
                         }
                         return $img
-                                        ->copy()
-                                        ->resize($dstSize);
+                            ->copy()
+                            ->resize($dstSize);
                     },
                 ]
             ]
