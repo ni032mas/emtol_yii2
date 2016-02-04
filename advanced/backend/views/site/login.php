@@ -33,3 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+<?php
+if (Yii::$app->getSession()->hasFlash('error')) {
+    echo '<div class="alert alert-danger">'.Yii::$app->getSession()->getFlash('error').'</div>';
+}
+?>
+
+<p class="lead">У Вас уже есть учетная запись на одном из этих сайтов? Нажмите на логотип, чтобы войти с ней здесь:</p>
+<?php echo \nodge\eauth\Widget::widget(['action' => 'openid/login']); ?>

@@ -63,87 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
     ?>
 
-    <?php
-    $itemSmall = null;
-    foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
-//        echo Html::img($image->getUrl('medium'));
 
-//        $item[] = '<img src="' . Url::to($image->getUrl('medium') . '"/>', true);
-        $itemSmall[] = Html::img($image->getUrl('small'));
-        Yii::info($image->getUrl('medium'));
-    }
-
-    $itemMedium = null;
-    foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
-//        echo Html::img($image->getUrl('medium'));
-
-//        $item[] = '<img src="' . Url::to($image->getUrl('medium') . '"/>', true);
-        $itemMedium[] = Html::img($image->getUrl('medium'));
-        Yii::info($image->getUrl('medium'));
-    }
-
-
-    if ($itemSmall != null && $itemMedium != null) {
-        echo Slick::widget([
-
-            // HTML tag for container. Div is default.
-            'itemContainer' => 'div',
-
-            // HTML attributes for widget container
-            'containerOptions' => ['class' => 'slider-for'],
-
-            // Items for carousel. Empty array not allowed, exception will be throw, if empty
-            'items' => $itemMedium,
-
-            // HTML attribute for every carousel item
-            'itemOptions' => ['class' => 'cat-image'],
-
-            // settings for js plugin
-            // @see http://kenwheeler.github.io/slick/#settings
-            'clientOptions' => [
-                'slidesToShow' => 1,
-                'slidesToScroll' => 1,
-                'centerMode' => true,
-                'arrows' => true,
-                'fade' => true,
-                'asNavFor' => '.slider-nav',
-                'centerPadding' => '500px',
-                // note, that for params passing function you should use JsExpression object
-                //'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
-            ],
-
-        ]);
-        echo Slick::widget([
-
-            // HTML tag for container. Div is default.
-            'itemContainer' => 'div',
-
-            // HTML attributes for widget container
-            'containerOptions' => ['class' => 'slider-nav'],
-
-            // Items for carousel. Empty array not allowed, exception will be throw, if empty
-            'items' => $itemSmall,
-
-            // HTML attribute for every carousel item
-            'itemOptions' => ['class' => 'cat-image'],
-
-            // settings for js plugin
-            // @see http://kenwheeler.github.io/slick/#settings
-            'clientOptions' => [
-                'slidesToShow' => 7,
-                'slidesToScroll' => 1,
-                'asNavFor' => '.slider-for',
-                //'autoplay' => true,
-                'dots' => true,
-                'centerMode' => true,
-                'focusOnSelect' => true,
-                // note, that for params passing function you should use JsExpression object
-                //'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
-            ],
-
-        ]);
-    }
-    ?>
 
 
     <?php
@@ -164,3 +84,87 @@ $this->params['breadcrumbs'][] = $this->title;
     ?>
 
 </div>
+
+<?php
+$itemSmall = null;
+foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
+//        echo Html::img($image->getUrl('medium'));
+
+//        $item[] = '<img src="' . Url::to($image->getUrl('medium') . '"/>', true);
+    $itemSmall[] = Html::img($image->getUrl('small'));
+    Yii::info($image->getUrl('medium'));
+}
+
+$itemMedium = null;
+foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
+//        echo Html::img($image->getUrl('medium'));
+
+//        $item[] = '<img src="' . Url::to($image->getUrl('medium') . '"/>', true);
+    $itemMedium[] = Html::img($image->getUrl('medium'));
+    Yii::info($image->getUrl('medium'));
+}
+
+
+if ($itemSmall != null && $itemMedium != null) {
+    echo Slick::widget([
+
+        // HTML tag for container. Div is default.
+        'itemContainer' => 'div',
+
+        // HTML attributes for widget container
+        'containerOptions' => ['class' => 'slider-for'],
+
+        // Items for carousel. Empty array not allowed, exception will be throw, if empty
+        'items' => $itemMedium,
+
+        // HTML attribute for every carousel item
+        'itemOptions' => ['class' => 'cat-image'],
+
+        // settings for js plugin
+        // @see http://kenwheeler.github.io/slick/#settings
+        'clientOptions' => [
+            'slidesToShow' => 1,
+            'slidesToScroll' => 1,
+            'centerMode' => true,
+            'arrows' => false,
+            'fade' => true,
+            'adaptiveHeight' => true,
+            'asNavFor' => '.slider-nav',
+            'centerPadding' => '500px',
+            // note, that for params passing function you should use JsExpression object
+            //'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
+        ],
+
+    ]);
+    echo Slick::widget([
+
+        // HTML tag for container. Div is default.
+        'itemContainer' => 'div',
+
+        // HTML attributes for widget container
+        'containerOptions' => ['class' => 'slider-nav'],
+
+        // Items for carousel. Empty array not allowed, exception will be throw, if empty
+        'items' => $itemSmall,
+
+        // HTML attribute for every carousel item
+        'itemOptions' => ['class' => 'cat-image'],
+
+        // settings for js plugin
+        // @see http://kenwheeler.github.io/slick/#settings
+        'clientOptions' => [
+            'slidesToShow' => 7,
+            'slidesToScroll' => 1,
+            'asNavFor' => '.slider-for',
+            //'autoplay' => true,
+            'dots' => true,
+            'centerMode' => true,
+            'focusOnSelect' => true,
+            'arrows' => true,
+            // note, that for params passing function you should use JsExpression object
+            //'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
+        ],
+
+    ]);
+}
+?>

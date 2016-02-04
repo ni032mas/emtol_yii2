@@ -30,7 +30,7 @@
         "vakorovin/yii2-datetimepicker": "dev-master",
         "johnitvn/yii2-rbac-plus": "*",
         "kartik-v/yii2-grid": "@dev",
-        "kartik-v/yii2-dropdown-x": "dev-master",
+        "kartik-v/yii2-dropdown-x": "dev-master"
 		"nodge/yii2-eauth": "~2.0"
     },
     "require-dev": {
