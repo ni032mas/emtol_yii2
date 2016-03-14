@@ -198,4 +198,11 @@ class Objreservation extends \yii\db\ActiveRecord
         $objreservation_id = $this->id;
         return \Yii::$app->urlManager->createUrl(['orders/ordersid', 'objreservation_id' => $objreservation_id]);
     }
+
+    public function getFreeObjreservation() {
+        return $query = Objreservation::find()->select('objreservation.*')
+            ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
+            ->where(['reservationinfo.date_begin' => Yii::$app->request->post('date_begin')]);
+    }
+
 }

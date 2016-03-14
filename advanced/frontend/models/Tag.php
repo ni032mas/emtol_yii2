@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 
@@ -43,5 +43,9 @@ class Tag extends \yii\db\ActiveRecord
             'frequency' => 'Frequency',
             'name' => 'Name',
         ];
+    }
+
+    public function getTag() {
+        return Tag::find();
     }
 }

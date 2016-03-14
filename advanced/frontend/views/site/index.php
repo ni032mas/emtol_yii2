@@ -1,8 +1,40 @@
 <?php
 
+use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
+
 /* @var $this yii\web\View */
 
 $this->title = 'EMTOL - бронирование экскурсий';
+
+
+?>
+
+
+<div class="searchfreereservationinfo-form">
+
+<?php $form = ActiveForm::begin([
+    'method' => 'post',
+    'action' => ['SearchfreereservationinfoController/index'],
+    'options' => [
+        'class' => 'form-inline'
+    ]]);
+?>
+
+<?= $form->field($model, 'date_begin')->widget(\yii\jui\DatePicker::classname(), [
+    //'language' => 'ru',
+    //'dateFormat' => 'yyyy-MM-dd',
+]) ?>
+    <?= $form->field($model, 'search_data')->widget(Select2::classname(), [
+        'data' => $data,
+        'options' => ['placeholder' => 'Введите ключевые слова...'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ])
+    ?>
+
+<?php ActiveForm::end();
 ?>
 <!--<div class="site-index">
 
@@ -51,3 +83,5 @@ $this->title = 'EMTOL - бронирование экскурсий';
 
     </div>
 </div>-->
+
+</div>

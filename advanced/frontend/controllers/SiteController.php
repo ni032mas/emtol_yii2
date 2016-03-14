@@ -1,6 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\Objreservation;
+use frontend\models\Tag;
+use frontend\models\Searchfree;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -8,6 +11,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\base\InvalidParamException;
+use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -72,7 +76,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Searchfree();
+        $data = ArrayHelper::getColumn(Tag::find()->asArray()->all(), 'name');
+        return $this->render('index', [
+            'model' => $model,
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -210,8 +219,9 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    
-    public function actionHello() {
+
+    public function actionHello()
+    {
         $hello = "Hello world";
         return $this->render('hello', ['hello', $hello]);
     }
