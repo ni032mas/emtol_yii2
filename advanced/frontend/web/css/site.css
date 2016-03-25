@@ -96,4 +96,36 @@ a.desc:after {
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
     color: #555555;
+    height: 34px;
+    line-height: 1.42857;
+    padding: 6px 24px 6px 12px;
+}
+
+.field-searchfree-date_begin .control-label {
+    display: block;
+}
+
+.select2-container--krajee .select2-selection--single {
+    width: 300px;
+}
+
+.form-group.btn-search {
+    margin-bottom: -10px;
+}
+
+.navbar-inverse {
+    background-color: #03a9f4;
+}
+
+.navbar-nav.navbar-right.nav > li > a, .navbar-brand {
+    color: #fff !important;
+}
+
+.searchfreereservationinfo-form{
+    align-content: center;
+}
+
+.navbar-fixed-top {
+    border-width: 0;
+    top: 0;
 }

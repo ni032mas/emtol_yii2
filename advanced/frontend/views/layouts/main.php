@@ -25,6 +25,7 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+<header>
 <div class="wrap">
     <?php
     NavBar::begin([
@@ -67,10 +68,10 @@ AppAsset::register($this);
 
     ?>
 </div>
-
+</header>
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; EMTOL <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
