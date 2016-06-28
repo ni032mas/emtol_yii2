@@ -1,18 +1,18 @@
-html,
-body {
-    height: 100%;
-}
+/*html,*/
+/*body {*/
+    /*height: 100%;*/
+/*}*/
 
-.wrap {
-    min-height: 100%;
-    height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
-}
+/*.wrap {*/
+    /*min-height: 100%;*/
+    /*height: auto;*/
+    /*margin: 0 auto -60px;*/
+    /*padding: 0 0 60px;*/
+/*}*/
 
-.wrap > .container {
-    padding: 70px 15px 20px;
-}
+/*.wrap > .container {*/
+    /*padding: 70px 15px 20px;*/
+/*}*/
 
 .footer {
     height: 60px;
@@ -121,11 +121,33 @@ a.desc:after {
     color: #fff !important;
 }
 
-.searchfreereservationinfo-form{
+.searchfreereservationinfo-form {
     align-content: center;
+    position: absolute;
+    z-index: 999;
+    top: 70px;
+}
+
+.searchfreereservationinfo-form .container{
+    width: auto;
 }
 
 .navbar-fixed-top {
     border-width: 0;
     top: 0;
+}
+.carousel-background {
+    z-index: -9999;
+}
+
+.navbar.navbar-default {
+    color: #fff !important;
+    background-color: rgba(245, 245, 245, 0);
+}
+.objreservation-content {
+    position: absolute;
+    top: 200px;
+}
+.objreservation-content > h4 {
+    color: white;
 }

@@ -2,94 +2,107 @@
 
 use yii\widgets\ActiveForm;
 use yii\bootstrap\NavBar;
+use yii\bootstrap\Carousel;
 use kartik\widgets\Select2;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use evgeniyrru\yii2slick\Slick;
 
 /* @var $this yii\web\View */
 
 $this->title = 'EMTOL - бронирование экскурсий';
-
-
 ?>
-
-<?php
-NavBar::begin();
-
-?>
-<div class="searchfreereservationinfo-form">
-
-    <?php $form = ActiveForm::begin([
-        'method' => 'post',
-        'action' => ['SearchfreereservationinfoController/index'],
-        'options' => [
-            'class' => 'form-inline'
-        ]]);
-    ?>
-
-    <?= $form->field($model, 'search_data')->widget(Select2::classname(), [
-        'data' => $data,
-        'options' => ['placeholder' => 'Введите ключевые слова...'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ])
-    ?>
-    <?= $form->field($model, 'date_begin')->widget(\yii\jui\DatePicker::classname(), [
-        'language' => 'ru',
-        'dateFormat' => 'yyyy-MM-dd',
-    ]) ?>
-    <div class="form-group btn-search">
-        <?= Html::submitButton('Вперед!', ['class' => 'btn btn-success']) ?>
-    </div>
-    <?php ActiveForm::end();
-    NavBar::end();
-    ?>
-    <!--<div class="site-index">
-
-        <div class="jumbotron">
-            <h1>Congratulations!</h1>
-
-            <p class="lead">You have successfully created your Yii-powered application.</p>
-
-            <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-        </div>
-
-        <div class="body-content">
-
-            <div class="row">
-                <div class="col-lg-4">
-                    <h2>Heading</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur.</p>
-
-                    <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-                </div>
-                <div class="col-lg-4">
-                    <h2>Heading</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur.</p>
-
-                    <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-                </div>
-                <div class="col-lg-4">
-                    <h2>Heading</h2>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur.</p>
-
-                    <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-                </div>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false">
+    <div class="container">
+        <div class="searchfreereservationinfo-form">
+            <?php
+            NavBar::begin();
+            $form = ActiveForm::begin([
+                'method' => 'post',
+                'action' => ['searchfreereservationinfo/index'],
+                'options' => [
+                    'class' => 'form-inline'
+                ]]);
+            ?>
+            <?= $form->field($model, 'search_data')->widget(Select2::classname(), [
+                'data' => $data,
+                'options' => ['placeholder' => 'Введите ключевые слова...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ])
+            ?>
+            <?= $form->field($model, 'date_begin')->widget(\yii\jui\DatePicker::classname(), [
+                'language' => 'ru',
+                'dateFormat' => 'yyyy-MM-dd',
+            ]) ?>
+            <div class="form-group btn-search">
+                <?= Html::submitButton('Вперед!', ['class' => 'btn btn-success']) ?>
             </div>
-
+            <?php ActiveForm::end();
+            NavBar::end();
+            ?>
         </div>
-    </div>-->
-
+        <div class="container objreservation-content">
+            <div class="row">
+                <?php
+                foreach ($freeObj as $obj) {
+                    foreach ($obj->getBehavior('galleryBehavior')->getImages() as $image) {
+                        $imgUrl = $image->getUrl('medium');
+                        if ($imgUrl == null) {
+                            $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
+                            Yii::info('Нет картинки');
+                        }
+                        $itemsObj[] = [
+                            'content' => Html::img($imgUrl),
+                            'caption' => '',
+                            'options' => []];
+                    }
+                    ?>
+                    <div class="col-sm-4">
+                        <h4>
+                            <?= $obj->name ?>
+                        </h4>
+                        <?php
+                        echo Carousel::widget([
+                                'items' => $itemsObj,
+                                'options' => [],
+                            ]
+                        );
+                        ?>
+                        <h6>
+                            <?= $obj->description ?>
+                        </h6>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </div>
+        <!-- /.objreservation-content -->
+    </div>
+    <?php
+    $carouselOptions = ['style' => 'height: 700px;', 'class' => 'item-background-carousel'];
+    $itemsCarousel = [
+        ['content' => '<div style="background: url(' . Url::to('@web/images/slider/slider01.JPG') . ');background-repeat: no-repeat;background-size: cover; height: 100%;"></div>',
+            'caption' => '',
+            'options' => $carouselOptions
+        ],
+        ['content' => '<div style="background: url(' . Url::to('@web/images/slider/slider02.JPG') . ');background-repeat: no-repeat;background-size: cover; height: 100%;"></div>',
+            'caption' => '',
+            'options' => $carouselOptions
+        ],
+        ['content' => '<div style="background: url(' . Url::to('@web/images/slider/slider03.JPG') . ');background-repeat: no-repeat;background-size: cover; height: 100%;"></div>',
+            'caption' => '',
+            'options' => $carouselOptions
+        ]
+    ];
+    echo Carousel::widget([
+            'items' => $itemsCarousel,
+            'options' => ['class' => 'carousel-background'],
+        ]
+    )
+    ?>
 </div>
+
+

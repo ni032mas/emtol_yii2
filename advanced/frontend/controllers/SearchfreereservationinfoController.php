@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-use backend\models\Objreservation;
+use frontend\models\Objreservation;
 
 class SearchfreereservationinfoController extends \yii\web\Controller
 {
@@ -13,5 +13,4 @@ class SearchfreereservationinfoController extends \yii\web\Controller
             'model' => $model->getFreeObjreservation(),
         ]);
     }
-
 }

@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use DateTime;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
@@ -82,8 +83,10 @@ class Objreservation extends \yii\db\ActiveRecord
                 'class' => GalleryBehavior::className(),
                 'type' => 'objreservation',
                 'extension' => 'jpg',
-                'directory' => Yii::getAlias('@webroot') . '/images/product/gallery',
-                'url' => Yii::getAlias('@web') . '/images/product/gallery',
+//                'directory' => Yii::getAlias('@backend') . '/web' . '/images/product/gallery',
+//                'url' => Yii::getAlias('@backend') . '/web' . '/images/product/gallery',
+                'directory' => Yii::getAlias('@backend') . '/web' . '/images/product/gallery',
+                'url' => '/advanced/backend/web/images/product/gallery',
                 'versions' => [
                     'small' => function ($img) {
                         /** @var ImageInterface $img */
@@ -197,5 +200,23 @@ class Objreservation extends \yii\db\ActiveRecord
     {
         $objreservation_id = $this->id;
         return \Yii::$app->urlManager->createUrl(['orders/ordersid', 'objreservation_id' => $objreservation_id]);
+    }
+
+
+    public function getFreeObjreservation()
+    {
+        return $query = Objreservation::find()->select('objreservation.*')
+            ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
+            ->where(['reservationinfo.date_begin' => Yii::$app->request->post('date_begin')]);
+    }
+
+    public function getFreeRandomObjreservation()
+    {
+        $today = new DateTime();
+//        echo Yii::info($today->format('Y-m-d H:i:s'));
+//        ['reservationinfo.date_begin' => $today->format('Y-m-d H:i:s')]
+        return $query = Objreservation::find()->select('objreservation.*')
+            ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
+            ->where(['<=', 'reservationinfo.date_begin', $today->format('Y-m-d H:i:s')])->limit(3)->all();
     }
 }

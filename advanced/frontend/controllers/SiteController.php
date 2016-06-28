@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 
 use backend\models\Objreservation;
-use frontend\models\Tag;
+use backend\models\Tag;
 use frontend\models\Searchfree;
 use Yii;
 use common\models\LoginForm;
@@ -77,10 +77,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = new Searchfree();
+        $objreservation = new Objreservation();
+        $objreservation1 = Objreservation::find()->all();
+        $freeObj = $objreservation->getFreeRandomObjreservation();
         $data = ArrayHelper::getColumn(Tag::find()->asArray()->all(), 'name');
         return $this->render('index', [
             'model' => $model,
             'data' => $data,
+            'freeObj' => $freeObj,
+            'objreservation' => $objreservation,
+            'objreservation1' => $objreservation1,
         ]);
     }
 
@@ -218,11 +224,5 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
-    }
-
-    public function actionHello()
-    {
-        $hello = "Hello world";
-        return $this->render('hello', ['hello', $hello]);
     }
 }
