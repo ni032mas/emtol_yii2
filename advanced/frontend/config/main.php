@@ -10,8 +10,27 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'language' => 'ru',
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            //'suffix' => '.html',
+            'rules' => [
+                '' => 'site/index',
+
+
+                '<action>' => 'site/<action>',
+            ],
+        ],
+        'assetManager' => [
+            'basePath' => '@webroot/assets',
+            'baseUrl' => '@web/assets'
+        ],
+        'request' => [
+            'baseUrl' => ''
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

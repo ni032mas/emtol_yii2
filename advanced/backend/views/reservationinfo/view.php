@@ -37,8 +37,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Экскурсия',
                 'value' => $model->getObjreservationName(),
             ],
-            'date_begin',
-            'date_end',
+            [
+                'attribute' => 'date_begin',
+                'label' => 'Создано',
+                'format' => ['date', 'dd-MM-Y HH:mm:ss'], // Доступные модификаторы - date:datetime:time
+                'headerOptions' => ['width' => '200'],
+            ],
+            [
+                'attribute' => 'date_end',
+                'label' => 'Создано',
+                'format' => ['date', 'dd-MM-Y HH:mm:ss'], // Доступные модификаторы - date:datetime:time
+                'headerOptions' => ['width' => '200'],
+            ],
             'amount',
             [
                 'attribute' => 'created_at',
@@ -54,6 +64,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ])
+    ?>
+    <?php
+//    echo $date_begin;
     ?>
 
 </div>

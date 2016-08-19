@@ -18,9 +18,11 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/slider.css',
         'css/site.css',
     ];
     public $js = [
+        'js/bootstrap-slider.js',
         'js/script.js',
     ];
     public $depends = [

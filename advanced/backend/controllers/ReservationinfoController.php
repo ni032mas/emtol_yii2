@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use DateTime;
 use Yii;
 use backend\models\Reservationinfo;
 use backend\models\ReservationinfoSearch;
@@ -55,14 +56,15 @@ class ReservationinfoController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
-    
-    public function actionObjreservationid($objreservation_id) {
+
+    public function actionObjreservationid($objreservation_id)
+    {
         $searchModel = new ReservationinfoSearch();
         $dataProvider = $searchModel->search([$searchModel->formName() => ['objreservation_id' => $objreservation_id]]);
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -88,14 +90,15 @@ class ReservationinfoController extends Controller
         $model = new Reservationinfo();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->created_at = time();
-            $model->updated_at = time();
+            $model->date_begin = strtotime($model->date_begin);
+            $model->date_end = strtotime($model->date_end);
             if ($model->save()) {
+//                return $this->render('test', ['date_begin' => strtotime($dateBegin)]);
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
         return $this->render('create', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -110,7 +113,11 @@ class ReservationinfoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            $model->date_begin = strtotime($model->date_begin);
+            $model->date_end = strtotime($model->date_end);
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,

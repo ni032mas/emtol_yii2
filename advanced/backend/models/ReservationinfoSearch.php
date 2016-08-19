@@ -64,8 +64,8 @@ class ReservationinfoSearch extends Reservationinfo
         $query->andFilterWhere([
             'id' => $this->id,
             'objreservation_id' => $this->objreservation_id,
-            'date_begin' => $this->date_begin,
-            'date_end' => $this->date_end,
+            'date_begin' => $this->date_begin != "" ? strtotime($this->date_begin) : $this->date_begin,
+            'date_end' => $this->date_end != "" ? strtotime($this->date_end) : $this->date_end,
             'amount' => $this->amount,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

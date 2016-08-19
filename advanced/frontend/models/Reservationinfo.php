@@ -37,6 +37,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
         return [
             [['objreservation_id', 'reservationinfo_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'required'],
             [['objreservation_id', 'reservationinfo_id', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['price'], 'float'],
             [['date_begin', 'date_end'], 'safe']
         ];
     }
@@ -53,6 +54,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
             'date_begin' => 'Дата начала',
             'date_end' => 'Дата окончания',
             'amount' => 'Количество',
+            'price' => 'Цена',
             'created_at' => 'Создано',
             'updated_at' => 'Изменено',
         ];

@@ -24,7 +24,11 @@ $this->title = 'EMTOL - бронирование экскурсий';
                     'class' => 'form-inline'
                 ]]);
             ?>
-            <?= $form->field($model, 'search_data')->widget(Select2::classname(), [
+
+            <?= $form->field($model, 'search_data', [
+                'options' => [
+                    'class' => 'search-data form-group',
+                ]])->widget(Select2::classname(), [
                 'data' => $data,
                 'options' => ['placeholder' => 'Введите ключевые слова...'],
                 'pluginOptions' => [
@@ -32,6 +36,8 @@ $this->title = 'EMTOL - бронирование экскурсий';
                 ],
             ])
             ?>
+
+            <!-- /.search-data -->
             <?= $form->field($model, 'date_begin')->widget(\yii\jui\DatePicker::classname(), [
                 'language' => 'ru',
                 'dateFormat' => 'yyyy-MM-dd',
@@ -42,6 +48,12 @@ $this->title = 'EMTOL - бронирование экскурсий';
             <?php ActiveForm::end();
             NavBar::end();
             ?>
+            <div class="slider-value">
+                Filter by price interval: <b>€ 10</b> <input id="ex2" type="text" class="span2" value=""
+                                                             data-slider-min="10"
+                                                             data-slider-max="1000" data-slider-step="5"
+                                                             data-slider-value="[250,450]"/> <b>€ 1000</b>
+            </div>
         </div>
         <div class="container objreservation-content">
             <div class="row">
@@ -61,7 +73,9 @@ $this->title = 'EMTOL - бронирование экскурсий';
                     ?>
                     <div class="col-sm-4">
                         <h4>
-                            <?= $obj->name ?>
+                            <?php
+                            echo Html::a($obj->name, Yii::getAlias('@web') . 'site/select-obj?id=' . $obj->id);
+                            ?>
                         </h4>
                         <?php
                         echo Carousel::widget([

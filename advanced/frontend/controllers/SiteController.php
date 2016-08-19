@@ -1,8 +1,8 @@
 <?php
 namespace frontend\controllers;
 
-use backend\models\Objreservation;
-use backend\models\Tag;
+use frontend\models\Objreservation;
+use frontend\models\Tag;
 use frontend\models\Searchfree;
 use Yii;
 use common\models\LoginForm;
@@ -88,6 +88,10 @@ class SiteController extends Controller
             'objreservation' => $objreservation,
             'objreservation1' => $objreservation1,
         ]);
+    }
+
+    public function actionSelectObj() {
+        
     }
 
     /**

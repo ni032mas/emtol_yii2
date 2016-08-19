@@ -28,43 +28,45 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
-<header>
-    <div class="wrap">
-        <?php
-        NavBar::begin([
-            'brandLabel' => 'EMTOL',
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => [
-                'class' => 'navbar-inverse navbar-fixed-top',
-            ],
-        ]);
-        if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
-            $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
-        } else {
-            $menuItems[] = [
-                'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
-                'url' => ['/site/logout'],
-                'linkOptions' => ['data-method' => 'post']
-            ];
-        }
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => $menuItems,
-        ]);
-        NavBar::end();
-        
-        ?>
-        <div class="container">
-            <?= Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-            <?= Alert::widget() ?>
 
-        </div>
+<div class="wrap">
+    <?php
+    NavBar::begin([
+        'brandLabel' => 'EMTOL',
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],
+    ]);
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
+    } else {
+        $menuItems[] = [
+            'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
+            'url' => ['/site/logout'],
+            'linkOptions' => ['data-method' => 'post']
+        ];
+    }
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+    ]);
+    NavBar::end();
+
+    ?>
+    <div class="container">
+        <?= Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <?= Alert::widget() ?>
+
     </div>
-</header>
+</div>
+
 <?= $content ?>
+
+<!-- /.container -->
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; EMTOL <?= date('Y') ?></p>

@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use common\models\User;
 
@@ -35,9 +36,10 @@ class Reservationinfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['objreservation_id', 'reservationinfo_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'required'],
-            [['objreservation_id', 'reservationinfo_id', 'amount', 'created_at', 'updated_at'], 'integer'],
-            [['date_begin', 'date_end'], 'safe']
+            [['objreservation_id', 'date_begin', 'date_end', 'amount'], 'required'],
+            [['objreservation_id', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['price'], 'float'],
+            [['date_begin', 'date_end',], 'safe']
         ];
     }
 
@@ -49,18 +51,27 @@ class Reservationinfo extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'objreservation_id' => 'Экскурсия',
-            'reservationinfo_id' => 'Reservationinfo',
             'date_begin' => 'Дата начала',
             'date_end' => 'Дата окончания',
             'amount' => 'Количество',
+            'price' => 'Цена',
             'created_at' => 'Создано',
             'updated_at' => 'Изменено',
         ];
     }
-    
-    public function behaviors() {
+
+    public function behaviors()
+    {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                // if you're using datetime instead of UNIX timestamp:
+                // 'value' => new Expression('NOW()'),
+            ],
         ];
     }
 
@@ -71,8 +82,9 @@ class Reservationinfo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Objreservation::className(), ['id' => 'objreservation_id']);
     }
-    
-    public function getObjreservationList() {
+
+    public function getObjreservationList()
+    {
         $user = User::findOne(Yii::$app->user->id);
         $objreservation = $user->getObjreservation()->all();
 //        $objreservation = Objreservation::find()
@@ -80,10 +92,17 @@ class Reservationinfo extends \yii\db\ActiveRecord
 
         return ArrayHelper::map($objreservation, 'id', 'name');
     }
-    
-    public function getObjreservationName() {
+
+    public function getObjreservationName()
+    {
         $objreservation = $this->objreservation;
         return $objreservation ? $objreservation->name : '';
     }
 
+    public function getDateBegin() {
+        return $this->date_begin;
+    }
+    public function getDateEnd() {
+
+    }
 }

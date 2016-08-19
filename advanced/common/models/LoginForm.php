@@ -19,6 +19,16 @@ class LoginForm extends Model
     /**
      * @inheritdoc
      */
+
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Имя пользователя',
+            'password' => 'Пароль',
+            'rememberMe' => 'Запомнить меня',
+        ];
+    }
+
     public function rules()
     {
         return [

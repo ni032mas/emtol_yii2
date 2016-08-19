@@ -85,8 +85,12 @@ class Objreservation extends \yii\db\ActiveRecord
                 'extension' => 'jpg',
 //                'directory' => Yii::getAlias('@backend') . '/web' . '/images/product/gallery',
 //                'url' => Yii::getAlias('@backend') . '/web' . '/images/product/gallery',
-                'directory' => Yii::getAlias('@backend') . '/web' . '/images/product/gallery',
-                'url' => '/advanced/backend/web/images/product/gallery',
+//                'directory' => Yii::getAlias('@backend') . '/web' . '/images/product/gallery',
+//                'url' => '/advanced/backend/web/images/product/gallery',
+//                'directory' => Yii::getAlias('@common') . '/images/product/gallery',
+//                'url' => Yii::getAlias('@common') . '/images/product/gallery',
+                'directory' => Yii::getAlias('@root') . '/images/product/gallery',
+                'url' => '/images/product/gallery',
                 'versions' => [
                     'small' => function ($img) {
                         /** @var ImageInterface $img */

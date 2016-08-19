@@ -13,7 +13,7 @@ use vakorovin\datetimepicker\Datetimepicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'objreservation_id')->dropDownList($model->getObjreservationList(), ['prompt' => 'Выберите экскурсию...']) ?>
+    <?= $form->field($model, 'objreservation_id')->widget(\yii\widgets\MaskedInput::className()) ?>
 
     <?=
     $form->field($model, 'date_begin')->widget(Datetimepicker::className(), [

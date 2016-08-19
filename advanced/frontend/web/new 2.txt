@@ -1,0 +1,7 @@
+<?php
+function retfunct()
+{
+     return 7;
+}
+echo retfunct();   // выводит '7'.
+?>

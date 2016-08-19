@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'date_begin',
                 'value' => 'date_begin',
-                'format' => 'raw', // Возможные варианты: raw, html
+                'format' => ['date', 'Y/MM/dd HH:mm'], // Возможные варианты: raw, html
                 'filter' => DateTimePicker::widget([
                     'attribute' => 'date_begin',
                     'model' => $searchModel,
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'date_end',
                 'value' => 'date_end',
-                'format' => 'raw', // Возможные варианты: raw, html
+                'format' => ['date', 'Y/MM/dd HH:mm'], // Возможные варианты: raw, html
                 'filter' => DateTimePicker::widget([
                     'attribute' => 'date_end',
                     'model' => $searchModel,
