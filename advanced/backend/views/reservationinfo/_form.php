@@ -13,7 +13,7 @@ use vakorovin\datetimepicker\Datetimepicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'objreservation_id')->widget(\yii\widgets\MaskedInput::className()) ?>
+    <?= $form->field($model, 'objreservation_id')->dropDownList($model->getObjreservationList(), ['prompt' => 'Выберите экскурсию...']) ?>
 
     <?=
     $form->field($model, 'date_begin')->widget(Datetimepicker::className(), [
@@ -31,12 +31,13 @@ use vakorovin\datetimepicker\Datetimepicker;
     ])
     ?>
 
-        <?= $form->field($model, 'amount')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'amount')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-    <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
-<?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

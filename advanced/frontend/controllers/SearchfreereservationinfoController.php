@@ -7,8 +7,9 @@ use frontend\models\Objreservation;
 use frontend\models\SelectDateTimePrice;
 use Yii;
 use yii\data\Pagination;
+use yii\web\Controller;
 
-class SearchfreereservationinfoController extends \yii\web\Controller
+class SearchfreereservationinfoController extends Controller
 {
     public function actionIndex($sort = 'desc', $dateBegin = null)
     {

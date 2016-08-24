@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -37,7 +37,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
         return [
             [['objreservation_id', 'reservationinfo_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'required'],
             [['objreservation_id', 'reservationinfo_id', 'amount', 'created_at', 'updated_at'], 'integer'],
-            [['price'], 'float'],
+            [['price'], 'double'],
             [['date_begin', 'date_end'], 'safe']
         ];
     }

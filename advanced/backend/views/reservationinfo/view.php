@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'headerOptions' => ['width' => '200'],
             ],
             'amount',
+            'price',
             [
                 'attribute' => 'created_at',
                 'label' => 'Создано',

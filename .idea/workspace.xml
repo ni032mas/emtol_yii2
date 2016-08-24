@@ -2,133 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61bf6a0d-ddc1-42fe-934c-a90bfffaaf47" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/80/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/80/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/80/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/80/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/81/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/81/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/81/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/81/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/82/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/82/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/82/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/82/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/83/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/83/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/83/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/83/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/84/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/84/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/84/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/84/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/85/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/85/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/85/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/85/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/86/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/86/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/86/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/86/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/87/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/87/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/87/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/1/87/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/118/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/118/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/118/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/118/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/119/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/119/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/119/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/119/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/120/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/120/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/120/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/120/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/122/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/122/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/122/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/122/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/123/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/123/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/123/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/123/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/124/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/124/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/124/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/124/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/125/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/125/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/125/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/125/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/126/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/126/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/126/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/126/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/127/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/127/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/127/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/127/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/128/medium.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/128/original.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/128/preview.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/images/product/gallery/4/128/small.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/backend/views/reservationinfo/test.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/backend/web/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/common/widgets/QtyPanel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/common/widgets/SearchPanel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/common/widgets/views/qty-panel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/common/widgets/views/search-panel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/core/FunctionsEmtol.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/models/SelectDateTimePrice.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/view.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/web/.htaccess" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/web/css/dropdowns-enhancement.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/web/css/slider.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/web/js/bootstrap-slider.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/web/js/dropdowns-enhancement.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/nophoto/nophoto_sea.jpg" afterPath="$PROJECT_DIR$/advanced/images/nophoto/nophoto_sea.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider01.JPG" afterPath="$PROJECT_DIR$/advanced/images/slider/slider01.JPG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider02.JPG" afterPath="$PROJECT_DIR$/advanced/images/slider/slider02.JPG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider03.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider03.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider04.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider04.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider05.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider05.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider06.JPG" afterPath="$PROJECT_DIR$/advanced/images/slider/slider06.JPG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider07.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider07.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider08.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider08.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider09.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider09.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider10.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider10.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider11.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider11.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider12.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider12.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider13.jpg" afterPath="$PROJECT_DIR$/advanced/images/slider/slider13.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/advanced/frontend/web/images/slider/slider14.JPG" afterPath="$PROJECT_DIR$/advanced/images/slider/slider14.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/controllers/CardController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/advanced/frontend/models/Card.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/config/main.php" afterPath="$PROJECT_DIR$/advanced/backend/config/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/controllers/ReservationinfoController.php" afterPath="$PROJECT_DIR$/advanced/backend/controllers/ReservationinfoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/models/Objreservation.php" afterPath="$PROJECT_DIR$/advanced/backend/models/Objreservation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/models/Reservationinfo.php" afterPath="$PROJECT_DIR$/advanced/backend/models/Reservationinfo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/models/ReservationinfoSearch.php" afterPath="$PROJECT_DIR$/advanced/backend/models/ReservationinfoSearch.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/views/reservationinfo/_form.php" afterPath="$PROJECT_DIR$/advanced/backend/views/reservationinfo/_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/views/reservationinfo/index.php" afterPath="$PROJECT_DIR$/advanced/backend/views/reservationinfo/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/backend/views/reservationinfo/view.php" afterPath="$PROJECT_DIR$/advanced/backend/views/reservationinfo/view.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/common/config/bootstrap.php" afterPath="$PROJECT_DIR$/advanced/common/config/bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/common/config/main.php" afterPath="$PROJECT_DIR$/advanced/common/config/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/common/models/LoginForm.php" afterPath="$PROJECT_DIR$/advanced/common/models/LoginForm.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/common/models/User.php" afterPath="$PROJECT_DIR$/advanced/common/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/composer.json" afterPath="$PROJECT_DIR$/advanced/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/composer.lock" afterPath="$PROJECT_DIR$/advanced/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/assets/AppAsset.php" afterPath="$PROJECT_DIR$/advanced/frontend/assets/AppAsset.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/config/main.php" afterPath="$PROJECT_DIR$/advanced/frontend/config/main.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php" afterPath="$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/controllers/SiteController.php" afterPath="$PROJECT_DIR$/advanced/frontend/controllers/SiteController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/models/Reservationinfo.php" afterPath="$PROJECT_DIR$/advanced/frontend/models/Reservationinfo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/views/layouts/main.php" afterPath="$PROJECT_DIR$/advanced/frontend/views/layouts/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/index.php" afterPath="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/views/site/index.php" afterPath="$PROJECT_DIR$/advanced/frontend/views/site/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/views/site/login.php" afterPath="$PROJECT_DIR$/advanced/frontend/views/site/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/web/css/site.css" afterPath="$PROJECT_DIR$/advanced/frontend/web/css/site.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/view.php" afterPath="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/view.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/advanced/frontend/web/js/script.js" afterPath="$PROJECT_DIR$/advanced/frontend/web/js/script.js" />
     </list>
     <ignored path="emtol.local.iws" />
@@ -174,23 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchfreereservationinfoController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="61" column="39" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="39" />
-              <folding>
-                <element signature="e#40#75#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+            <state relative-caret-position="531">
+              <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
               <folding>
                 <element signature="e#36#64#0#PHP" expanded="true" />
               </folding>
@@ -198,31 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/advanced/backend/views/orders/_form.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="54" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QtyPanel.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/advanced/common/widgets/QtyPanel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="qty-panel.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qty-panel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/advanced/common/widgets/views/qty-panel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            <state relative-caret-position="238">
+              <caret line="14" column="25" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="25" />
               <folding>
                 <element signature="e#6#33#0#PHP" expanded="true" />
                 <marker date="1471623008108" expanded="true" signature="784:920" placeholder="..." />
@@ -232,11 +82,77 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/advanced/frontend/web/js/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="722">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchfreereservationinfoController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="731">
+              <caret line="56" column="98" selection-start-line="52" selection-start-column="18" selection-end-line="56" selection-end-column="98" />
+              <folding>
+                <element signature="e#40#75#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CardController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/advanced/frontend/controllers/CardController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+              <folding>
+                <element signature="e#122#147#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Card.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Card.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Orders.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Orders.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Reservationinfo.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Reservationinfo.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+              <folding>
+                <element signature="e#35#43#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Searchfree.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Searchfree.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -257,7 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/advanced/backend/views/objreservation/view.php" />
         <option value="C:/bitbucket/na/css/main.css" />
         <option value="C:/bitbucket/na/groups.html" />
         <option value="C:/bitbucket/na/about_na.html" />
@@ -283,30 +198,32 @@
         <option value="$PROJECT_DIR$/advanced/core/FunctionsEmtol.php" />
         <option value="$PROJECT_DIR$/advanced/backend/views/reservationinfo/test.php" />
         <option value="$PROJECT_DIR$/advanced/backend/controllers/ReservationinfoController.php" />
-        <option value="$PROJECT_DIR$/advanced/backend/views/reservationinfo/view.php" />
         <option value="$PROJECT_DIR$/advanced/backend/models/ReservationinfoSearch.php" />
         <option value="$PROJECT_DIR$/advanced/backend/views/reservationinfo/index.php" />
         <option value="$PROJECT_DIR$/advanced/backend/web/index.php" />
         <option value="$PROJECT_DIR$/advanced/core/functionsemtol.php" />
         <option value="$PROJECT_DIR$/advanced/frontend/models/Objreservation.php" />
         <option value="$PROJECT_DIR$/advanced/backend/models/Objreservation.php" />
-        <option value="$PROJECT_DIR$/advanced/backend/models/Reservationinfo.php" />
-        <option value="$PROJECT_DIR$/advanced/frontend/models/Reservationinfo.php" />
         <option value="$PROJECT_DIR$/advanced/frontend/views/site/index.php" />
         <option value="$PROJECT_DIR$/advanced/common/widgets/SearchPanel.php" />
         <option value="$PROJECT_DIR$/advanced/common/widgets/views/search-panel.php" />
         <option value="$PROJECT_DIR$/advanced/frontend/assets/AppAsset.php" />
         <option value="$PROJECT_DIR$/advanced/vendor/yiisoft/yii2/db/BaseActiveRecord.php" />
         <option value="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/index.php" />
-        <option value="$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php" />
         <option value="$PROJECT_DIR$/advanced/frontend/web/css/site.css" />
-        <option value="$PROJECT_DIR$/advanced/frontend/web/js/script.js" />
-        <option value="$PROJECT_DIR$/advanced/backend/views/reservationinfo/_form.php" />
         <option value="$PROJECT_DIR$/advanced/frontend/models/Searchfree.php" />
         <option value="$PROJECT_DIR$/advanced/frontend/models/SelectDateTimePrice.php" />
         <option value="$PROJECT_DIR$/advanced/common/widgets/QtyPanel.php" />
-        <option value="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/view.php" />
         <option value="$PROJECT_DIR$/advanced/common/widgets/views/qty-panel.php" />
+        <option value="$PROJECT_DIR$/advanced/backend/views/reservationinfo/_form.php" />
+        <option value="$PROJECT_DIR$/advanced/backend/models/Reservationinfo.php" />
+        <option value="$PROJECT_DIR$/advanced/backend/views/reservationinfo/view.php" />
+        <option value="$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php" />
+        <option value="$PROJECT_DIR$/advanced/frontend/web/js/script.js" />
+        <option value="$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/view.php" />
+        <option value="$PROJECT_DIR$/advanced/frontend/models/Reservationinfo.php" />
+        <option value="$PROJECT_DIR$/advanced/frontend/controllers/CardController.php" />
+        <option value="$PROJECT_DIR$/advanced/frontend/models/Card.php" />
       </list>
     </option>
   </component>
@@ -675,79 +592,13 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emtol.local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emtol.local" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="advanced" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emtol.local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emtol.local" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="advanced" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emtol.local" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emtol.local" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="advanced" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="orders" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="C:/git/na" />
+    <property name="last_opened_file_path" value="C:/bitbucket/na" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2485323" />
@@ -823,12 +674,12 @@
       <workItem from="1468941415698" duration="16000" />
       <workItem from="1468941461422" duration="67742000" />
       <workItem from="1470488097530" duration="23317000" />
-      <workItem from="1470988556092" duration="44322000" />
+      <workItem from="1470988556092" duration="59331000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226044000" />
+    <option name="totallyTimeSpent" value="241053000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -866,32 +717,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/advanced/frontend/models/Orders.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/advanced/backend/web/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/backend/views/reservationinfo/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="55" column="55" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/backend/controllers/ReservationinfoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="116" column="31" selection-start-line="116" selection-start-column="31" selection-end-line="116" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/advanced/core/functionsemtol.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -956,14 +793,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/backend/models/Reservationinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1069,14 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Reservationinfo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/advanced/common/widgets/SearchPanel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -1084,14 +905,6 @@
           <folding>
             <element signature="e#34#47#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Orders.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1173,14 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/frontend/web/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/advanced/vendor/vakorovin/yii2-datetimepicker/Datetimepicker.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
@@ -1197,36 +1002,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="61" column="39" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="39" />
-          <folding>
-            <element signature="e#40#75#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/advanced/vendor/yiisoft/yii2/widgets/Breadcrumbs.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1938">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Searchfree.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/SelectDateTimePrice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1255,41 +1034,129 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/backend/views/reservationinfo/_form.php">
+    <entry file="file://$PROJECT_DIR$/advanced/backend/views/orders/_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="78" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
+        <state relative-caret-position="799">
+          <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="54" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/backend/views/orders/_form.php">
+    <entry file="file://$PROJECT_DIR$/advanced/backend/views/reservationinfo/_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="54" selection-end-column="10" />
+        <state relative-caret-position="578">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding>
+            <element signature="e#7#28#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/backend/models/Reservationinfo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/backend/views/reservationinfo/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Searchfree.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/SelectDateTimePrice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/common/widgets/views/qty-panel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="25" />
+          <folding>
+            <element signature="e#6#33#0#PHP" expanded="true" />
+            <marker date="1471623008108" expanded="true" signature="784:920" placeholder="..." />
+            <marker date="1471623008108" expanded="true" signature="864:904" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Orders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/web/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/advanced/frontend/views/searchfreereservationinfo/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+        <state relative-caret-position="531">
+          <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
           <folding>
             <element signature="e#36#64#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/advanced/common/widgets/views/qty-panel.php">
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Reservationinfo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="357">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
           <folding>
-            <element signature="e#6#33#0#PHP" expanded="true" />
-            <marker date="1471623008108" expanded="true" signature="784:920" placeholder="..." />
-            <marker date="1471623008108" expanded="true" signature="864:904" placeholder="..." />
+            <element signature="e#35#43#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/controllers/SearchfreereservationinfoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="56" column="98" selection-start-line="52" selection-start-column="18" selection-end-line="56" selection-end-column="98" />
+          <folding>
+            <element signature="e#40#75#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/controllers/CardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+          <folding>
+            <element signature="e#122#147#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/advanced/frontend/models/Card.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

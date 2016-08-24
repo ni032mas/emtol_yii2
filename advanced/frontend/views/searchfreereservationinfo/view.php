@@ -52,25 +52,16 @@ use yii\widgets\Pjax;
                         foreach ($models as $model) {
                             $itemsPrice[$model->id] = "Начало " . date('d-m-Y в H:m', $model->date_begin) . " - Цена " . $model->price . " руб.";
                         }
-                        $form = ActiveForm::begin(
+                        echo Html::dropDownList('SelectDateTimePrice[reservationId]', null, $itemsPrice,
                             [
-                                'action'=>'/searchfreereservationinfo/view?id=3',
-                                'options' => ['class' => 'form-inline']
-                            ]);
-                        $params = [
-                            'prompt' => 'Выберите дату и цену'
-                        ];
-                        echo $form->field($modelPrice, 'reservationId')->dropDownList($itemsPrice, $params);
-                        echo $form->field($modelPrice, 'qty')->widget(QtyPanel::className());
+                                'id' => 'reservationinfo-id',
+                                'class' => 'form-control'
+                            ]
+                        );
+                        echo QtyPanel::widget();
                         ?>
-                        <div class="form-group">
-                            <?= Html::submitButton('Купить', ['class' => 'btn btn-success']) ?>
-                        </div>
-                        <!--                    <p class="er">ошибка</p>-->
+                        <a class="btn btn-success add-to-cart">Купить</a>
                     </div><!-- /.col-sm-10 -->
-                    <?php
-                    ActiveForm::end();
-                    ?>
                 </div><!-- /.col-sm-12 -->
             </div><!-- /.item-card -->
         </div><!-- /.row -->
