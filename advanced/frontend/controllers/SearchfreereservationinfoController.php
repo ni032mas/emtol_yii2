@@ -2,7 +2,7 @@
 
 namespace frontend\controllers;
 
-use backend\models\Reservationinfo;
+use frontend\models\Reservationinfo;
 use frontend\models\Objreservation;
 use frontend\models\SelectDateTimePrice;
 use Yii;
@@ -17,15 +17,31 @@ class SearchfreereservationinfoController extends Controller
             $dateBegin = Yii::$app->request->post('Searchfree')['date_begin'];
         }
 
+//        if ($sort == 'desc') {
+//            $query = Reservationinfo::find()->select('reservationinfo.*')
+//                ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+//                ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
+//                ->addOrderBy(['price' => SORT_DESC,]);
+//        } else if ($sort == 'asc') {
+//            $query = Reservationinfo::find()->select('reservationinfo.*')
+//                ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+//                ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
+//                ->addOrderBy(['price' => SORT_ASC,]);
+//        }
+
         if ($sort == 'desc') {
-            $query = Reservationinfo::find()->select('reservationinfo.*')
-                ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+            $query = Objreservation::find()
+                ->select('objreservation.*')
+                ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
                 ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
+                ->groupBy('id')
                 ->addOrderBy(['price' => SORT_DESC,]);
         } else if ($sort == 'asc') {
-            $query = Reservationinfo::find()->select('reservationinfo.*')
-                ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+            $query = Objreservation::find()
+                ->select('objreservation.*')
+                ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
                 ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
+                ->groupBy('id')
                 ->addOrderBy(['price' => SORT_ASC,]);
         }
 

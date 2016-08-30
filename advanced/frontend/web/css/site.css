@@ -10,8 +10,12 @@ body {
 /*padding: 0 0 60px;*/
 /*}*/
 
+.breadcumbs {
+    padding: 55px 15px 20px !important;
+}
+
 .wrap > .container {
-    padding: 30px 15px 20px;
+    padding: 70px 15px 20px;
 }
 
 .footer {
@@ -206,10 +210,11 @@ a.desc:after {
     color: #fff;
 }
 
-#btn-desc-enable, #btn-asc-enable{
+#btn-desc-enable, #btn-asc-enable {
     background-color: #422453;
     color: #fff;
 }
+
 .product-qty {
     width: 105px;
     margin-top: 12px
@@ -218,6 +223,11 @@ a.desc:after {
 .qtyMinus, .qtyPlus, #qtyField {
     width: 35px;
 }
+
 #qtyField {
     padding: 5px;
+}
+
+.del-item-cart {
+    cursor: pointer;
 }

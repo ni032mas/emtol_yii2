@@ -18,9 +18,11 @@ return [
             'showScriptName' => false,
             //'suffix' => '.html',
             'rules' => [
+                'searchfreereservationinfo/<id:\d+>/<dateBegin>' => 'searchfreereservationinfo/view',
+                'searchfreereservationinfo/<id:\d+>' => 'searchfreereservationinfo/view',
+                'searchfreereservationinfo' => 'searchfreereservationinfo/index',
+                'searchfreereservationinfo/<action:\w+>' => 'searchfreereservationinfo/<action>',
                 '' => 'site/index',
-
-
                 '<action>' => 'site/<action>',
             ],
         ],

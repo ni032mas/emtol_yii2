@@ -11,6 +11,7 @@ use evgeniyrru\yii2slick\Slick;
 /* @var $this yii\web\View */
 
 $this->title = 'EMTOL - бронирование экскурсий';
+$this->params['fluid'] = true;
 ?>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false">
     <div class="container">
@@ -19,7 +20,7 @@ $this->title = 'EMTOL - бронирование экскурсий';
             NavBar::begin();
             $form = ActiveForm::begin([
                 'method' => 'post',
-                'action' => ['searchfreereservationinfo/index'],
+                'action' => ['/searchfreereservationinfo/index'],
                 'options' => [
                     'class' => 'form-inline'
                 ]]);

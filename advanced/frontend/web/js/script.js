@@ -23,19 +23,82 @@ $(document).ready(function () {
     });
 });
 
+//Корзина
+function showCart(cart) {
+    var qty = $(cart).find('#qty-modal').text();
+    if (qty > 0) {
+        $('#navbar-cart').text('Корзина(' + qty + ')');
+    } else {
+        $('#navbar-cart').text('Корзина');
+    }
+
+    $('#cart-modal').find('.modal-body').html(cart);
+    $('#cart-modal').modal();
+
+}
+
+function getCart() {
+    $.ajax({
+        url: '/cart/show',
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert("Ошибка!");
+            showCart(res);
+        },
+        error: function () {
+            alert("Error!");
+        }
+    });
+    return false;
+}
+
+function clearCart() {
+    $.ajax({
+        url: '/cart/clear',
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert("Ошибка!");
+            showCart(res);
+        },
+        error: function () {
+            alert("Error!");
+        }
+    });
+}
+
+$('#cart-modal .modal-body').on('click', '.del-item-cart', function () {
+    var id = $(this).data('id');
+    $.ajax({
+        url: '/cart/del-item',
+        data: {
+            id: id
+        },
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert("Ошибка!");
+            showCart(res);
+        },
+        error: function () {
+            alert("Error!");
+        }
+    });
+
+});
+
 $('.add-to-cart').on('click', function (e) {
     e.preventDefault;
-    var reservationInfoId = $("#reservationinfo-id").val();
-    var qty = $("#qtyField").val();
+    var reservationInfoId = $("#reservationinfo-id").val(),
+        qty = $("#qtyField").val();
     $.ajax({
-        url: '/card/add',
+        url: '/cart/add',
         data: {
             reservationInfoId: reservationInfoId,
             qty: qty
         },
         type: 'GET',
         success: function (res) {
-
+            if (!res) alert("Ошибка!");
+            showCart(res);
         },
         error: function () {
             alert("Error!");

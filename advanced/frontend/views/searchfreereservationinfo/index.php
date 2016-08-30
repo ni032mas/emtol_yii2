@@ -2,17 +2,22 @@
 /* @var $this yii\web\View */
 use common\widgets\SearchPanel;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
 use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 
-?>
-<div class="container">
 
+//$this->params['breadcrumbs'][] = ['label' => 'Главная', 'url' => ['/']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="reservationobj-free">
     <div class="col-sm-3">
         <?= SearchPanel::widget(['dateBegin' => $dateBegin]) ?>
     </div><!-- /.col-sm-3 -->
-    <?php Pjax::begin(); ?>
+
     <div class="col-sm-9">
+        <?php Pjax::begin(); ?>
         <div class="row">
             <div class="btn-group btn-group-sort" role="group" aria-label="...">
                 <button type="button" class="btn btn-primary">Самые популярные</button>
@@ -82,7 +87,7 @@ JS;
                     <div class="col-sm-8">
                         <?php
                         $imgs = array();
-                        foreach ($model->objreservation->getBehavior('galleryBehavior')->getImages() as $image) {
+                        foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
                             $imgUrl = $image->getUrl('medium');
                             if ($imgUrl == null) {
                                 $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
@@ -103,14 +108,14 @@ JS;
                     </div><!-- /.col-sm-8 -->
                     <div class="col-sm-4">
                         <h1>
-                            <a href="<?= '/searchfreereservationinfo/view?id=' . $model->objreservation->id . '&dateBegin=' . $dateBegin ?>">
-                                <?= $model->objreservation->name ?>
+                            <a href="<?= Url::to(['/searchfreereservationinfo/view', 'id' => $model->id, 'datebegin' => $dateBegin]) ?>">
+                                <?= $model->name ?>
                             </a>
                         </h1>
                         <h2>Описание</h2>
-                        <?= $model->objreservation->description ?>
+                        <?= $model->description ?>
                         <h2>Цена</h2>
-                        <?= $model->price ?>
+                        <?php echo $model->price ?>
                     </div><!-- /.col-sm-4 -->
                 </div><!-- /.item -->
                 <?php
@@ -120,13 +125,11 @@ JS;
         <div class="pag">
             <?= LinkPager::widget(['pagination' => $pages,]) ?>
         </div><!-- /.pag -->
-
-    </div>
-    <?php Pjax::end(); ?>.
-    <!-- /.col-sm-9 -->
+        <?php Pjax::end(); ?>.
+    </div><!-- /.col-sm-9 -->
     <?php
 
     //    debug($model);
     debug($dateBegin);
     ?>
-</div><!-- /.container -->
+</div><!-- /.reservationobj-free -->

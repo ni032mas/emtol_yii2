@@ -29,6 +29,7 @@ use dosamigos\taggable\Taggable;
 class Objreservation extends \yii\db\ActiveRecord
 {
 
+    public $price;
     /**
      * @inheritdoc
      */
@@ -179,7 +180,7 @@ class Objreservation extends \yii\db\ActiveRecord
      */
     public function getReservationinfos()
     {
-        return $this->hasMany(Reservationinfo::className(), ['obj_reservation_id' => 'id']);
+        return $this->hasMany(Reservationinfo::className(), ['objreservation_id' => 'id']);
     }
 
     public function getGallery()

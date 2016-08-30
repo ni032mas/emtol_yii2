@@ -68,7 +68,7 @@ use yii\widgets\Pjax;
     </div><!-- /.col-sm-9 -->
     <?php
     //    debug($models);
-    debug($itemsPrice);
+//    debug($itemsPrice);
     //    debug($dateBegin);
     ?>
 </div><!-- /.container -->

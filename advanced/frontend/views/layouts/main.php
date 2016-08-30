@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Nav;
@@ -39,12 +40,28 @@ AppAsset::register($this);
         ],
     ]);
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Регистрация', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Регистрация', 'url' => ['/signup']];
+        $menuItems[] = ['label' => 'Вход', 'url' => ['/login']];
     } else {
+        $session = Yii::$app->session;
+        $session->open();
+        if (isset($_SESSION['cart.qty']) ) {
+            $qty = (int)$_SESSION['cart.qty'];
+        } else {
+            $qty = 0;
+        }
+        $cartName = !$qty ? 'Корзина' : 'Корзина(' . $qty . ')';
+        $menuItems[] = [
+            'label' => $cartName,
+            'url' => ['#'],
+            'linkOptions' => [
+                'onclick' => 'return getCart()',
+                'id' => 'navbar-cart',
+            ],
+        ];
         $menuItems[] = [
             'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/site/logout'],
+            'url' => ['/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
     }
@@ -55,24 +72,32 @@ AppAsset::register($this);
     NavBar::end();
 
     ?>
-    <div class="container">
+    <div class="container<?= isset($this->params['fluid']) && $this->params['fluid'] ? '-fluid' : '' ?>">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+        <?= $content ?>
 
     </div>
 </div>
 
-<?= $content ?>
-
-<!-- /.container -->
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; EMTOL <?= date('Y') ?></p>
     </div>
 </footer>
-
+<?php
+Modal::begin([
+    'header' => '<h2>Корзина</h2>',
+    'size' => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button> 
+                <button type="button" class="btn btn-primary">Оформить заказ</button>
+                <button type="button" class="btn btn-danger" onClick = "clearCart()">Очистить корзину</button>',
+    'id' => 'cart-modal',
+]);
+Modal::end();
+?>
 <?php $this->endBody() ?>
 </body>
 </html>
