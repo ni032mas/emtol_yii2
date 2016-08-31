@@ -82,6 +82,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Objreservation::className(), ['id' => 'objreservation_id']);
     }
+    
 
     public function getObjreservationList()
     {
@@ -98,6 +99,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
         $objreservation = $this->objreservation;
         return $objreservation ? $objreservation->name : '';
     }
+    
 
     public function getDateBegin() {
         return $this->date_begin;

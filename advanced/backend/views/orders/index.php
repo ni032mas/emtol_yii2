@@ -15,29 +15,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?=
-    GridView::widget([
+    <p>
+        <?= Html::a('Создать заказ', ['create'], ['class' => 'btn btn-success']) ?>
+    </p>
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
+
             'id',
-            [
-                'attribute' => 'objreservation_id',
-                'label' => 'Экскурсия',
-                'format' => 'text', // Возможные варианты: raw, html
-                'content' => function ($data) {
-                    return $data->getObjreservationName();
-                }
-            ],
-            [
-                'attribute' => 'reservationinfo_id',
-                'label' => 'Дата начала',
-                'format' => 'text', // Возможные варианты: raw, html
-                'content' => function ($data) {
-                    return $data->getReservationinfoDate();
-                }
-            ],
             [
                 'attribute' => 'consumer_id',
                 'label' => 'Заказчик',
@@ -46,35 +33,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $data->getConsumerName();
                 }
             ],
-            [
-                'attribute' => 'reserved_amount',
-                'label' => 'Количество мест',
-                'format' => 'text', // Возможные варианты: raw, html
-            ],
-            [
-                'attribute' => 'comment',
-                'label' => 'Комментарий к заказу',
-                'format' => 'text', // Возможные варианты: raw, html
-            ],
-            [
-                'attribute' => 'paid',
-                'label' => 'Оплачено',
-                'format' => 'text', // Возможные варианты: raw, html
-            ],
-            [
-                'label' => 'Информация о дате',
-                'format' => 'raw',
-                'value' => function ($data) {
-                    return Html::a('Перейти', $data->getUrlReservationInfo(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
-                }
-            ],
-            [
-                'label' => 'Ссылка на экскурсию',
-                'format' => 'raw',
-                'value' => function ($data) {
-                    return Html::a('Перейти', $data->getUrlObjreservation(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
-                }
-            ],
+            'qty',
+            'sum',
+            'paid',
             [
                 'attribute' => 'order_status_id',
                 'label' => 'Статус',
@@ -87,15 +48,27 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 'filter' => backend\models\Orders::getOrderStatusList()
             ],
-            // 'comment:ntext',
-            // 'created_at',
-            // 'updated_at',
+            'comment:ntext',
             [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update}'
+                'attribute' => 'created_at',
+                'label' => 'Создано',
+                'format' => ['date', 'dd/MM/Y HH:mm:ss'], // Доступные модификаторы - date:datetime:time
+                'headerOptions' => ['width' => '200'],
             ],
-        ],
-    ]);
-    ?>
+            [
+                'attribute' => 'updated_at',
+                'format' => ['date', 'dd/MM/Y HH:mm:ss'],
+                'options' => ['width' => '200']
+            ],
+            [
+                'label' => 'Содержимое',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::a('Перейти', $data->getUrlReservationInfo(), ['title' => 'Смелей вперед!', 'target' => '_blank']);
+                }
+            ],
 
+            ['class' => 'yii\grid\ActionColumn'],
+        ],
+    ]); ?>
 </div>

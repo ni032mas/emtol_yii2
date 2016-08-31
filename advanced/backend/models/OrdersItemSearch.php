@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Orders;
+use backend\models\OrdersItem;
 
 /**
- * OrdersSearch represents the model behind the search form about `backend\models\Orders`.
+ * OrdersItemSearch represents the model behind the search form about `backend\models\OrdersItem`.
  */
-class OrdersSearch extends Orders
+class OrdersItemSearch extends OrdersItem
 {
     /**
      * @inheritdoc
@@ -18,9 +18,8 @@ class OrdersSearch extends Orders
     public function rules()
     {
         return [
-            [['id', 'consumer_id', 'qty', 'order_status_id', 'created_at', 'updated_at'], 'integer'],
-            [['sum', 'paid'], 'number'],
-            [['comment'], 'safe'],
+            [['id', 'order_id', 'reservationinfo_id', 'qty_item', 'created_at', 'updated_at'], 'integer'],
+            [['price', 'sum_item'], 'number'],
         ];
     }
 
@@ -42,9 +41,7 @@ class OrdersSearch extends Orders
      */
     public function search($params)
     {
-        $query = Orders::find();
-
-        // add conditions that should always apply here
+        $query = OrdersItem::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -61,16 +58,14 @@ class OrdersSearch extends Orders
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'consumer_id' => $this->consumer_id,
-            'qty' => $this->qty,
-            'sum' => $this->sum,
-            'paid' => $this->paid,
-            'order_status_id' => $this->order_status_id,
+            'order_id' => $this->order_id,
+            'reservationinfo_id' => $this->reservationinfo_id,
+            'price' => $this->price,
+            'qty_item' => $this->qty_item,
+            'sum_item' => $this->sum_item,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
-
-        $query->andFilterWhere(['like', 'comment', $this->comment]);
 
         return $dataProvider;
     }

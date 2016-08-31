@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Orders */
@@ -13,45 +12,24 @@ use yii\widgets\DetailView;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?=
-    DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            [
-                'label' => 'Экскурсия',
-                'attribute' => 'objreservation_id',
-                'value' => $model->getObjreservationName(),
-            ],
-            [
-                'attribute' => 'reservationinfo_id',
-                'value' => $model->getReservationinfoDate(),
-            ],
-            [
-                'attribute' => 'consumer_id',
-                'value' => $model->getConsumerName(),
-            ],
-            'reserved_amount',
-            'paid',
-            'comment:ntext',
-            [
-                'attribute' => 'updated_at',
-                'format' => ['date', 'dd.MM.Y HH:mm:ss'],
-                'options' => ['width' => '200']
-            ],
-            [
-                'attribute' => 'created_at',
-                'format' => ['date', 'dd.MM.Y HH:mm:ss'],
-                'options' => ['width' => '200']
-            ],
-        ],
-    ])
-    ?>
-    
-    <?= $form->field($model, 'order_status_id')->dropDownList($model->getOrderStatusList()) ?>
+    <?= $form->field($model, 'consumer_id')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'qty')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'sum')->textInput() ?>
+
+    <?= $form->field($model, 'paid')->textInput() ?>
+
+    <?= $form->field($model, 'order_status_id')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'comment')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'created_at')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'updated_at')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Добавить' : 'Изменить', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

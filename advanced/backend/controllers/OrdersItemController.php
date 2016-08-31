@@ -3,16 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Orders;
-use backend\models\OrdersSearch;
+use backend\models\OrdersItem;
+use backend\models\OrdersItemSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * OrdersController implements the CRUD actions for Orders model.
+ * OrdersItemController implements the CRUD actions for OrdersItem model.
  */
-class OrdersController extends Controller
+class OrdersItemController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class OrdersController extends Controller
     }
 
     /**
-     * Lists all Orders models.
+     * Lists all OrdersItem models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new OrdersSearch();
+        $searchModel = new OrdersItemSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -44,8 +44,19 @@ class OrdersController extends Controller
         ]);
     }
 
+    public function actionItems($order_id)
+    {
+        $searchModel = new OrdersItemSearch();
+        $dataProvider = $searchModel->search([$searchModel->formName() => ['order_id' => $order_id]]);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     /**
-     * Displays a single Orders model.
+     * Displays a single OrdersItem model.
      * @param string $id
      * @return mixed
      */
@@ -57,13 +68,13 @@ class OrdersController extends Controller
     }
 
     /**
-     * Creates a new Orders model.
+     * Creates a new OrdersItem model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Orders();
+        $model = new OrdersItem();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +86,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Updates an existing Orders model.
+     * Updates an existing OrdersItem model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param string $id
      * @return mixed
@@ -94,7 +105,7 @@ class OrdersController extends Controller
     }
 
     /**
-     * Deletes an existing Orders model.
+     * Deletes an existing OrdersItem model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param string $id
      * @return mixed
@@ -107,15 +118,15 @@ class OrdersController extends Controller
     }
 
     /**
-     * Finds the Orders model based on its primary key value.
+     * Finds the OrdersItem model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param string $id
-     * @return Orders the loaded model
+     * @return OrdersItem the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Orders::findOne($id)) !== null) {
+        if (($model = OrdersItem::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
