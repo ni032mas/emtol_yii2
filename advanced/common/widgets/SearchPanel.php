@@ -3,7 +3,7 @@
 namespace common\widgets;
 
 use DateTime;
-use frontend\models\Searchfree;
+use frontend\models\Tour;
 use frontend\models\Tag;
 use yii\helpers\ArrayHelper;
 
@@ -14,7 +14,7 @@ class SearchPanel extends \yii\base\Widget
 
     public function run()
     {
-        $model = new Searchfree();
+        $model = new Tour();
         $data = ArrayHelper::getColumn(Tag::find()->asArray()->all(), 'name');
         return $this->render('search-panel',
             [

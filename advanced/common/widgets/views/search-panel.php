@@ -9,7 +9,7 @@ use yii\helpers\Html;
         <?php
         $form = ActiveForm::begin([
             'method' => 'post',
-            'action' => ['searchfreereservationinfo/index'],
+            'action' => ['tour/index'],
             'options' => [
                 'class' => 'form-inline search-panel'
             ]]);

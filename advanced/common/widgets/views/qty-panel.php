@@ -4,9 +4,10 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 ?>
-<div class="product product-qty btn-group input-group">
-        <span class="input-group-btn qtyMinus">
-            <button id="qtyMinus" class="btn btn-primary qtyMinus" type="button">
+<div class="<?= $groupClass ?> btn-group input-group">
+        <span class="input-group-btn <?= $qtyMinus ?>">
+            <button id="<?= $qtyMinus ?>" class="btn btn-primary qtyMinus qtyPlusMinus" data-id="<?= $id ?>"
+                    type="button">
                 -
             </button>
         </span>
@@ -16,13 +17,13 @@ use yii\helpers\Html;
         'class' => 'input form-control input-text qty',
         'type' => 'search',
         'data-placeholder' => '0',
-        'value' => '1',
+        'value' => $qty,
         'name' => 'keyword',
     ]);
     ?>
-<!--    <input name="keyword" type="search" class="input form-control input-text qty" id="qtyField" data-placeholder="0">-->
-        <span class="input-group-btn qtyPlus">
-            <button id="qtyPlus" class="btn btn-primary qtyPlus" type="button">
+    <span class="input-group-btn <?= $qtyPlus ?>">
+            <button id="<?= $qtyPlus ?>" class="btn btn-primary qtyPlus qtyPlusMinus" data-id="<?= $id ?>"
+                    type="button">
                 +
             </button>
         </span>

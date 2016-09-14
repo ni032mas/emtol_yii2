@@ -1,4 +1,5 @@
-<?php use yii\helpers\Url;
+<?php use common\widgets\QtyPanel;
+use yii\helpers\Url;
 
 if (!empty($session['cart'])) : ?>
     <div class="table-responsive">
@@ -14,8 +15,19 @@ if (!empty($session['cart'])) : ?>
             <tbody>
             <?php foreach ($session['cart'] as $id => $item): ?>
                 <tr>
-                    <td><a href="<?= Url::to(['/tour/item', 'id' => $id]) ?>"><?= $item['name'] ?></a></td>
-                    <td><?= $item['qty'] ?></td>
+                    <td>
+                        <a href="<?= Url::to(['/tour/item', 'id' => $id]) ?>"><?= $item['name'] ?></a>
+                    </td>
+                    <td><?php
+                        echo QtyPanel::widget([
+                            'id' => $id,
+                            'qty' => $item['qty'],
+                            'groupClass' => 'product cart-product-qty',
+                            'qtyMinus' => 'qtyMinus',
+                            'qtyPlus' => 'qtyPlus',
+                        ]);
+                        ?>
+                    </td>
                     <td><?= $item['price'] ?></td>
                     <td><span class="glyphicon glyphicon-remove text-danger del-item-cart" data-id="<?= $id ?>"
                               aria-hidden="true"></span></td>

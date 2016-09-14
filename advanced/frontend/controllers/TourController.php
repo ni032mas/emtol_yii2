@@ -9,12 +9,12 @@ use Yii;
 use yii\data\Pagination;
 use yii\web\Controller;
 
-class SearchfreereservationinfoController extends Controller
+class TourController extends Controller
 {
     public function actionIndex($sort = 'desc', $dateBegin = null)
     {
-        if (Yii::$app->request->post('Searchfree')['date_begin']) {
-            $dateBegin = Yii::$app->request->post('Searchfree')['date_begin'];
+        if (Yii::$app->request->post('Tour')['date_begin']) {
+            $dateBegin = Yii::$app->request->post('Tour')['date_begin'];
         }
 
 //        if ($sort == 'desc') {
@@ -62,8 +62,8 @@ class SearchfreereservationinfoController extends Controller
 
     public function actionView($dateBegin = null, $id = null)
     {
-        if (Yii::$app->request->post('Searchfree')['date_begin']) {
-            $dateBegin = Yii::$app->request->post('Searchfree')['date_begin'];
+        if (Yii::$app->request->post('Tour')['date_begin']) {
+            $dateBegin = Yii::$app->request->post('Tour')['date_begin'];
         }
         $modelPrice = new SelectDateTimePrice();
         $models = Reservationinfo::find()->select('reservationinfo.*')
@@ -77,6 +77,18 @@ class SearchfreereservationinfoController extends Controller
             'dateBegin' => $dateBegin,
             'id' => $id,
             'modelPrice' => $modelPrice,
+        ]);
+    }
+
+    public function actionItem($id = null)
+    {
+        $model = Reservationinfo::find()->select('reservationinfo.*')
+            ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+            ->where(['=', 'reservationinfo.id', $id])
+            ->one();
+
+        return $this->render('item', [
+            'model' => $model,
         ]);
     }
 }

@@ -9,6 +9,9 @@ use yii\widgets\ActiveForm;
 use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
 
+$this->title = $models[0]->objreservation->name;
+$this->params['breadcrumbs'][] = ['label' => 'Экскурсии', 'url' => ['/tour/']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
 
@@ -58,7 +61,12 @@ use yii\widgets\Pjax;
                                 'class' => 'form-control'
                             ]
                         );
-                        echo QtyPanel::widget();
+                        echo QtyPanel::widget([
+                            'qty' => 1,
+                            'groupClass' => 'product product-qty',
+                            'qtyMinus' => 'qtyMinus',
+                            'qtyPlus' => 'qtyPlus',
+                        ]);
                         ?>
                         <a class="btn btn-success add-to-cart">Купить</a>
                     </div><!-- /.col-sm-10 -->

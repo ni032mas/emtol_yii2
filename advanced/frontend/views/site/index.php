@@ -15,12 +15,12 @@ $this->params['fluid'] = true;
 ?>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" data-pause="false">
     <div class="container">
-        <div class="searchfreereservationinfo-form">
+        <div class="tour-form">
             <?php
             NavBar::begin();
             $form = ActiveForm::begin([
                 'method' => 'post',
-                'action' => ['/searchfreereservationinfo/index'],
+                'action' => ['/tour/index'],
                 'options' => [
                     'class' => 'form-inline'
                 ]]);

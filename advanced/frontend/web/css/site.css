@@ -94,7 +94,7 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
-#searchfree-date_begin {
+#tour-date_begin {
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -105,7 +105,7 @@ a.desc:after {
     padding: 6px 24px 6px 12px;
 }
 
-.field-searchfree-date_begin .control-label {
+.field-tour-date_begin .control-label {
     display: block;
 }
 
@@ -126,14 +126,14 @@ a.desc:after {
     color: #fff !important;
 }
 
-.searchfreereservationinfo-form {
+.tour-form {
     align-content: center;
     position: absolute;
     z-index: 999;
     top: 70px;
 }
 
-.searchfreereservationinfo-form .container {
+.tour-form .container {
     width: auto;
 }
 

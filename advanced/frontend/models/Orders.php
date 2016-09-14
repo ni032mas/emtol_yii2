@@ -1,29 +1,28 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "orders".
  *
  * @property string $id
- * @property string $objreservation_id
  * @property string $consumer_id
- * @property string $reserved_amount
- * @property integer $paid
+ * @property string $qty
+ * @property double $sum
+ * @property double $paid
+ * @property string $order_status_id
  * @property string $comment
  * @property string $created_at
  * @property string $updated_at
- *
- * @property Objreservation $objReservation
- * @property Consumers $consumer
  */
 class Orders extends \yii\db\ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
@@ -38,29 +37,10 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['objreservation_id', 'reservationinfo_id', 'consumer_id', 'reserved_amount', 'paid', 'order_status_id', 'created_at', 'updated_at'], 'required'],
-            [['objreservation_id', 'reservationinfo_id', 'consumer_id', 'reserved_amount', 'order_status_id', 'created_at', 'updated_at'], 'integer'],
-            [['paid'], 'number'],
-            [['comment'], 'string']
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'objreservation_id' => 'Obj Reservation ID',
-            'reservationinfo_id' => 'Дата начала',
-            'consumer_id' => 'Клиент',
-            'reserved_amount' => 'Количество',
-            'paid' => 'Оплачено',
-            'order_status_id' => 'Статус',
-            'comment' => 'Комментарий',
-            'created_at' => 'Создано',
-            'updated_at' => 'Изменено',
+            [['consumer_id', 'qty', 'sum', 'paid', 'order_status_id', 'created_at', 'updated_at'], 'required'],
+            [['consumer_id', 'qty', 'order_status_id', 'created_at', 'updated_at'], 'integer'],
+            [['sum', 'paid'], 'number'],
+            [['comment'], 'string'],
         ];
     }
 
@@ -72,22 +52,23 @@ class Orders extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @inheritdoc
      */
-    public function getObjReservation()
+    public function attributeLabels()
     {
-        return $this->hasOne(Objreservation::className(), ['id' => 'objreservation_id']);
+        return [
+            'id' => 'ID',
+            'consumer_id' => 'Consumer ID',
+            'qty' => 'Количество',
+            'sum' => 'Сумма',
+            'paid' => 'Оплачено',
+            'order_status_id' => 'Order Status ID',
+            'comment' => 'Комментарий',
+            'created_at' => 'Создано',
+            'updated_at' => 'Обновлено',
+        ];
     }
 
-    public function getObjreservationName()
-    {
-        $objreservation = $this->objReservation;
-        return $objreservation ? $objreservation->id . ': ' . $objreservation->name : '';
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getConsumer()
     {
         return $this->hasOne(Consumers::className(), ['id' => 'consumer_id']);
@@ -106,10 +87,10 @@ class Orders extends \yii\db\ActiveRecord
 
     public function getOrderStatusList()
     {
-        $location = OrdersStatus::find()
+        $orderStatus = OrdersStatus::find()
             ->all();
 
-        return ArrayHelper::map($location, 'id', 'name');
+        return ArrayHelper::map($orderStatus, 'id', 'name');
     }
 
     public function getOrderStatusName()
@@ -118,26 +99,14 @@ class Orders extends \yii\db\ActiveRecord
         return $orderStatus ? $orderStatus->name : '';
     }
 
-
-    public function getReservationinfo()
+    public function getOrdersItem()
     {
-        return $this->hasOne(Reservationinfo::className(), ['id' => 'reservationinfo_id']);
+        return $this->hasMany(OrdersItem::className(), ['order_id' => 'id']);
     }
 
-    public function getReservationinfoDate()
+    public function getUrlReservationInfo()
     {
-        $reservationinfo = $this->reservationinfo;
-        return $reservationinfo ? $reservationinfo->date_begin : '';
+        $order_id = $this->id;
+        return \Yii::$app->urlManager->createUrl(['orders-item/items', 'order_id' => $order_id]);
     }
-
-    public function getUrlReservationInfo() {
-        $objreservation_id = $this->id;
-        return \Yii::$app->urlManager->createUrl(['reservationinfo/view', 'id' => $objreservation_id]);
-    }
-
-    public function getUrlObjreservation() {
-        $objreservation_id = $this->id;
-        return \Yii::$app->urlManager->createUrl(['objreservation/view', 'id' => $objreservation_id]);
-    }
-
 }

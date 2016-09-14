@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use kartik\nav\NavX;
 use yii\bootstrap\Modal;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -45,7 +46,7 @@ AppAsset::register($this);
     } else {
         $session = Yii::$app->session;
         $session->open();
-        if (isset($_SESSION['cart.qty']) ) {
+        if (isset($_SESSION['cart.qty'])) {
             $qty = (int)$_SESSION['cart.qty'];
         } else {
             $qty = 0;
@@ -59,16 +60,32 @@ AppAsset::register($this);
                 'id' => 'navbar-cart',
             ],
         ];
-        $menuItems[] = [
-            'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
-            'url' => ['/logout'],
-            'linkOptions' => ['data-method' => 'post']
-        ];
+//        $menuItems[] = [
+//            'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
+//            'url' => ['/logout'],
+//            'linkOptions' => ['data-method' => 'post']
+//        ];
+        $menuItems[] =
+            ['label' => Yii::$app->user->identity->username,
+                'items' => [
+                    ['label' => 'Личный кабинет', 'url' => '/my-dashboard/orders'],
+                    ['label' => 'Заказы', 'url' => '#'],
+                    '<li class="divider"></li>',
+                    [
+                        'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
+                        'url' => ['/logout'],
+                        'linkOptions' => ['data-method' => 'post']
+                    ],
+                ]];
     }
-    echo Nav::widget([
+    echo NavX::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
+    //    echo Nav::widget([
+    //        'options' => ['class' => 'navbar-nav navbar-right'],
+    //        'items' => $menuItems,
+    //    ]);
     NavBar::end();
 
     ?>
@@ -92,9 +109,16 @@ Modal::begin([
     'header' => '<h2>Корзина</h2>',
     'size' => 'modal-lg',
     'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button> 
-                <button type="button" class="btn btn-primary">Оформить заказ</button>
+                <a href="' . Url::to(['cart/view']) . '" class="btn btn-primary">Оформить заказ</a>
                 <button type="button" class="btn btn-danger" onClick = "clearCart()">Очистить корзину</button>',
     'id' => 'cart-modal',
+]);
+Modal::end();
+Modal::begin([
+    'header' => '<h2>Заказ</h2>',
+    'size' => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>',
+    'id' => 'orders-item-modal',
 ]);
 Modal::end();
 ?>

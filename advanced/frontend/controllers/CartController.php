@@ -10,6 +10,7 @@ namespace frontend\controllers;
 
 
 use frontend\models\Cart;
+use frontend\models\Orders;
 use frontend\models\Reservationinfo;
 use Yii;
 use yii\web\Controller;
@@ -61,6 +62,33 @@ class CartController extends Controller
         $session->open();
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));
+    }
+
+    public function actionView()
+    {
+        $session = Yii::$app->session;
+        $session->open();
+        $order = new Orders();
+        $this->view->title = 'Корзина';
+        return $this->render('view', compact('session', 'order'));
+    }
+
+    public function actionAddQty()
+    {
+        $id = Yii::$app->request->get('id');
+        $qty = Yii::$app->request->get('qty');
+        $qty = !$qty ? 1 : $qty;
+        $reservationinfo = Reservationinfo::find()->select('reservationinfo.*')
+            ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+            ->where(['=', 'reservationinfo.id', $id])
+            ->one();
+        $session = Yii::$app->session;
+        $session->open();
+        $card = new Cart();
+        $card->addToCart($reservationinfo, $qty);
+        $this->view->title = 'Корзина';
+        $order = new Orders();
+        return $this->render('view', compact('session', 'order'));
     }
 
 }

@@ -3,7 +3,7 @@ namespace frontend\controllers;
 
 use frontend\models\Objreservation;
 use frontend\models\Tag;
-use frontend\models\Searchfree;
+use frontend\models\Tour;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -76,7 +76,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $model = new Searchfree();
+        $model = new Tour();
         $objreservation = new Objreservation();
         $objreservation1 = Objreservation::find()->all();
         $freeObj = $objreservation->getFreeRandomObjreservation();

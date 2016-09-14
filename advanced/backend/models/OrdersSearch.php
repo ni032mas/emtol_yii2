@@ -2,6 +2,7 @@
 
 namespace backend\models;
 
+use common\models\User;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -42,7 +43,14 @@ class OrdersSearch extends Orders
      */
     public function search($params)
     {
-        $query = Orders::find();
+        $query = Orders::find()->select('orders.*')
+            ->leftJoin('orders_item', 'orders_item.order_id = orders.id')
+            ->leftJoin('reservationinfo', 'reservationinfo.id = orders_item.reservationinfo_id')
+            ->leftJoin('objreservation', 'objreservation.id = reservationinfo.objreservation_id')
+            ->leftJoin('customers', 'objreservation.customer_id = customers.id')
+            ->leftJoin('user', 'customers.user_id = user.id')
+            ->where(['user.id' => Yii::$app->user->id]);
+//        $query = Orders::find();
 
         // add conditions that should always apply here
 

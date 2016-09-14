@@ -1,6 +1,10 @@
 <?php
 namespace common\models;
 
+use backend\models\Customers;
+use backend\models\Objreservation;
+use backend\models\Orders;
+use backend\models\OrdersItem;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -222,17 +226,31 @@ class User extends ActiveRecord implements IdentityInterface
     }
     
     public function getObjreservation() {
-        return $this->hasMany(\backend\models\Objreservation::className(), ['customer_id' => 'id'])
+        return $this->hasMany(Objreservation::className(), ['customer_id' => 'id'])
             ->viaTable('customers', ['user_id' => 'id']);
     }
     
     public function getCustomer() {
-        return $this->hasMany(\backend\models\Customers::className(), ['user_id' => 'id']);
+        return $this->hasMany(Customers::className(), ['user_id' => 'id']);
+    }
+
+    public function getOrders1() {
+        return $this->hasMany(Orders::className(), ['objreservation_id' => 'id'])
+            ->viaTable('objreservation', ['customer_id' => 'id'])->viaTable('customers', ['user_id' => 'id']);
+    }
+
+    public function getOrdersItem() {
+        return $this->hasMany(OrdersItem::className(), ['reservationinfo_id' => 'id'])
+            ->viaTable('reservationinfo', ['objreservation_id' => 'id'])
+            ->viaTable('objreservation', ['customer_id' => 'id'])
+            ->viaTable('customers', ['user_id' => 'id']);
     }
 
     public function getOrders() {
-        return $this->hasMany(\backend\models\Orders::className(), ['objreservation_id' => 'id'])
-            ->viaTable('objreservation', ['customer_id' => 'id'])->viaTable('customers', ['user_id' => 'id']);
+        return $this->hasMany(Orders::className(), ['id' => 'orders_id'])
+            ->viaTable('orders_item', ['objreservation_id' => 'id'])
+            ->viaTable('objreservation', ['customer_id' => 'id'])
+            ->viaTable('customers', ['user_id' => 'id']);
     }
 
 

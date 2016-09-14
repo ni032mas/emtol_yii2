@@ -4,6 +4,8 @@ namespace backend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -42,7 +44,8 @@ class Orders extends \yii\db\ActiveRecord
         ];
     }
 
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             TimestampBehavior::className(),
         ];
@@ -84,10 +87,10 @@ class Orders extends \yii\db\ActiveRecord
 
     public function getOrderStatusList()
     {
-        $location = OrdersStatus::find()
+        $orderStatus = OrdersStatus::find()
             ->all();
 
-        return ArrayHelper::map($location, 'id', 'name');
+        return ArrayHelper::map($orderStatus, 'id', 'name');
     }
 
     public function getOrderStatusName()
@@ -96,9 +99,9 @@ class Orders extends \yii\db\ActiveRecord
         return $orderStatus ? $orderStatus->name : '';
     }
 
-    public function getOrders()
+    public function getOrdersItem()
     {
-        return $this->hasOne(Orders::className(), ['id' => 'order_id']);
+        return $this->hasMany(OrdersItem::className(), ['order_id' => 'id']);
     }
 
     public function getUrlReservationInfo()

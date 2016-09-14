@@ -9,6 +9,7 @@ use yii\widgets\Pjax;
 
 
 //$this->params['breadcrumbs'][] = ['label' => 'Главная', 'url' => ['/']];
+$this->title = 'Экскурсии';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="reservationobj-free">
@@ -40,10 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     </button>
                     <ul class="dropdown-menu">
                         <li><a id="<?= $sort == 'desc' ? 'btn-desc-enable' : 'btn-desc' ?>"
-                               href="<?= '/searchfreereservationinfo/index?sort=desc&dateBegin=' . $dateBegin ?>">Убывание</a>
+                               href="<?= '/tour/index?sort=desc&dateBegin=' . $dateBegin ?>">Убывание</a>
                         </li>
                         <li><a id="<?= $sort == 'asc' ? 'btn-asc-enable' : 'btn-asc' ?>"
-                               href="<?= '/searchfreereservationinfo/index?sort=asc&dateBegin=' . $dateBegin ?>">Возрастание</a>
+                               href="<?= '/tour/index?sort=asc&dateBegin=' . $dateBegin ?>">Возрастание</a>
                         </li>
                     </ul>
                 </div>
@@ -53,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $js = <<<JS
         $('#btn-desc').on('click', function() {
             $.ajax({
-                url: '/searchfreereservationinfo/index',
+                url: '/tour/index',
                 data: {sort: 'desc'},
                 success: function(res) {
                   console.log(res);
@@ -108,7 +109,7 @@ JS;
                     </div><!-- /.col-sm-8 -->
                     <div class="col-sm-4">
                         <h1>
-                            <a href="<?= Url::to(['/searchfreereservationinfo/view', 'id' => $model->id, 'datebegin' => $dateBegin]) ?>">
+                            <a href="<?= Url::to(['/tour/view', 'id' => $model->id, 'datebegin' => $dateBegin]) ?>">
                                 <?= $model->name ?>
                             </a>
                         </h1>

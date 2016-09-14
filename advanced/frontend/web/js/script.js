@@ -24,17 +24,24 @@ $(document).ready(function () {
 });
 
 //Корзина
-function showCart(cart) {
+function refreshButtonCart(cart) {
     var qty = $(cart).find('#qty-modal').text();
     if (qty > 0) {
         $('#navbar-cart').text('Корзина(' + qty + ')');
     } else {
         $('#navbar-cart').text('Корзина');
     }
+}
 
+function showOrdersItem(ordersItem) {
+    $('#orders-item-modal').find('.modal-body').html(ordersItem);
+    $('#orders-item-modal').modal();
+}
+
+function showCart(cart) {
+    refreshButtonCart(cart);
     $('#cart-modal').find('.modal-body').html(cart);
     $('#cart-modal').modal();
-
 }
 
 function getCart() {
@@ -85,10 +92,37 @@ $('#cart-modal .modal-body').on('click', '.del-item-cart', function () {
 
 });
 
+$('.open-order-item').on('click', function (e) {
+    e.preventDefault;
+    var ordersId = $(this).data('id');
+    $.ajax({
+        url: '/orders-item/view',
+        data: {
+            ordersId: ordersId
+        },
+        type: 'GET',
+        success: function (res) {
+            if (!res) {alert("Ошибка!")}
+            showOrdersItem(res);
+        }
+    })
+});
+
 $('.add-to-cart').on('click', function (e) {
     e.preventDefault;
     var reservationInfoId = $("#reservationinfo-id").val(),
         qty = $("#qtyField").val();
+    addToCart(reservationInfoId, qty);
+});
+
+$('.add-to-cart-item').on('click', function (e) {
+    e.preventDefault;
+    var reservationInfoId = $(this).data('id'),
+        qty = $("#qtyField").val();
+    addToCart(reservationInfoId, qty);
+});
+
+function addToCart(reservationInfoId, qty){
     $.ajax({
         url: '/cart/add',
         data: {
@@ -104,7 +138,31 @@ $('.add-to-cart').on('click', function (e) {
             alert("Error!");
         }
     });
-});
+}
+
+
+// todo Уменьшение/увеличение количества товара в корзине
+// $('.qtyPlusMinus').on('click', function (e) {
+//     e.preventDefault;
+//     var id = $(this).data('id'),
+//         qty = $("#qtyField").val();
+//     $.ajax({
+//         url: '/cart/add-qty',
+//         data: {
+//             id: id,
+//             qty: qty
+//         },
+//         type: 'GET',
+//         success: function (res) {
+//             if (!res) alert("Ошибка!");
+//             refreshButtonCart(res);
+//         },
+//         error: function () {
+//             alert("Error!");
+//         }
+//     });
+// });
+
 $('.form-buy').submit(false);
 // jQuery(function($) {
 //     $("#qtyField").focus(function() { // удаление текста в input при фокусе
