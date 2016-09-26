@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -37,7 +38,7 @@ class Orders extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['consumer_id', 'qty', 'sum', 'paid', 'order_status_id', 'created_at', 'updated_at'], 'required'],
+            [['consumer_id', 'qty', 'sum', 'order_status_id'], 'required'],
             [['consumer_id', 'qty', 'order_status_id', 'created_at', 'updated_at'], 'integer'],
             [['sum', 'paid'], 'number'],
             [['comment'], 'string'],
@@ -47,7 +48,15 @@ class Orders extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                // if you're using datetime instead of UNIX timestamp:
+                // 'value' => new Expression('NOW()'),
+            ],
         ];
     }
 

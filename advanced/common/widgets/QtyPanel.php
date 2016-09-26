@@ -16,8 +16,11 @@ class QtyPanel extends Widget
     public $id;
     public $qty;
     public $groupClass;
-    public $qtyMinus;
-    public $qtyPlus;
+    public $qtyMinusId;
+    public $qtyMinusClass;
+    public $qtyPlusId;
+    public $qtyPlusClass;
+    public $qtyFieldClassCartView;
 
     public function run()
     {
@@ -28,8 +31,11 @@ class QtyPanel extends Widget
                 'id' => $this->id,
                 'qty' => $this->qty,
                 'groupClass' => $this->groupClass,
-                'qtyMinus' => $this->qtyMinus,
-                'qtyPlus' => $this->qtyPlus,
+                'qtyMinusId' => $this->qtyMinusId,
+                'qtyMinusClass' => $this->qtyMinusClass,
+                'qtyPlusId' => $this->qtyPlusId,
+                'qtyPlusClass' => $this->qtyPlusClass,
+                'qtyFieldClassCartView' => $this->qtyFieldClassCartView,
             ]);
     }
 

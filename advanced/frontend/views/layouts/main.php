@@ -69,7 +69,7 @@ AppAsset::register($this);
             ['label' => Yii::$app->user->identity->username,
                 'items' => [
                     ['label' => 'Личный кабинет', 'url' => '/my-dashboard/orders'],
-                    ['label' => 'Заказы', 'url' => '#'],
+                    ['label' => 'Заказы', 'url' => '/my-dashboard/orders'],
                     '<li class="divider"></li>',
                     [
                         'label' => 'Выход (' . Yii::$app->user->identity->username . ')',
@@ -119,6 +119,15 @@ Modal::begin([
     'size' => 'modal-lg',
     'footer' => '<button type="button" class="btn btn-danger" data-dismiss="modal">Закрыть</button>',
     'id' => 'orders-item-modal',
+]);
+Modal::end();
+
+Modal::begin([
+    'header' => '<h2>Подверждение</h2>',
+    'size' => 'modal-sm',
+    'footer' => '<a href="' . Url::to(['/orders/cancel']) . '" data-id="" class="btn btn-danger btn-cancel-order">Отменить заказ</a>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>',
+    'id' => 'orders-cancel-modal',
 ]);
 Modal::end();
 ?>

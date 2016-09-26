@@ -62,8 +62,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             echo QtyPanel::widget([
                                 'qty' => 1,
                                 'groupClass' => 'product product-qty',
-                                'qtyMinus' => 'qtyMinus',
-                                'qtyPlus' => 'qtyPlus',
+                                'qtyMinusId' => 'qtyMinus',
+                                'qtyPlusId' => 'qtyPlus',
                             ]);
                             ?>
                             <a class="btn btn-success add-to-cart-item" data-id="<?= $model->id ?>">Купить</a>

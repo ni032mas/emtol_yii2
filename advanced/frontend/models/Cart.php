@@ -22,31 +22,50 @@ class Cart extends ActiveRecord
         $_SESSION['cart.sum'] = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $reservationinfo->price * $qty : $reservationinfo->price * $qty;
     }
 
-    public function recalc($id)
+    public function addQty($reservationinfo, $qty)
     {
-        if (!isset($_SESSION['cart'][$id])) {
+        if (!isset($_SESSION['cart'][$reservationinfo->id])) {
             return false;
+        } else {
+            $_SESSION['cart'][$reservationinfo->id] =
+                [
+                    'name' => $reservationinfo->objreservation->name,
+                    'qty' => $qty,
+                    'price' => $reservationinfo->price,
+                ];
         }
-        $qtyMinus = $_SESSION['cart'][$id]['qty'];
-        $sumMinus = $_SESSION['cart'][$id]['qty'] * $_SESSION['cart'][$id]['price'];
-        $_SESSION['cart.qty'] -= $qtyMinus;
-        $_SESSION['cart.sum'] -= $sumMinus;
-        unset($_SESSION['cart'][$id]);
+        $this->recalc();
         return true;
     }
 
-    public function addQty($id, $qty)
-    {
-        if (!isset($_SESSION['cart'][$id])) {
+
+    public function recalc() {
+        $sum = 0;
+        $qty = 0;
+        if (!isset($_SESSION['cart'])) {
             return false;
-        } else {
-            $_SESSION['cart'][$id] =
-                [
-                    'qty' => $qty,
-                ];
         }
-        $_SESSION['cart.qty'] = isset($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] + $qty : $qty;
-        $_SESSION['cart.sum'] = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $id * $qty : $id * $qty;
+        foreach ($_SESSION['cart'] as $id => $item) {
+            $sum = $sum + $item['price'] * $item['qty'];
+            $qty = $qty + $item['qty'];
+        }
+        $_SESSION['cart.qty'] = $qty;
+        $_SESSION['cart.sum'] = $sum;
         return true;
     }
+//TODO скорее всего удалить
+//    public function recalc($id)
+//    {
+//        if (!isset($_SESSION['cart'][$id])) {
+//            return false;
+//        }
+//        $qtyMinus = $_SESSION['cart'][$id]['qty'];
+//        $sumMinus = $_SESSION['cart'][$id]['qty'] * $_SESSION['cart'][$id]['price'];
+//        $_SESSION['cart.qty'] -= $qtyMinus;
+//        $_SESSION['cart.sum'] -= $sumMinus;
+//        unset($_SESSION['cart'][$id]);
+//        return true;
+//    }
+
+
 }

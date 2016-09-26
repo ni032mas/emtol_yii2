@@ -51,7 +51,7 @@ class CartController extends Controller
         $session = Yii::$app->session;
         $session->open();
         $cart = new Cart();
-        $cart->recalc($id);
+        $cart->recalc();
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));
     }
@@ -68,9 +68,9 @@ class CartController extends Controller
     {
         $session = Yii::$app->session;
         $session->open();
-        $order = new Orders();
+        $model = new Orders();
         $this->view->title = 'Корзина';
-        return $this->render('view', compact('session', 'order'));
+        return $this->render('view', compact('session', 'model'));
     }
 
     public function actionAddQty()
@@ -85,10 +85,10 @@ class CartController extends Controller
         $session = Yii::$app->session;
         $session->open();
         $card = new Cart();
-        $card->addToCart($reservationinfo, $qty);
+        $card->addQty($reservationinfo, $qty);
         $this->view->title = 'Корзина';
-        $order = new Orders();
-        return $this->render('view', compact('session', 'order'));
+        $model = new Orders();
+        return $this->render('view', compact('session', 'model'));
     }
 
 }

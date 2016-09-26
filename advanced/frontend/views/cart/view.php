@@ -1,4 +1,7 @@
-<?php use common\widgets\QtyPanel;
+<?php use backend\models\Orders;
+use common\widgets\QtyPanel;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 use yii\helpers\Url;
 
 if (!empty($session['cart'])) : ?>
@@ -18,13 +21,17 @@ if (!empty($session['cart'])) : ?>
                     <td>
                         <a href="<?= Url::to(['/tour/item', 'id' => $id]) ?>"><?= $item['name'] ?></a>
                     </td>
-                    <td><?php
+                    <td>
+                        <?php
                         echo QtyPanel::widget([
                             'id' => $id,
                             'qty' => $item['qty'],
                             'groupClass' => 'product cart-product-qty',
-                            'qtyMinus' => 'qtyMinus',
-                            'qtyPlus' => 'qtyPlus',
+                            'qtyMinusId' => 'qtyMinus',
+                            'qtyMinusClass' => 'qtyMinusCartView',
+                            'qtyPlusId' => 'qtyPlus',
+                            'qtyPlusClass' => 'qtyPlusCartView',
+                            'qtyFieldClassCartView' => 'qtyFieldClassCartView',
                         ]);
                         ?>
                     </td>
@@ -43,6 +50,20 @@ if (!empty($session['cart'])) : ?>
             </tr>
             </tbody>
         </table>
+        <?php $form = ActiveForm::begin();
+        $form->action = '/orders/add';
+        if (empty($model)) {
+            $model = new Orders();
+        }
+        ?>
+
+        <?= $form->field($model, 'comment')->textInput(['maxlength' => true])->hint('Введите комментарий') ?>
+
+        <div class="form-group">
+            <?= Html::submitButton('Заказать', ['class' =>'btn pull-right btn-success']) ?>
+        </div>
+        <?php ActiveForm::end(); ?>
+        <a class="btn btn-default pull-right" href="/order/add">Оформить</a>
     </div>
 <?php else: ?>
 

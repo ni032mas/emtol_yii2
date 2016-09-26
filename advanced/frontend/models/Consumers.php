@@ -1,7 +1,8 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
+use common\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 
@@ -32,7 +33,7 @@ class Consumers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'created_at', 'updated_at'], 'required'],
+            [['user_id', 'created_at', 'updated_at', 'first_name', 'last_name'], 'required'],
             [['user_id', 'created_at', 'updated_at'], 'integer']
         ];
     }
@@ -45,6 +46,8 @@ class Consumers extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
+            'first_name' => 'Имя',
+            'last_name' => 'Фамилия',
             'created_at' => 'Создан',
             'updated_at' => 'Изменен',
         ];

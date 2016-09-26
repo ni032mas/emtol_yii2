@@ -5,6 +5,7 @@ namespace frontend\models;
 use DateTime;
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
 use zxbodya\yii2\galleryManager\GalleryBehavior;
 use Imagine\Image\Box;
@@ -30,6 +31,7 @@ class Objreservation extends \yii\db\ActiveRecord
 {
 
     public $price;
+
     /**
      * @inheritdoc
      */
@@ -77,6 +79,15 @@ class Objreservation extends \yii\db\ActiveRecord
         return [
             [
                 'class' => Taggable::className(),
+            ],
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                // if you're using datetime instead of UNIX timestamp:
+                // 'value' => new Expression('NOW()'),
             ],
             Taggable::className(),
             TimestampBehavior::className(),
@@ -208,7 +219,7 @@ class Objreservation extends \yii\db\ActiveRecord
 
     public function getFreeObjreservation()
     {
-        Yii::info(Yii::$app->request->post('Searchfree')['date_begin'],'sdsdsdsdsdsddsd');
+        Yii::info(Yii::$app->request->post('Searchfree')['date_begin'], 'sdsdsdsdsdsddsd');
         return $query = Objreservation::find()->select('objreservation.*')
             ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
             ->where(['>=', 'reservationinfo.date_begin', strtotime(Yii::$app->request->post('Searchfree')['date_begin'])])->all();

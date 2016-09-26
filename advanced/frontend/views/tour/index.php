@@ -50,36 +50,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div><!-- /.row -->
-        <?php
-        $js = <<<JS
-        $('#btn-desc').on('click', function() {
-            $.ajax({
-                url: '/tour/index',
-                data: {sort: 'desc'},
-                success: function(res) {
-                  console.log(res);
-                },
-                error: function() {
-                  alert('Error')
-                }
-            });  
-        });
-        // $('#btn-asc').on('click', function() {
-        //     $.ajax({
-        //         url: '/searchfreereservationinfo/index',
-        //         data: {sort: 'asc'},
-        //         success: function(res) {
-        //           console.log(res);
-        //         },
-        //         error: function() {
-        //           alert('Error')
-        //         }
-        //     });  
-        // });
-
-JS;
-        $this->registerJs($js);
-        ?>
         <div class="row">
             <?php
             foreach ($models as $model) {
@@ -128,9 +98,4 @@ JS;
         </div><!-- /.pag -->
         <?php Pjax::end(); ?>.
     </div><!-- /.col-sm-9 -->
-    <?php
-
-    //    debug($model);
-    debug($dateBegin);
-    ?>
 </div><!-- /.reservationobj-free -->

@@ -22,6 +22,7 @@ return [
                 'tour/<id:\d+>' => 'tour/view',
                 'tour' => 'tour/index',
                 'tour/<action:\w+>' => 'tour/<action>',
+                'orders/cancel/<orderId:\d+>' => 'orders/cancel/<orderId>',
                 '' => 'site/index',
                 '<action>' => 'site/<action>',
             ],

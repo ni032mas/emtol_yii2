@@ -95,9 +95,6 @@ class ObjreservationController extends Controller
     {
         $model = new Objreservation();
         if ($model->load(Yii::$app->request->post())) {
-            $model->created_at = time();
-            $model->updated_at = time();
-            Yii::info('Hello');
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

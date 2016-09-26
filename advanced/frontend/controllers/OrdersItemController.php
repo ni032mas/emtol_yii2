@@ -51,7 +51,7 @@ class OrdersItemController extends Controller
         $ordersItem = OrdersItem::find()->select('orders_item.*')
             ->leftJoin('reservationinfo', 'reservationinfo.id = orders_item.reservationinfo_id')
             ->rightJoin('objreservation', 'objreservation.id = reservationinfo.objreservation_id')
-            ->where(['=', 'orders_item.id', $ordersId])
+            ->where(['=', 'orders_item.order_id', $ordersId])
             ->all();
         $this->layout = false;
         return $this->render('view', compact('ordersItem', 'ordersId'));

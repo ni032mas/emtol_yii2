@@ -10,17 +10,7 @@ $(document).ready(function () {
     $("#ex2").slider({});
     // var slider = new Slider('#ex2', {});
 
-    $("#qtyPlus").click(function () {
-        var n = $(this).closest('.product').find('#qtyField');
-        n.val(Number(n.val()) + 1);
-    });
-    $("#qtyMinus").click(function () {
-        var n = $(this).closest('.product').find('#qtyField');
-        n.val(Number(n.val()) - 1);
-        if (n.val() < 0) {
-            n.val(0);
-        }
-    });
+
 });
 
 //Корзина
@@ -102,10 +92,19 @@ $('.open-order-item').on('click', function (e) {
         },
         type: 'GET',
         success: function (res) {
-            if (!res) {alert("Ошибка!")}
+            if (!res) {
+                alert("Ошибка!")
+            }
             showOrdersItem(res);
         }
     })
+});
+
+$('.cancel-order').on('click', function (e) {
+    var ordersId = $(this).data('id');
+    $('.btn-cancel-order').attr('href', '/orders/cancel/?ordersId=' + ordersId);
+    $('#orders-cancel-modal').find('.modal-body').html('<span>Вы уверены что хотите отменить заказ №' + ordersId + '?</span>');
+    $('#orders-cancel-modal').modal();
 });
 
 $('.add-to-cart').on('click', function (e) {
@@ -122,7 +121,7 @@ $('.add-to-cart-item').on('click', function (e) {
     addToCart(reservationInfoId, qty);
 });
 
-function addToCart(reservationInfoId, qty){
+function addToCart(reservationInfoId, qty) {
     $.ajax({
         url: '/cart/add',
         data: {
@@ -142,58 +141,83 @@ function addToCart(reservationInfoId, qty){
 
 
 // todo Уменьшение/увеличение количества товара в корзине
-// $('.qtyPlusMinus').on('click', function (e) {
+function setQty(id) {
+    var qty = $('#qtyField' + id).val();
+    $.ajax({
+        url: '/cart/add-qty',
+        data: {
+            id: id,
+            qty: qty
+        },
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert("Ошибка!");
+            refreshButtonCart(res);
+        },
+        error: function () {
+            alert("Error!");
+        }
+    });
+}
+$('.qtyFieldClassCartView').on("change keyup input click", function () {
+    var id = $(this).data('id');
+    setQty(id);
+});
+
+// $('.qtyPlusCartView').on("mouseup", function (e) {
 //     e.preventDefault;
-//     var id = $(this).data('id'),
-//         qty = $("#qtyField").val();
-//     $.ajax({
-//         url: '/cart/add-qty',
-//         data: {
-//             id: id,
-//             qty: qty
-//         },
-//         type: 'GET',
-//         success: function (res) {
-//             if (!res) alert("Ошибка!");
-//             refreshButtonCart(res);
-//         },
-//         error: function () {
-//             alert("Error!");
-//         }
-//     });
+//     var id = $('.qtyPlusCartView').data('id');
+//     setQty(id);
+// });
+//
+// $('.qtyMinusCartView').on("mouseup", function (e) {
+//     e.preventDefault;
+//     var id = $('.qtyPlusCartView').data('id');
+//     setQty(id);
 // });
 
-$('.form-buy').submit(false);
-// jQuery(function($) {
-//     $("#qtyField").focus(function() { // удаление текста в input при фокусе
-//         if ( $(this).val() == $(this).attr("data-placeholder") ) {
-//             $(this).val("");
-//             $(this).css("color","#040404");
-//         }
-//     }).blur(function() {
-//         if ( !$(this).val() ) {
-//             $(this).val( $(this).attr("data-placeholder") );
-//             $(this).css("color","#858585");
-//         }
-//     }).focus().blur();
-//     $('#searchFormButton').click(function(){$('form').submit()})
-//     $('form').submit(submitSearchForm)
-//     function submitSearchForm() {
-//         //if($('#searchError').length){ $('#searchError').remove();}
-//         if( !$.trim( $('#qtyField').val() ) || $('#qtyField').val() == $('#qtyField').attr("data-placeholder") ) {
-//             $('.er').animate({width:'show'}, 500); // показать div с ошибкой
-//             return false;
-//         }
-//         var str = $('#qtyField').val();
-// //  проверка инпут - запрет ввода любых букв (только цифры) как правильно сделать?
-//         if  (/\D/.test(str)) {
-//             $('.er').animate({width:'show'}, 500); // показать div с ошибкой
-//             return false;
-//         }
-// //  ????????????????????????
-//         return true
-//     }
-//     $("#qtyField").click(function(){ // спрятать div с ошибкой при клике в поле input
-//         $(".er").animate({width:'hide'}, 300);
-//     });
-// });
+function qtyPlus(id) {
+    var n = $('#qtyField' + id);
+    n.val(Number(n.val()) + 1);
+    if (id) {
+        setQty(id);
+    }
+}
+
+function qtyMinus(id) {
+    var n = $('#qtyField' + id);
+    n.val(Number(n.val()) - 1);
+    if (n.val() < 1) {
+        n.val(1);
+    }
+    if (id) {
+        setQty(id);
+    }
+}
+
+$("#qtyPlus").click(function () {
+    qtyPlus('');
+});
+
+$("#qtyMinus").click(function () {
+    qtyMinus('');
+});
+
+$('.qtyField').bind("change keyup input click", function() {
+    if (this.value.match(/[^0-9]/g)) {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    }
+    if (this.value == '' || this.value == 0) {
+        this.value = 1;
+    }
+    //TODO максимальное значение
+    // maxValue = $('#qtyField').data('value')
+    // if (this.value > maxValue) {
+    //     this.value = maxValue;
+    // }
+});
+
+
+
+
+
