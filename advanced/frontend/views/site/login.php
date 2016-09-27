@@ -37,9 +37,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
             <?php ActiveForm::end(); ?>
-            <?php
-            echo \common\widgets\SearchPanel::widget();
-            ?>
         </div>
     </div>
 </div>

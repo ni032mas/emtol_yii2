@@ -58,43 +58,53 @@ $this->params['fluid'] = true;
         </div>
         <div class="container objreservation-content">
             <div class="row">
-                <?php
-                foreach ($freeObj as $obj) {
-                    foreach ($obj->getBehavior('galleryBehavior')->getImages() as $image) {
-                        $imgUrl = $image->getUrl('medium');
-                        if ($imgUrl == null) {
-                            $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
-                            Yii::info('Нет картинки');
-                        }
-                        $itemsObj[] = [
-                            'content' => Html::img($imgUrl),
-                            'caption' => '',
-                            'options' => []];
+                <div class="col-sm-12">
+                    <?php
+                    $k = 0;
+                    foreach ($freeObj as $obj) {
+                        $k = $k++;
+                        ?>
+                        <div class="item-card">
+                            <div class="col-sm-8">
+                                <?php
+                                $imgs = array();
+                                foreach ($obj->getBehavior('galleryBehavior')->getImages() as $image) {
+                                    $imgUrl = $image->getUrl('medium');
+                                    if ($imgUrl == null) {
+                                        $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
+                                        Yii::info('Нет картинки');
+                                    }
+                                    $imgs[] = ['img' => $imgUrl];
+                                }
+                                echo \metalguardian\fotorama\Fotorama::widget(
+                                    [
+                                        'items' => $imgs,
+                                        'options' => [
+                                            'nav' => 'thumbs',
+                                        ]
+                                    ]
+                                );
+                                ?>
+
+                            </div><!-- /.col-sm-8 -->
+                            <div class="col-sm-4">
+                                <h1>
+                                    <a href="<?= Url::to(['/tour/view', 'id' => $obj->id, 'datebegin' => '']) ?>">
+                                        <?= $obj->name ?>
+                                    </a>
+                                </h1>
+                                <h2>Описание</h2>
+                                <?= $obj->description ?>
+                                <h2>Цена</h2>
+                                <?php echo $obj->price ?>
+                            </div><!-- /.col-sm-4 -->
+                        </div><!-- /.item -->
+                        <?php
                     }
                     ?>
-                    <div class="col-sm-4">
-                        <h4>
-                            <?php
-                            echo Html::a($obj->name, Yii::getAlias('@web') . 'site/select-obj?id=' . $obj->id);
-                            ?>
-                        </h4>
-                        <?php
-                        echo Carousel::widget([
-                                'items' => $itemsObj,
-                                'options' => [],
-                            ]
-                        );
-                        ?>
-                        <h6>
-                            <?= $obj->description ?>
-                        </h6>
-                    </div>
-                    <?php
-                }
-                ?>
-            </div>
-        </div>
-        <!-- /.objreservation-content -->
+                </div><!-- /.col-sm-12 -->
+            </div><!-- /.row -->
+        </div><!-- /.objreservation-content -->
     </div>
     <?php
     $carouselOptions = ['style' => 'height: 700px;', 'class' => 'item-background-carousel'];
