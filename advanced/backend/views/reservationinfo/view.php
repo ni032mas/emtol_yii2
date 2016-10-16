@@ -39,14 +39,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'date_begin',
-                'label' => 'Создано',
-                'format' => ['date', 'dd-MM-Y HH:mm:ss'], // Доступные модификаторы - date:datetime:time
+                'label' => 'Дата/Время начала экскурсии',
+                'format' => ['datetime', 'Y-MM-dd H:m'], // Доступные модификаторы - date:datetime:time
                 'headerOptions' => ['width' => '200'],
             ],
             [
                 'attribute' => 'date_end',
-                'label' => 'Создано',
-                'format' => ['date', 'dd-MM-Y HH:mm:ss'], // Доступные модификаторы - date:datetime:time
+                'label' => 'Дата/Время окончания экскурсии',
+                'format' => ['datetime', 'Y-MM-dd H:m'], // Доступные модификаторы - date:datetime:time
                 'headerOptions' => ['width' => '200'],
             ],
             'amount',
@@ -67,7 +67,8 @@ $this->params['breadcrumbs'][] = $this->title;
     ])
     ?>
     <?php
-//    echo $date_begin;
+//    echo date('d-m-Y H:m', $model->date_begin);
+//    echo Yii::$app->formatter->asDatetime($model->date_begin);
     ?>
 
 </div>

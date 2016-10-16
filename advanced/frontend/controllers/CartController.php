@@ -13,10 +13,39 @@ use frontend\models\Cart;
 use frontend\models\Orders;
 use frontend\models\Reservationinfo;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class CartController extends Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['add', 'clear', 'del-item', 'show'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['add', 'clear', 'del-item', 'show', 'view', 'add-qty'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
+
     public function actionAdd()
     {
         $reservationInfoId = Yii::$app->request->get('reservationInfoId');

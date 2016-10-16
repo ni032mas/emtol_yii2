@@ -88,9 +88,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
     {
         $user = User::findOne(Yii::$app->user->id);
         $objreservation = $user->getObjreservation()->all();
-//        $objreservation = Objreservation::find()
-//                ->all();
-
+        
         return ArrayHelper::map($objreservation, 'id', 'name');
     }
 

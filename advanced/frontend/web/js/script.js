@@ -102,7 +102,7 @@ $('.open-order-item').on('click', function (e) {
 
 $('.cancel-order').on('click', function (e) {
     var ordersId = $(this).data('id');
-    $('.btn-cancel-order').attr('href', '/orders/cancel/?ordersId=' + ordersId);
+    $('.btn-cancel-order').attr('href', '/orders/cancel?ordersId=' + ordersId);
     $('#orders-cancel-modal').find('.modal-body').html('<span>Вы уверены что хотите отменить заказ №' + ordersId + '?</span>');
     $('#orders-cancel-modal').modal();
 });
@@ -203,7 +203,7 @@ $("#qtyMinus").click(function () {
     qtyMinus('');
 });
 
-$('.qtyField').bind("change keyup input click", function() {
+$('.qtyField').bind("change keyup input click", function () {
     if (this.value.match(/[^0-9]/g)) {
         this.value = this.value.replace(/[^0-9]/g, '');
     }
@@ -216,6 +216,47 @@ $('.qtyField').bind("change keyup input click", function() {
     //     this.value = maxValue;
     // }
 });
+
+function getReservationinfoId(objreservationId, dt) {
+    dateBegin = Date.parse(dt);
+    $.ajax({
+        url: '/reservationinfo/get',
+        data: {
+            objreservationId: objreservationId,
+            dateBegin: dateBegin
+        },
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert("Ошибка!");
+            // // refreshButtonCart(res);
+            // alert(res);
+        },
+        error: function () {
+            alert("Error!");
+        }
+    });
+}
+//test
+$('#testbutton').on('click', function (e) {
+    e.preventDefault;
+    var dt = $('#testdatetimepicker').val();
+    $.ajax({
+        url: '/test/testtime',
+        data: {
+            dt: dt
+        },
+        type: 'GET',
+        success: function (res) {
+            if (!res) alert("Ошибка!");
+            $('#testid').text(res);
+        },
+        error: function () {
+            alert("Error!");
+        }
+    });
+});
+
+
 
 
 

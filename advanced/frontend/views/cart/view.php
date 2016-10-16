@@ -63,7 +63,6 @@ if (!empty($session['cart'])) : ?>
             <?= Html::submitButton('Заказать', ['class' =>'btn pull-right btn-success']) ?>
         </div>
         <?php ActiveForm::end(); ?>
-        <a class="btn btn-default pull-right" href="/order/add">Оформить</a>
     </div>
 <?php else: ?>
 

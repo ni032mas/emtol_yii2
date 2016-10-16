@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\models\ReservationinfoMany;
 use DateTime;
 use Yii;
 use backend\models\Reservationinfo;
@@ -27,7 +28,7 @@ class ReservationinfoController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['objreservationid', 'index', 'view', 'create', 'update', 'delete'],
+                        'actions' => ['objreservationid', 'index', 'view', 'create', 'create-many', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -90,10 +91,11 @@ class ReservationinfoController extends Controller
         $model = new Reservationinfo();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->date_begin = strtotime($model->date_begin);
-            $model->date_end = strtotime($model->date_end);
+            $model->date_begin = Yii::$app->formatter->asTimestamp($model->dateBegin);
+            $model->date_end = Yii::$app->formatter->asTimestamp($model->dateEnd);
+//            $model->date_begin = strtotime($model->date_begin);
+//            $model->date_end = strtotime($model->date_end);
             if ($model->save()) {
-//                return $this->render('test', ['date_begin' => strtotime($dateBegin)]);
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
@@ -101,6 +103,57 @@ class ReservationinfoController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionCreateMany()
+    {
+        $model = new ReservationinfoMany();
+        if ($model->load(Yii::$app->request->post())) {
+//            86400
+            $dateBegin = Yii::$app->formatter->asTimestamp($model->dateBegin);
+            $dateEnd = Yii::$app->formatter->asTimestamp($model->dateEnd);
+//            $dateBegin = strtotime($model->dateBegin);
+//            $dateEnd = strtotime($model->dateEnd);
+
+            $daysOfWeek = [
+                $model->monday ? true : null,
+                $model->tuesday ? true : null,
+                $model->wednesday ? true : null,
+                $model->thursday ? true : null,
+                $model->friday ? true : null,
+                $model->saturday ? true : null,
+                $model->sunday ? true : null,
+            ];
+            $qty = (int)($dateEnd - $dateBegin) / 86400;
+            if ($qty > 60) {
+                Yii::$app->session->setFlash('danger', 'Вы пытаетесь создать экскурсии больше чем на 60 дней. Невозможно создать!');
+            } else {
+                for ($i = 0; $i < $qty; $i++) {
+                    if (isset($daysOfWeek[date('N', $dateBegin)])) {
+                        $reservationInfo = new Reservationinfo();
+                        $reservationInfo->date_begin = $dateBegin;
+                        $reservationInfo->date_end = $dateBegin + ($model->hour * 3600);
+                        $reservationInfo->objreservation_id = $model->objreservationId;
+                        $reservationInfo->amount = $model->qty;
+                        $reservationInfo->price = $model->price;
+                        $reservationInfo->save();
+                    }
+//                    $dateBegin = $dateBegin + 86400;
+                    $dateBegin += 86400;
+                }
+                return $this->redirect(['index']);
+            }
+            debug($dateBegin);
+            debug($dateEnd);
+            debug($qty);
+            debug($model->objreservationId);
+        } else {
+            Yii::$app->session->setFlash('danger', 'Не все поля заполнены. Невозможно создать!');
+        }
+        return $this->render('create-many', [
+            'model' => $model,
+        ]);
+    }
+
 
     /**
      * Updates an existing Reservationinfo model.
@@ -111,10 +164,14 @@ class ReservationinfoController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->date_begin = Yii::$app->formatter->asDatetime($model->date_begin);
+        $model->date_end = Yii::$app->formatter->asDatetime($model->date_end);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $model->date_begin = strtotime($model->date_begin);
-            $model->date_end = strtotime($model->date_end);
+//            $model->date_begin = strtotime($model->date_begin);
+            $model->date_begin = Yii::$app->formatter->asTimestamp($model->date_begin);
+            $model->date_end = Yii::$app->formatter->asTimestamp($model->date_end);
+//            $model->date_end = strtotime($model->date_end);
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

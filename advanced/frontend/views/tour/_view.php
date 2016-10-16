@@ -52,26 +52,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-sm-12">
                     <div class="col-sm-10">
                         <?php
-                        $allowDates = [];
-                        $allowTimes = [];
                         foreach ($models as $model) {
-                            $allowDates[$model->id] = date('Y-m-d', $model->date_begin);
-                            $allowTimes[$model->id] = date('H:i', $model->date_begin);
+                            $itemsPrice[$model->id] = "Начало " . date('d-m-Y в H:m', $model->date_begin) . " - Цена " . $model->price . " руб.";
                         }
-                        echo \vakorovin\datetimepicker\Datetimepicker::widget([
-                            'name' => 'dosam',
-                            'options' => [
-                                'lang' => 'ru',
-//                                'inline' => true,
-                                'allowDates' => $allowDates,
-                                'disabledDates' => ['2016-10-09'],
-                                'allowTimes' => $allowTimes,
-                                'format' => 'Y-m-d H:i',
-//                                'onChangeDateTime' => 'function(dp, input){ alert(input) }',
-                                'onChangeDateTime' => 'function(dp,$input){ getReservationinfoId(' . $models[0]->objreservation_id . ', $input.val()) }',
-//                                'onSelectDate' => 'function(ct,$i){alert(ct.dateFormat(\'d/m/Y\'))}'
+                        echo Html::dropDownList('SelectDateTimePrice[reservationId]', null, $itemsPrice,
+                            [
+                                'id' => 'reservationinfo-id',
+                                'class' => 'form-control'
                             ]
-                        ]);
+                        );
                         echo QtyPanel::widget([
                             'qty' => 1,
                             'groupClass' => 'product product-qty',
@@ -87,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div><!-- /.col-sm-9 -->
     <?php
     //    debug($models);
-    //    debug($itemsPrice);
+//    debug($itemsPrice);
     //    debug($dateBegin);
     ?>
 </div><!-- /.container -->

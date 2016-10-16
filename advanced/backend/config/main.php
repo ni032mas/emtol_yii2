@@ -50,6 +50,19 @@ return [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php:Y-m-d',
+            'datetimeFormat' => 'php:Y-m-d H:i',
+            'timeFormat' => 'php:H:i:s',
+            'timeZone' => 'UTC'
+//            'dateFormat' => 'Y-MM-dd',
+//            'datetimeFormat' => 'Y-MM-dd H:i',
+//            'timeFormat' => 'H:i:s',
+//            'locale' => 'ru-RU', //your language locale
+//            'defaultTimeZone' => 'Europe/Moscow', // time zone
+//            'timeZone' => 'GMT+3', // time zone
+        ],
     ],
     'params' => $params,
 ];

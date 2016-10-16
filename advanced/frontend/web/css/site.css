@@ -127,14 +127,14 @@ a.desc:after {
 }
 
 .tour-form {
-    align-content: center;
-    position: absolute;
-    z-index: 999;
-    top: 70px;
+    /*align-content: center;*/
+    /*!*position: absolute;*!*/
+    /*z-index: 999;*/
+    /*top: 70px;*/
 }
 
 .tour-form .container {
-    width: auto;
+    /*width: auto;*/
 }
 
 .navbar-fixed-top {

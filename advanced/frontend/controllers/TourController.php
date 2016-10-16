@@ -65,6 +65,10 @@ class TourController extends Controller
         if (Yii::$app->request->post('Tour')['date_begin']) {
             $dateBegin = Yii::$app->request->post('Tour')['date_begin'];
         }
+
+        if (Yii::$app->request->post('Tour')['id']) {
+            $id = Yii::$app->request->post('Tour')['id'];
+        }
         $modelPrice = new SelectDateTimePrice();
         $models = Reservationinfo::find()->select('reservationinfo.*')
             ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')

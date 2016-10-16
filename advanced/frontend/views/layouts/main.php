@@ -40,17 +40,26 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    $session = Yii::$app->session;
+    $session->open();
+    if (isset($_SESSION['cart.qty'])) {
+        $qty = (int)$_SESSION['cart.qty'];
+    } else {
+        $qty = 0;
+    }
     if (Yii::$app->user->isGuest) {
+        $cartName = !$qty ? 'Корзина' : 'Корзина(' . $qty . ')';
+        $menuItems[] = [
+            'label' => $cartName,
+            'url' => ['#'],
+            'linkOptions' => [
+                'onclick' => 'return getCart()',
+                'id' => 'navbar-cart',
+            ],
+        ];
         $menuItems[] = ['label' => 'Регистрация', 'url' => ['/signup']];
         $menuItems[] = ['label' => 'Вход', 'url' => ['/login']];
     } else {
-        $session = Yii::$app->session;
-        $session->open();
-        if (isset($_SESSION['cart.qty'])) {
-            $qty = (int)$_SESSION['cart.qty'];
-        } else {
-            $qty = 0;
-        }
         $cartName = !$qty ? 'Корзина' : 'Корзина(' . $qty . ')';
         $menuItems[] = [
             'label' => $cartName,

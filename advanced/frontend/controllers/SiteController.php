@@ -1,7 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use DateTime;
 use frontend\models\Objreservation;
+use frontend\models\Reservationinfo;
 use frontend\models\Tag;
 use frontend\models\Tour;
 use Yii;
@@ -74,19 +76,35 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+//    public function actionIndex()
+//    {
+//        $model = new Tour();
+//        $objreservation = new Objreservation();
+//        $objreservation1 = Objreservation::find()->all();
+//        $freeObj = $objreservation->getFreeRandomObjreservation();
+//        $data = ArrayHelper::getColumn(Tag::find()->asArray()->all(), 'name');
+//        return $this->render('index', [
+//            'model' => $model,
+//            'data' => $data,
+//            'freeObj' => $freeObj,
+//            'objreservation' => $objreservation,
+//            'objreservation1' => $objreservation1,
+//        ]);
+//    }
     public function actionIndex()
     {
+        $today = new DateTime();
         $model = new Tour();
+        $model->date_begin = $today->format('Y-m-d');
         $objreservation = new Objreservation();
-        $objreservation1 = Objreservation::find()->all();
-        $freeObj = $objreservation->getFreeRandomObjreservation();
+        $freeObj = Reservationinfo::find()->select('reservationinfo.*')
+            ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+            ->where(['>=', 'reservationinfo.date_begin', strtotime($today->getTimestamp())])->limit(3)->all();
         $data = ArrayHelper::getColumn(Tag::find()->asArray()->all(), 'name');
         return $this->render('index', [
             'model' => $model,
             'data' => $data,
             'freeObj' => $freeObj,
-            'objreservation' => $objreservation,
-            'objreservation1' => $objreservation1,
         ]);
     }
 

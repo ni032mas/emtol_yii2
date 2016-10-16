@@ -77,7 +77,7 @@ class Orders extends \yii\db\ActiveRecord
     public function getConsumerName()
     {
         $consumer = $this->consumer;
-        return $consumer ? $consumer->name : '';
+        return $consumer ? $consumer->first_name . ' ' . $consumer->last_name : '';
     }
 
     public function getOrderStatus()

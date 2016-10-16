@@ -46,14 +46,15 @@ class User extends ActiveRecord implements IdentityInterface
      * @return User
      * @throws ErrorException
      */
-    
 
-    public static function findByEAuth($service) {
+
+    public static function findByEAuth($service)
+    {
         if (!$service->getIsAuthenticated()) {
             throw new ErrorException('EAuth user should be authenticated before creating identity.');
         }
 
-        $id = $service->getServiceName().'-'.$service->getId();
+        $id = $service->getServiceName() . '-' . $service->getId();
         $attributes = [
             'id' => $id,
             'username' => $service->getAttribute('name'),
@@ -61,7 +62,7 @@ class User extends ActiveRecord implements IdentityInterface
             'profile' => $service->getAttributes(),
         ];
         $attributes['profile']['service'] = $service->getServiceName();
-        Yii::$app->getSession()->set('user-'.$id, $attributes);
+        Yii::$app->getSession()->set('user-' . $id, $attributes);
         return new self($attributes);
     }
 
@@ -151,7 +152,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
@@ -224,37 +225,52 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
-    
-    public function getObjreservation() {
+
+    /**
+     * Отключает небезопасные поля для REST
+     * @return array
+     *
+     */
+    public function fields()
+    {
+        $fields = parent::fields();
+
+        // удаляем не безопасные поля
+        unset($fields['auth_key'], $fields['password_hash'], $fields['password_reset_token']);
+
+        return $fields;
+    }
+
+    public function getObjreservation()
+    {
         return $this->hasMany(Objreservation::className(), ['customer_id' => 'id'])
             ->viaTable('customers', ['user_id' => 'id']);
     }
-    
-    public function getCustomer() {
+
+    public function getCustomer()
+    {
         return $this->hasMany(Customers::className(), ['user_id' => 'id']);
     }
 
-    public function getOrders1() {
+    public function getOrders1()
+    {
         return $this->hasMany(Orders::className(), ['objreservation_id' => 'id'])
             ->viaTable('objreservation', ['customer_id' => 'id'])->viaTable('customers', ['user_id' => 'id']);
     }
 
-    public function getOrdersItem() {
+    public function getOrdersItem()
+    {
         return $this->hasMany(OrdersItem::className(), ['reservationinfo_id' => 'id'])
             ->viaTable('reservationinfo', ['objreservation_id' => 'id'])
             ->viaTable('objreservation', ['customer_id' => 'id'])
             ->viaTable('customers', ['user_id' => 'id']);
     }
 
-    public function getOrders() {
+    public function getOrders()
+    {
         return $this->hasMany(Orders::className(), ['id' => 'orders_id'])
             ->viaTable('orders_item', ['objreservation_id' => 'id'])
             ->viaTable('objreservation', ['customer_id' => 'id'])
             ->viaTable('customers', ['user_id' => 'id']);
     }
-
-
-//SELECT Orders.id, Orders.objreservation_id, Orders.имя
-//FROM (([User] LEFT JOIN Customers ON User.id = Customers.user_id) LEFT JOIN Objreservation ON Customers.id = Objreservation.customer_id) LEFT JOIN Orders ON Objreservation.id = Orders.objreservation_id
-//WHERE (((User.id)=1));
 }

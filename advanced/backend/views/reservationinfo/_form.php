@@ -19,14 +19,31 @@ use vakorovin\datetimepicker\Datetimepicker;
     $form->field($model, 'date_begin')->widget(Datetimepicker::className(), [
         'options' => [
             'lang' => 'ru',
+            'format' => 'Y-m-d H:i'
         ]
     ])
     ?>
+    <?php
+    echo \vakorovin\datetimepicker\Datetimepicker::widget([
+        'name' => 'dosam',
+        'options' => [
+            'lang' => 'ru',
+            'format' => 'Y-m-d H:i'
+//        'inline' => true,
+//        'allowDates' => ['09.10.2016', '14.10.2016',],
+//        'allowTimes' => ['20:00',],
+//        'disabledDates' => ['09.10.2016', '13.10.2016',],
+        ]
+    ]);
+    ?>
+    ?>
+
 
     <?=
     $form->field($model, 'date_end')->widget(Datetimepicker::className(), [
         'options' => [
             'lang' => 'ru',
+            'format' => 'Y-m-d H:i'
         ]
     ])
     ?>
