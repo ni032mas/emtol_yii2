@@ -109,7 +109,9 @@ $('.cancel-order').on('click', function (e) {
 
 $('.add-to-cart').on('click', function (e) {
     e.preventDefault;
-    var reservationInfoId = $("#reservationinfo-id").val(),
+    // var reservationInfoId = $("#reservationinfo-id").val(),
+    //     qty = $("#qtyField").val();
+    var reservationInfoId = $("#dateBeginPicker").attr('reservationinfoid'),
         qty = $("#qtyField").val();
     addToCart(reservationInfoId, qty);
 });
@@ -218,23 +220,47 @@ $('.qtyField').bind("change keyup input click", function () {
 });
 
 function getReservationinfoId(objreservationId, dt) {
-    dateBegin = Date.parse(dt);
-    $.ajax({
-        url: '/reservationinfo/get',
-        data: {
-            objreservationId: objreservationId,
-            dateBegin: dateBegin
-        },
-        type: 'GET',
-        success: function (res) {
-            if (!res) alert("Ошибка!");
-            // // refreshButtonCart(res);
-            // alert(res);
-        },
-        error: function () {
-            alert("Error!");
+
+    var dateBeginPicker = $('#dateBeginPicker');
+    var arr = JSON.parse(dateBeginPicker.attr('allowdatetimes'));
+    // alert(dt);
+    // alert(arr['31']);
+    for(var p in arr) {
+        // alert(arr[p]);
+        console.log(arr[p]);
+        console.log(dt);
+        console.log(p);
+        if (arr[p] == dt) {
+            dateBeginPicker.attr('reservationinfoid', p);
+            // dateBeginPicker.data('reservationinfoid').value = p;
         }
-    });
+    }
+
+
+    // alert(dt);
+    // var d1 = new Date(dt);
+    // d1.toUTCString();
+    // var d2 = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds());
+    // d2.toUTCString();
+    // dateBegin = Math.floor(d2.getTime() / 1000);
+    // // dateBegin = Math.floor(d1.getTime() / 1000);
+    // // dateBegin = Date.parse(dt) / 1000;
+    // $.ajax({
+    //     url: '/reservationinfo/get',
+    //     data: {
+    //         objreservationId: objreservationId,
+    //         dateBegin: dateBegin
+    //     },
+    //     type: 'GET',
+    //     success: function (res) {
+    //         if (!res) alert("Ошибка!");
+    //         // // refreshButtonCart(res);
+    //         // alert(res);
+    //     },
+    //     error: function () {
+    //         alert("Error!");
+    //     }
+    // });
 }
 //test
 $('#testbutton').on('click', function (e) {

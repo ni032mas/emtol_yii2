@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-sm-9">
         <div class="row">
             <div class="item-card">
-                <div class="col-sm-12">
+                <div class="col-sm-8">
                     <h1>
                         <?= $models[0]->objreservation->name ?>
                     </h1>
@@ -44,34 +44,42 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     );
                     ?>
-                </div><!-- /.col-sm-12 -->
-                <div class="col-sm-12">
+                </div><!-- /.col-sm-8 -->
+                <div class="col-sm-4">
                     <h2>Описание</h2>
                     <?= $models[0]->objreservation->description ?>
-                </div><!-- /.col-sm-12 -->
+                </div><!-- /.col-sm-4 -->
                 <div class="col-sm-12">
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <?php
                         $allowDates = [];
                         $allowTimes = [];
+                        $allowDateTimes = [];
                         foreach ($models as $model) {
-                            $allowDates[$model->id] = date('Y-m-d', $model->date_begin);
-                            $allowTimes[$model->id] = date('H:i', $model->date_begin);
+                            $allowDates[$model->id] = Yii::$app->formatter->asDatetime($model->date_begin, 'Y-M-d');
+                            $allowTimes[$model->id] = Yii::$app->formatter->asDatetime($model->date_begin, 'H:i');
+                            $allowDateTimes[$model->id] = Yii::$app->formatter->asDatetime($model->date_begin, 'Y-M-d hh:i');
                         }
                         echo \vakorovin\datetimepicker\Datetimepicker::widget([
                             'name' => 'dosam',
+                            'id' => 'dateBeginPicker',
                             'options' => [
                                 'lang' => 'ru',
-//                                'inline' => true,
+                                'inline' => true,
                                 'allowDates' => $allowDates,
+                                'reservationinfoid' => '',
+                                'allowDateTimes' => $allowDateTimes,
                                 'disabledDates' => ['2016-10-09'],
                                 'allowTimes' => $allowTimes,
                                 'format' => 'Y-m-d H:i',
-//                                'onChangeDateTime' => 'function(dp, input){ alert(input) }',
+                                'formatDate' => 'Y-m-d',
                                 'onChangeDateTime' => 'function(dp,$input){ getReservationinfoId(' . $models[0]->objreservation_id . ', $input.val()) }',
-//                                'onSelectDate' => 'function(ct,$i){alert(ct.dateFormat(\'d/m/Y\'))}'
                             ]
                         ]);
+                        ?>
+                    </div><!-- /.col-sm-6 -->
+                    <div class="col-sm-4">
+                        <?php
                         echo QtyPanel::widget([
                             'qty' => 1,
                             'groupClass' => 'product product-qty',
@@ -79,8 +87,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             'qtyPlusId' => 'qtyPlus',
                         ]);
                         ?>
+                    </div><!-- /.col-sm-6 -->
+                    <div class="col-sm-2">
                         <a class="btn btn-success add-to-cart">Купить</a>
-                    </div><!-- /.col-sm-10 -->
+                    </div><!-- /.col-sm-2 -->
                 </div><!-- /.col-sm-12 -->
             </div><!-- /.item-card -->
         </div><!-- /.row -->
