@@ -73,13 +73,13 @@ $this->title = 'EMTOL - бронирование экскурсий';
             <div class="col-sm-4">
                 <div class="item-card">
                     <h2>
-                        <a href="<?= Url::to(['/tour/view', 'id' => $obj->id, 'datebegin' => '']) ?>">
-                            <?= $obj->objreservation->name ?>
+                        <a href="<?= Url::to(['/tour/view', 'id' => $obj->id, 'datebegin' => $today]) ?>">
+                            <?= $obj->name ?>
                         </a>
                     </h2>
                     <?php
                     $imgs = array();
-                    foreach ($obj->objreservation->getBehavior('galleryBehavior')->getImages() as $image) {
+                    foreach ($obj->getBehavior('galleryBehavior')->getImages() as $image) {
                         $imgUrl = $image->getUrl('medium');
                         if ($imgUrl == null) {
                             $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
@@ -96,7 +96,7 @@ $this->title = 'EMTOL - бронирование экскурсий';
                         ]
                     );
                     ?>
-                    <h3><?= $obj->objreservation->description ?></h3>
+                    <h3><?= $obj->description ?></h3>
                     <h2>Цена</h2>
                     <?php echo $obj->price ?>
                 </div><!-- /.item -->

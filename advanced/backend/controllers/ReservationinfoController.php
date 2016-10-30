@@ -93,8 +93,6 @@ class ReservationinfoController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->date_begin = Yii::$app->formatter->asTimestamp($model->dateBegin);
             $model->date_end = Yii::$app->formatter->asTimestamp($model->dateEnd);
-//            $model->date_begin = strtotime($model->date_begin);
-//            $model->date_end = strtotime($model->date_end);
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -108,11 +106,8 @@ class ReservationinfoController extends Controller
     {
         $model = new ReservationinfoMany();
         if ($model->load(Yii::$app->request->post())) {
-//            86400
             $dateBegin = Yii::$app->formatter->asTimestamp($model->dateBegin);
             $dateEnd = Yii::$app->formatter->asTimestamp($model->dateEnd);
-//            $dateBegin = strtotime($model->dateBegin);
-//            $dateEnd = strtotime($model->dateEnd);
 
             $daysOfWeek = [
                 $model->monday ? true : null,
@@ -133,19 +128,14 @@ class ReservationinfoController extends Controller
                         $reservationInfo->date_begin = $dateBegin;
                         $reservationInfo->date_end = $dateBegin + ($model->hour * 3600);
                         $reservationInfo->objreservation_id = $model->objreservationId;
-                        $reservationInfo->amount = $model->qty;
+                        $reservationInfo->qty = $model->qty;
                         $reservationInfo->price = $model->price;
                         $reservationInfo->save();
                     }
-//                    $dateBegin = $dateBegin + 86400;
                     $dateBegin += 86400;
                 }
                 return $this->redirect(['index']);
             }
-            debug($dateBegin);
-            debug($dateEnd);
-            debug($qty);
-            debug($model->objreservationId);
         } else {
             Yii::$app->session->setFlash('danger', 'Не все поля заполнены. Невозможно создать!');
         }

@@ -35,8 +35,8 @@ class Reservationinfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['objreservation_id', 'reservationinfo_id', 'date_begin', 'date_end', 'amount', 'created_at', 'updated_at'], 'required'],
-            [['objreservation_id', 'reservationinfo_id', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['objreservation_id', 'reservationinfo_id', 'date_begin', 'date_end', 'qty', 'created_at', 'updated_at'], 'required'],
+            [['objreservation_id', 'reservationinfo_id', 'qty', 'created_at', 'updated_at'], 'integer'],
             [['price'], 'double'],
             [['date_begin', 'date_end'], 'safe']
         ];
@@ -53,7 +53,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
             'reservationinfo_id' => 'Reservationinfo',
             'date_begin' => 'Дата начала',
             'date_end' => 'Дата окончания',
-            'amount' => 'Количество',
+            'qty' => 'Количество',
             'price' => 'Цена',
             'created_at' => 'Создано',
             'updated_at' => 'Изменено',
@@ -77,8 +77,6 @@ class Reservationinfo extends \yii\db\ActiveRecord
     public function getObjreservationList() {
         $user = User::findOne(Yii::$app->user->id);
         $objreservation = $user->getObjreservation()->all();
-//        $objreservation = Objreservation::find()
-//                ->all();
 
         return ArrayHelper::map($objreservation, 'id', 'name');
     }

@@ -19,7 +19,7 @@ class ReservationinfoSearch extends Reservationinfo
     public function rules()
     {
         return [
-            [['id', 'objreservation_id', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'objreservation_id', 'qty', 'created_at', 'updated_at'], 'integer'],
             [['date_begin', 'date_end'], 'safe'],
         ];
     }
@@ -66,7 +66,7 @@ class ReservationinfoSearch extends Reservationinfo
             'objreservation_id' => $this->objreservation_id,
             'date_begin' => $this->date_begin != "" ? strtotime($this->date_begin) : $this->date_begin,
             'date_end' => $this->date_end != "" ? strtotime($this->date_end) : $this->date_end,
-            'amount' => $this->amount,
+            'qty' => $this->qty,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

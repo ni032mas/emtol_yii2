@@ -36,8 +36,8 @@ class Reservationinfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['objreservation_id', 'date_begin', 'date_end', 'amount'], 'required'],
-            [['objreservation_id', 'amount', 'created_at', 'updated_at'], 'integer'],
+            [['objreservation_id', 'date_begin', 'date_end', 'qty'], 'required'],
+            [['objreservation_id', 'qty', 'created_at', 'updated_at'], 'integer'],
             [['price'], 'double'],
             [['date_begin', 'date_end',], 'safe']
         ];
@@ -53,7 +53,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
             'objreservation_id' => 'Экскурсия',
             'date_begin' => 'Дата начала',
             'date_end' => 'Дата окончания',
-            'amount' => 'Количество',
+            'qty' => 'Количество',
             'price' => 'Цена',
             'created_at' => 'Создано',
             'updated_at' => 'Изменено',

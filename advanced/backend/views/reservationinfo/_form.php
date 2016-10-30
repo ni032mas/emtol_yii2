@@ -23,21 +23,6 @@ use vakorovin\datetimepicker\Datetimepicker;
         ]
     ])
     ?>
-    <?php
-    echo \vakorovin\datetimepicker\Datetimepicker::widget([
-        'name' => 'dosam',
-        'options' => [
-            'lang' => 'ru',
-            'format' => 'Y-m-d H:i'
-//        'inline' => true,
-//        'allowDates' => ['09.10.2016', '14.10.2016',],
-//        'allowTimes' => ['20:00',],
-//        'disabledDates' => ['09.10.2016', '13.10.2016',],
-        ]
-    ]);
-    ?>
-    ?>
-
 
     <?=
     $form->field($model, 'date_end')->widget(Datetimepicker::className(), [
@@ -47,8 +32,7 @@ use vakorovin\datetimepicker\Datetimepicker;
         ]
     ])
     ?>
-
-    <?= $form->field($model, 'amount')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'qty')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

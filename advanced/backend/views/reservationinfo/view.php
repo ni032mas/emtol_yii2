@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => ['datetime', 'Y-MM-dd H:m'], // Доступные модификаторы - date:datetime:time
                 'headerOptions' => ['width' => '200'],
             ],
-            'amount',
+            'qty',
             'price',
             [
                 'attribute' => 'created_at',

@@ -23,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'date_end') ?>
 
-    <?= $form->field($model, 'amount') ?>
+    <?= $form->field($model, 'qty') ?>
 
     <?php // echo $form->field($model, 'created_at') ?>
 

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use Faker\Provider\DateTime;
 use frontend\models\Reservationinfo;
 use frontend\models\Objreservation;
 use frontend\models\SelectDateTimePrice;
@@ -16,6 +17,8 @@ class TourController extends Controller
         if (Yii::$app->request->post('Tour')['date_begin']) {
             $dateBegin = Yii::$app->request->post('Tour')['date_begin'];
         }
+//        todo Надо переделать время
+        $dateBegin = time();
 
 //        if ($sort == 'desc') {
 //            $query = Reservationinfo::find()->select('reservationinfo.*')
@@ -33,14 +36,14 @@ class TourController extends Controller
             $query = Objreservation::find()
                 ->select('objreservation.*')
                 ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
-                ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
+                ->where(['>=', 'reservationinfo.date_begin', $dateBegin])
                 ->groupBy('id')
                 ->addOrderBy(['price' => SORT_DESC,]);
         } else if ($sort == 'asc') {
             $query = Objreservation::find()
                 ->select('objreservation.*')
                 ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
-                ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
+                ->where(['>=', 'reservationinfo.date_begin', $dateBegin])
                 ->groupBy('id')
                 ->addOrderBy(['price' => SORT_ASC,]);
         }

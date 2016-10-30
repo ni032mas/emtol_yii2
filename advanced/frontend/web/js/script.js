@@ -1,3 +1,5 @@
+var itemCardBtn = $('.item-card-btn');
+var dateBeginPicker = $('#dateBeginPicker');
 $(document).ready(function () {
     $('.item-background-carousel').css('height', $(window).height() - 50);
 });
@@ -221,47 +223,78 @@ $('.qtyField').bind("change keyup input click", function () {
 
 function getReservationinfoId(objreservationId, dt) {
 
-    var dateBeginPicker = $('#dateBeginPicker');
-    var arr = JSON.parse(dateBeginPicker.attr('allowdatetimes'));
-    // alert(dt);
-    // alert(arr['31']);
-    for(var p in arr) {
-        // alert(arr[p]);
-        console.log(arr[p]);
-        console.log(dt);
-        console.log(p);
-        if (arr[p] == dt) {
-            dateBeginPicker.attr('reservationinfoid', p);
-            // dateBeginPicker.data('reservationinfoid').value = p;
-        }
-    }
-
-
-    // alert(dt);
-    // var d1 = new Date(dt);
-    // d1.toUTCString();
-    // var d2 = new Date(d1.getUTCFullYear(), d1.getUTCMonth(), d1.getUTCDate(), d1.getUTCHours(), d1.getUTCMinutes(), d1.getUTCSeconds());
-    // d2.toUTCString();
-    // dateBegin = Math.floor(d2.getTime() / 1000);
-    // // dateBegin = Math.floor(d1.getTime() / 1000);
-    // // dateBegin = Date.parse(dt) / 1000;
-    // $.ajax({
-    //     url: '/reservationinfo/get',
-    //     data: {
-    //         objreservationId: objreservationId,
-    //         dateBegin: dateBegin
-    //     },
-    //     type: 'GET',
-    //     success: function (res) {
-    //         if (!res) alert("Ошибка!");
-    //         // // refreshButtonCart(res);
-    //         // alert(res);
-    //     },
-    //     error: function () {
-    //         alert("Error!");
+    // var dateBeginPicker = $('#dateBeginPicker');
+    // var arr = JSON.parse(dateBeginPicker.attr('allowdatetimes'));
+    // // alert(dt);
+    // // alert(arr['31']);
+    // for(var p in arr) {
+    //     // alert(arr[p]);
+    //     console.log(arr[p]);
+    //     console.log(dt);
+    //     console.log(p);
+    //     if (arr[p] == dt) {
+    //         dateBeginPicker.attr('reservationinfoid', p);
+    //         // dateBeginPicker.data('reservationinfoid').value = p;
     //     }
-    // });
+    // }
 }
+
+function setTime(ct, i) {
+    $('.time-event').removeClass("active");
+    itemCardBtn.removeClass('active');
+    var fd = formatDate(i);
+    $('div[data-date="' + fd + '"]').addClass("active");
+    console.log('div[data-date="' + fd + '"]');
+
+    // $(".xdsoft_time_variant").empty();
+    // var dateBeginPicker = $('#dateBeginPicker');
+    // var arr = JSON.parse(dateBeginPicker.attr('timedate'));
+    // var fd = formatDate(i);
+    // var dateBeginPicker = $('#dateBeginPicker');
+    // var dt;
+    // var h;
+    // var m;
+    // var arrTimes = [];
+    // for(var p in arr) {
+    //     if (formatDate(p) == fd) {
+    //         arrTimes.push(arr[p]);
+    //         // dt = new Date(fd + ' ' + arr[p]);
+    //         // console.log(dt.getHours());
+    //         // h = dt.getHours() < 10 ? '0'  + dt.getHours() : dt.getHours();
+    //         // m = dt.getMinutes() < 10 ? '0'  + dt.getMinutes() : dt.getMinutes();
+    //         // $("xdsoft_time_variant").append('<div class="xdsoft_time " data-hour="' + dt.getHours() + '" data-minute="' + dt.getMinutes() +  '">' + h + ':' + m + '</div>');
+    //     }
+    // }
+    // // dateBeginPicker.attr('allowtimes', '{"44":"10:10","46":"22:00","47":"09:00"}');
+    // $(".xdsoft_time_variant").empty();
+}
+
+function formatDate(i) {
+
+    var dateBegin = new Date(i);
+    var dd = dateBegin.getDate();
+
+    if (dd < 10) dd = '0' + dd;
+
+    var mm = dateBegin.getMonth() + 1;
+    if (mm < 10) mm = '0' + mm;
+
+    var yy = dateBegin.getFullYear();
+
+    return yy + '-' + mm + '-' + dd;
+}
+
+itemCardBtn.on('click', function (e) {
+    itemCardBtn.removeClass('active');
+    $(this).addClass('active');
+    dateBeginPicker.attr('reservationinfoid', $(this).data('id'));
+});
+
+$('#test-btn').on('click', function (e) {
+    $(".xdsoft_time_variant").empty();
+    $('#dateBeginPicker').attr('allowtimes', '{"44":"10:10","46":"22:00","47":"09:00"}');
+});
+
 //test
 $('#testbutton').on('click', function (e) {
     e.preventDefault;

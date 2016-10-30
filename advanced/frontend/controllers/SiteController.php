@@ -96,10 +96,16 @@ class SiteController extends Controller
         $today = new DateTime();
         $model = new Tour();
         $model->date_begin = $today->format('Y-m-d');
-        $objreservation = new Objreservation();
-        $freeObj = Reservationinfo::find()->select('reservationinfo.*')
-            ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
-            ->where(['>=', 'reservationinfo.date_begin', strtotime($today->getTimestamp())])->limit(3)->all();
+//        $objreservation = new Objreservation();
+//        $freeObj = Reservationinfo::find()->select('reservationinfo.*')
+//            ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
+//            ->where(['>=', 'reservationinfo.date_begin', strtotime($today->getTimestamp())])->limit(3)->all();
+        $freeObj = Objreservation::find()->select('objreservation.*')
+        ->leftJoin('reservationinfo', 'objreservation.id = reservationinfo.objreservation_id')
+        ->where(['>=', 'reservationinfo.date_begin', time()])
+        ->groupBy('id')
+        ->limit(3)
+        ->all();
         $data = ArrayHelper::getColumn(Tag::find()->asArray()->all(), 'name');
         return $this->render('index', [
             'model' => $model,
