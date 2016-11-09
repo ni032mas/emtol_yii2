@@ -39,7 +39,13 @@ class Cart extends ActiveRecord
     }
 
 
-    public function recalc() {
+    public function removeItem($id)
+    {
+        unset($_SESSION['cart'][$id]);
+    }
+
+    public function recalc()
+    {
         $sum = 0;
         $qty = 0;
         if (!isset($_SESSION['cart'])) {

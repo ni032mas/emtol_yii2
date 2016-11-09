@@ -1,6 +1,7 @@
 <?php
 
 use metalguardian\fotorama\Fotorama;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use yii\bootstrap\NavBar;
 use yii\bootstrap\Carousel;
@@ -66,46 +67,97 @@ $this->title = 'EMTOL - бронирование экскурсий';
 <div class="row">
     <div class="col-sm-12">
         <?php
-        $k = 0;
-        foreach ($freeObj as $obj) {
-            $k = $k++;
-            ?>
-            <div class="col-sm-4">
-                <div class="item-card">
-                    <h2>
-                        <a href="<?= Url::to(['/tour/view', 'id' => $obj->id, 'datebegin' => $today]) ?>">
-                            <?= $obj->name ?>
-                        </a>
-                    </h2>
-                    <?php
-                    $imgs = array();
-                    foreach ($obj->getBehavior('galleryBehavior')->getImages() as $image) {
-                        $imgUrl = $image->getUrl('medium');
-                        if ($imgUrl == null) {
-                            $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
-                            Yii::info('Нет картинки');
-                        }
-                        $imgs[] = ['img' => $imgUrl];
-                    }
-                    echo Fotorama::widget(
-                        [
-                            'items' => $imgs,
-                            'options' => [
-                                'nav' => 'thumbs',
-                            ]
-                        ]
-                    );
-                    ?>
-                    <h3><?= $obj->description ?></h3>
-                    <h2>Цена</h2>
-                    <?php echo $obj->price ?>
-                </div><!-- /.item -->
-            </div><!-- /.col-sm-4 -->
-            <?php
+        $i = 1;
+        $endTag = 0;
+        foreach ($freeObj as $model) {
+            if ($i == 1) {
+                echo Html::beginTag('div', ['class' => 'row row-flex row-flex-wrap']);
+                $endTag = 1;
+            }
+            echo Html::tag('div',
+                Html::tag('div',
+                    Html::tag('div',
+                        Html::tag('div',
+                            Html::tag('h2',
+                                Html::a($model->name,
+                                    Url::to(['/tour/view', 'id' => $model->id, 'datebegin' => $dateBegin]),
+                                    []),
+                                []) .
+                            Html::img(getPhoto($model), ['class' => 'main-tour-image']),
+                            ['class' => 'col-sm-12']),
+                        ['class' => 'row']) .
+                    Html::tag('div',
+                        Html::tag('div',
+                            Html::tag('div',
+                                Html::tag('p',
+                                    'Продолжительность ' . $model->duration . ' часов',
+                                    ['class' => 'duration']) .
+                                Html::tag('p',
+                                    'Цена от ' . getPrice($model) . ' руб.',
+                                    ['class' => 'duration']) .
+                                Html::a('Подробнее',
+                                    Url::to(['/tour/view', 'id' => $model->id, 'datebegin' => $dateBegin]),
+                                    ['class' => 'btn btn-success bottom-preview']),
+                                ['class' => 'flex-description-tour']),
+                            ['class' => 'col-sm-12']),
+                        ['class' => 'row']),
+                    ['class' => 'item-card']),
+                ['class' => 'col-sm-4']);
+            if ($i == 3) {
+                echo Html::endTag('div');
+                $endTag = 2;
+                $i = 0;
+            }
+            $i++;
+        }
+        if ($endTag == 1) {
+            echo Html::tag('div', '', ['class' => 'col-sm-6']);
+            echo Html::endTag('div');
         }
         ?>
     </div><!-- /.col-sm-12 -->
 </div><!-- /.row -->
 
+<?php
+function getPhoto($model)
+{
+    $imgs = array();
+    foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
+        $imgUrl = $image->getUrl('medium');
+        if ($imgUrl == null) {
+            $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
+        }
+        $imgs[] = ['img' => $imgUrl];
+    }
+    return $imgs[0]['img'];
+}
 
+function getFotorama($model)
+{
+    $imgs = array();
+    foreach ($model->getBehavior('galleryBehavior')->getImages() as $image) {
+        $imgUrl = $image->getUrl('medium');
+        if ($imgUrl == null) {
+            $imgUrl = Yii::getAlias('@web') . '/images/nophoto/nophoto_sea.jpg';
+        }
+        $imgs[] = ['img' => $imgUrl];
+    }
+    return \metalguardian\fotorama\Fotorama::widget(
+        [
+            'items' => $imgs,
+            'options' => [
+                'nav' => 'thumbs',
+            ]
+        ]
+    );
+}
+
+function getPrice($model)
+{
+    $reservationinfos = ArrayHelper::toArray($model->reservationinfos);
+    ArrayHelper::multisort($reservationinfos, ['price'], [SORT_ASC,]);
+    return $reservationinfos[0]['price'];
+}
+
+?>
 

@@ -80,6 +80,7 @@ class CartController extends Controller
         $session = Yii::$app->session;
         $session->open();
         $cart = new Cart();
+        $cart->removeItem($id);
         $cart->recalc();
         $this->layout = false;
         return $this->render('cart-modal', compact('session'));

@@ -19,19 +19,6 @@ class TourController extends Controller
         }
 //        todo Надо переделать время
         $dateBegin = time();
-
-//        if ($sort == 'desc') {
-//            $query = Reservationinfo::find()->select('reservationinfo.*')
-//                ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
-//                ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
-//                ->addOrderBy(['price' => SORT_DESC,]);
-//        } else if ($sort == 'asc') {
-//            $query = Reservationinfo::find()->select('reservationinfo.*')
-//                ->leftJoin('objreservation', 'reservationinfo.objreservation_id = objreservation.id')
-//                ->where(['>=', 'reservationinfo.date_begin', strtotime($dateBegin)])
-//                ->addOrderBy(['price' => SORT_ASC,]);
-//        }
-
         if ($sort == 'desc') {
             $query = Objreservation::find()
                 ->select('objreservation.*')
@@ -49,7 +36,7 @@ class TourController extends Controller
         }
 
         $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 2]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 4]);
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();

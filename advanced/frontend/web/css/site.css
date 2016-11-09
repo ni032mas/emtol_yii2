@@ -166,7 +166,7 @@ a.desc:after {
     box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.18);
     box-sizing: border-box;
     display: inline-block;
-    margin: 0 0 1.5em;
+    margin: 0 0.5em 1.5em;
     padding: 1.5em;
     width: 100%;
 }
@@ -177,7 +177,7 @@ a.desc:after {
     box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.18);
     box-sizing: border-box;
     display: inline-block;
-    /*margin: 55px -10px 1.5em;*/
+    margin: 0px 0.5em 1.5em;
     padding: 1.5em;
     width: 100%;
 }
@@ -190,9 +190,10 @@ a.desc:after {
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.18);
     box-sizing: border-box;
     display: inline-block;
-    margin: 0 0 1.5em;
+    /*margin: 0 0 0.5em;*/
     padding: 1.5em;
     width: 100%;
+    min-width: 294px;
 }
 
 .item-card-btn {
@@ -206,6 +207,7 @@ a.desc:after {
     margin: 0 0 1.5em;
     width: 100%;
 }
+
 .item-card-btn.active {
     background: #511B6F none repeat scroll 0 0;
     color: white;
@@ -266,4 +268,110 @@ a.desc:after {
 
 .time-event {
     display: none;
+}
+
+.duration {
+    margin: 10px 0 0px;
+    text-align: center;
+}
+
+h2 {
+    font-weight: bold;
+    text-align: center;
+    /*margin: -10px 0 10px;*/
+}
+
+h2 > a {
+    color: #a974c5;
+}
+
+h2 > a:hover {
+    color: #511b6f;
+}
+
+.bottom {
+    display: block;
+    margin-top: 0;
+    text-align: center;
+}
+
+.bottom-preview {
+    margin-top: 15px;
+    padding: 7px 17px;
+    width: 100%;
+    /*background: #e5e5e5;*/
+    /*color: inherit;*/
+    /*border-color: #e5e5e5;*/
+}
+
+.bottom-preview:hover {
+    font-weight: bold;
+    /*color: inherit;*/
+    /*background: #b7b7b7;*/
+    /*border-color: #b7b7b7;*/
+}
+
+.row-flex, .row-flex > div[class*='col-'] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.row-flex-wrap {
+    -webkit-flex-flow: row wrap;
+    align-content: flex-start;
+    flex: 0;
+}
+
+.row-flex > div[class*='col-'] {
+    margin: -.2px; /* hack adjust for wrapping */
+}
+
+.btn-success:active,
+.btn-success:active:hover,
+.btn-success:active:focus,
+.btn-success:focus,
+.btn-success:hover {
+    background-color: #320948;
+    border-color: #320948;
+}
+
+.btn-success {
+    background-color: #511b6f;
+    border-color: #320948;
+}
+
+/*.flex-description-tour {*/
+/*display: -webkit-box;*/
+/*display: -moz-box;*/
+/*display: -ms-flexbox;*/
+/*display: -webkit-flex;*/
+/*display: flex;*/
+/*flex:1 1 auto;*/
+/*align-items: flex-end;*/
+/*}*/
+.main-tour-image {
+    width: 100%;
+}
+
+.tour-description {
+    margin-top: 20px;
+    text-align: justify;
+}
+
+.glyphicon-ok {
+    color: #47650A;
+}
+
+.test-btn {
+    width: 100px;
+}
+
+.calendar-center {
+    width: 224px;
+    margin-left: auto;
+    margin-right: auto;
 }
