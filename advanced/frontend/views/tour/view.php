@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-sm-12">
                     <div id='buy-card' class="item-card-btn-group">
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
                             <div class="calendar-center">
                                 <?php
                                 $allowDates = [];
@@ -121,9 +121,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]);
                                 ?>
                             </div><!-- /.calendar-center -->
-                        </div><!-- /.col-sm-12 -->
+                        </div><!-- /.col-sm-6 -->
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <?php
                                 //                        Формируем кнопки с временем
                                 $i = 0;
@@ -131,8 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $dateBegin = '';
                                 $divOpenTimeEvent = false;
                                 echo Html::beginTag('div', ['class' => 'row',]);
-                                echo Html::tag('div', '', ['class' => 'col-sm-3']);
-                                echo Html::beginTag('div', ['class' => 'col-sm-6',]);
+//                                echo Html::beginTag('div', ['class' => 'col-sm-6',]);
                                 foreach ($models as $model) {
                                     if ($dateBegin != Yii::$app->formatter->asDatetime($model->date_begin, 'Y-M-d') && $divOpenTimeEvent) {
                                         echo Html::endTag('div');
@@ -167,30 +166,24 @@ $this->params['breadcrumbs'][] = $this->title;
                                     $dateBegin = Yii::$app->formatter->asDatetime($model->date_begin, 'Y-M-d');
                                     $divOpenTimeEvent = true;
                                 }
+//                                echo Html::endTag('div');
                                 echo Html::endTag('div');
-                                echo Html::endTag('div');
-                                echo Html::tag('div', '', ['class' => 'col-sm-3']);
                                 echo Html::endTag('div');
                                 ?>
-                            </div><!-- /.col-sm-12 -->
-                        </div><!-- /.row -->
-                        <div class="row">
-                            <div class="col-sm-3"></div><!-- /.col-sm-3 -->
-                            <div class="col-sm-2">
-                                <?php
-                                echo QtyPanel::widget([
-                                    'qty' => 1,
-                                    'groupClass' => 'product product-qty',
-                                    'qtyMinusId' => 'qtyMinus',
-                                    'qtyPlusId' => 'qtyPlus',
-                                ]);
-                                ?>
-                            </div><!-- /.col-sm-2 -->
-                            <div class="col-sm-2"></div><!-- /.col-sm-1 -->
-                            <div class="col-sm-2"><a class="btn btn-success add-to-cart pull-right">Купить</a></div>
-                            <!-- /.col-sm-2 -->
-                            <div class="col-sm-3"></div><!-- /.col-sm-3 -->
-                            <!-- /.col-sm-4 -->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <?php
+                                        echo QtyPanel::widget([
+                                            'qty' => 1,
+                                            'groupClass' => 'product product-qty',
+                                            'qtyMinusId' => 'qtyMinus',
+                                            'qtyPlusId' => 'qtyPlus',
+                                        ]);
+                                        ?>
+                                    </div><!-- /.col-sm-6 -->
+                                    <div class="col-sm-6 text-center"><a class="btn btn-success add-to-cart">Купить</a></div><!-- /.col-sm-6 -->
+                                </div><!-- /.row -->
+                            </div><!-- /.col-sm-6 -->
                         </div><!-- /.row -->
                     </div><!-- /.item-card-btn-group -->
                 </div><!-- /.col-sm-12 -->

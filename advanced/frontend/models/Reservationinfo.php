@@ -35,8 +35,10 @@ class Reservationinfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['objreservation_id', 'reservationinfo_id', 'date_begin', 'date_end', 'qty', 'created_at', 'updated_at'], 'required'],
-            [['objreservation_id', 'reservationinfo_id', 'qty', 'created_at', 'updated_at'], 'integer'],
+//            [['objreservation_id', 'reservationinfo_id', 'date_begin', 'date_end', 'qty', 'created_at', 'updated_at'], 'required'],
+//            [['objreservation_id', 'reservationinfo_id', 'qty', 'created_at', 'updated_at'], 'integer'],
+            [['objreservation_id', 'date_begin', 'date_end', 'qty', 'created_at', 'updated_at'], 'required'],
+            [['objreservation_id', 'qty', 'created_at', 'updated_at'], 'integer'],
             [['price'], 'double'],
             [['date_begin', 'date_end'], 'safe']
         ];
@@ -50,7 +52,7 @@ class Reservationinfo extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'objreservation_id' => 'Экскурсия',
-            'reservationinfo_id' => 'Reservationinfo',
+//            'reservationinfo_id' => 'Reservationinfo',
             'date_begin' => 'Дата начала',
             'date_end' => 'Дата окончания',
             'qty' => 'Количество',

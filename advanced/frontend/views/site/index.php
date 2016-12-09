@@ -78,17 +78,17 @@ $this->title = 'EMTOL - бронирование экскурсий';
                 Html::tag('div',
                     Html::tag('div',
                         Html::tag('div',
-                            Html::tag('h2',
-                                Html::a($model->name,
-                                    Url::to(['/tour/view', 'id' => $model->id, 'datebegin' => $dateBegin]),
-                                    []),
-                                []) .
-                            Html::img(getPhoto($model), ['class' => 'main-tour-image']),
+                            Html::a(Html::img(getPhoto($model), ['class' => 'main-tour-image']), Url::to(['/tour/view', 'id' => $model->id, 'datebegin' => $dateBegin])),
                             ['class' => 'col-sm-12']),
                         ['class' => 'row']) .
                     Html::tag('div',
                         Html::tag('div',
                             Html::tag('div',
+                                Html::tag('p',
+                                    Html::a($model->name,
+                                        Url::to(['/tour/view', 'id' => $model->id, 'datebegin' => $dateBegin]),
+                                        []),
+                                    ['class' => 'duration']) .
                                 Html::tag('p',
                                     'Продолжительность ' . $model->duration . ' часов',
                                     ['class' => 'duration']) .

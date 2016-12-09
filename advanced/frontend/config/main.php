@@ -21,6 +21,7 @@ return [
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'objreservation'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'reservationinfo'],
                 'reservationinfo/<action>' => 'reservationinfo/<action>',
                 'tour/<id:\d+>/<dateBegin>' => 'tour/view',
 //                'tour/<action:\w+>' => 'tour/<action>',

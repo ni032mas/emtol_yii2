@@ -14,4 +14,9 @@ use yii\rest\ActiveController;
 class ObjreservationController extends ActiveController
 {
     public $modelClass = 'frontend\models\Objreservation';
+
+    public function actionView()
+    {
+        return $this->render('index');
+    }
 }

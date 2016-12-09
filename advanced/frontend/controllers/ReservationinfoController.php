@@ -4,12 +4,29 @@ namespace frontend\controllers;
 
 use frontend\models\Reservationinfo;
 use Yii;
+use yii\rest\ActiveController;
 
-class ReservationinfoController extends \yii\web\Controller
+class ReservationinfoController extends ActiveController
 {
+    public $modelClass = 'frontend\models\Reservationinfo';
+    
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+
+    public function actions()
+    {
+        $actions = parent::actions();
+
+        // отключить действия "delete" и "create"
+        unset($actions['delete'], $actions['create']);
+
+        // настроить подготовку провайдера данных с помощью метода "prepareDataProvider()"
+        $actions['get'] = ['getTest'];
+
+        return $actions;
     }
 
     public function actionGet()
@@ -26,6 +43,11 @@ class ReservationinfoController extends \yii\web\Controller
         } else {
             return false;
         }
+    }
+
+    public function getTest()
+    {
+        return 'Test';
     }
 
 }

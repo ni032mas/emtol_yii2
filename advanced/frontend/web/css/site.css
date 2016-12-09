@@ -247,7 +247,9 @@ a.desc:after {
 
 .product-qty {
     width: 105px;
-    /*margin-top: 12px*/
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
 }
 
 .qtyMinus, .qtyPlus, .qtyField {
@@ -374,4 +376,14 @@ h2 > a:hover {
     width: 224px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.add-to-cart {
+    margin: 10px;
+}
+
+.vcenter {
+    display: inline-block;
+    float: none;
+    vertical-align: middle;
 }
